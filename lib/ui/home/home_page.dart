@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:harits_portofolio/ui/base/base_constanta.dart';
 import 'package:harits_portofolio/ui/base/base_widget.dart';
 import 'package:harits_portofolio/ui/home/views/about_me_view.dart';
+import 'package:harits_portofolio/ui/home/views/contact_view.dart';
+import 'package:harits_portofolio/ui/home/views/experience_view.dart';
 import 'package:harits_portofolio/ui/home/views/header_view.dart';
 import 'package:harits_portofolio/ui/home/views/left_view.dart';
 import 'package:harits_portofolio/ui/home/views/onboarding_view.dart';
 import 'package:harits_portofolio/ui/home/views/right_view.dart';
+import 'package:harits_portofolio/ui/home/views/work_view.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
@@ -26,6 +31,44 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     itemScrollController = ItemScrollController();
     itemPositionsListener = ItemPositionsListener.create();
+    WidgetsBinding.instance!.addPostFrameCallback((_) {
+      showUnderDevelopmentDialog();
+    });
+  }
+
+  showUnderDevelopmentDialog() async {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) => Dialog(
+              backgroundColor: Colors.transparent,
+              child: Container(
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: IntrinsicWidth(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      const Text(
+                        "Under Development...",
+                        style: TextStyle(
+                          fontSize: 32,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      TextButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          child: const Text("Close"))
+                    ],
+                  ),
+                ),
+              ),
+            ));
   }
 
   @override
@@ -36,13 +79,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final listBody = [
-      const OnboardingView(),
-      const AboutMeView(),
-      const Text("Experience"),
-      const Text("Work"),
-      const Text("Contact"),
-    ];
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -63,26 +99,6 @@ class _HomePageState extends State<HomePage> {
               child: Row(
                 children: [
                   const LeftView(),
-                  // Expanded(
-                  //     flex: 3,
-                  //     child: PageView(
-                  //       scrollDirection: Axis.vertical,
-                  //       onPageChanged: (index) {},
-                  //       children: listBody,
-                  //       // allowImplicitScrolling: true,
-                  //     )),
-
-                  // Expanded(
-                  //   flex: 3,
-                  //   child: ScrollablePositionedList.builder(
-                  //     itemCount: 500,
-                  //     itemBuilder: (context, index) => Text('Item $index'),
-                  //     itemScrollController: itemScrollController,
-                  //     shrinkWrap: true,
-                  //     itemPositionsListener: itemPositionsListener,
-                  //   ),
-                  // ),
-
                   Expanded(
                     flex: 3,
                     child: ListView(

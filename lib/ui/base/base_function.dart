@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:harits_portofolio/ui/base/base_constanta.dart';
 import 'package:harits_portofolio/ui/base/base_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -13,4 +14,14 @@ launchUrl(BuildContext context, String url) async {
   if (!await launch(url)) {
     showError(context, "Could not launch $url");
   }
+}
+
+launchUrlEmail(
+  BuildContext context,
+) {
+  Uri emailLaunchUri = Uri(
+    scheme: 'mailto',
+    path: email,
+  );
+  launchUrl(context, emailLaunchUri.toString());
 }

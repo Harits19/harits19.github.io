@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:harits_portofolio/ui/home/home_page.dart';
 import 'package:responsive_framework/responsive_framework.dart';
@@ -37,7 +36,9 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      builder: (context, widget) => ResponsiveWrapper.builder(const HomePage(),
+
+      // home: const HomePage(),
+      home: ResponsiveWrapper.builder(const HomePage(),
           maxWidth: 1200,
           minWidth: 480,
           defaultScale: true,
@@ -47,7 +48,6 @@ class MyApp extends StatelessWidget {
             const ResponsiveBreakpoint.resize(1000, name: DESKTOP),
           ],
           background: Container(color: const Color(0xFFF5F5F5))),
-      // home: const HomePage(),
     );
   }
 }

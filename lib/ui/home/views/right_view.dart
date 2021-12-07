@@ -10,13 +10,7 @@ class RightView extends StatelessWidget {
   Widget build(BuildContext context) {
     return sideContainer(children: [
       InkWell(
-        onTap: () {
-          Uri emailLaunchUri = Uri(
-            scheme: 'mailto',
-            path: email,
-          );
-          launchUrl(context, emailLaunchUri.toString());
-        },
+        onTap: () => launchUrlEmail(context),
         child: const RotatedBox(
           quarterTurns: 1,
           child: Text(email),

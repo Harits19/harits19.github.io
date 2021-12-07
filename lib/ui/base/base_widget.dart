@@ -6,6 +6,7 @@ Widget paddingV(double size) => SizedBox(
 Widget paddingH(double size) => SizedBox(
       width: size,
     );
+EdgeInsets paddingSection() => const EdgeInsets.symmetric(vertical: 40);
 
 void showError(
   BuildContext context,
@@ -42,9 +43,38 @@ Widget title(String text) => Text(
       ),
     );
 
-Widget subtitle(String text) => Text(
+Widget subtitle(
+  String text, {
+  FontWeight? fontWeight,
+  TextAlign? textAlign,
+  Color? color,
+}) =>
+    Text(
       text,
-      style: const TextStyle(
+      textAlign: textAlign,
+      style: TextStyle(
         fontSize: 16,
+        fontWeight: fontWeight,
+        color: color,
+      ),
+    );
+
+Widget textWithIcon(
+  String text, {
+  Color? color,
+}) =>
+    Padding(
+      padding: const EdgeInsets.symmetric(vertical: 4),
+      child: IntrinsicHeight(
+        child: Row(
+          children: [
+            const VerticalDivider(),
+            Flexible(
+                child: subtitle(
+              text,
+              color: color,
+            )),
+          ],
+        ),
       ),
     );
