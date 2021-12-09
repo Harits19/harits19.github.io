@@ -76,4 +76,13 @@ final listProject = [
     link: "",
     highlight: ["Flutter"],
   ),
+  ProjectModel(
+    image:
+        "https://play-lh.googleusercontent.com/bwmqxLQKGjKbvWma5tODp8md6FDI0az-ILGLlQZtc5K9klAHs6wUTHRVfPiQKIxkWCje=s180-rw",
+    name: "Protect",
+    description:
+        "Ini adalah projek pribadi saya. Tujuannya untuk mengisi waktu dan memenuhi kebutuhan mengenai penyimpanan dan pembuat password yang disimpan secara lokal",
+    link: "https://play.google.com/store/apps/details?id=com.my_password_app",
+    highlight: ["Flutter"],
+  ),
 ];

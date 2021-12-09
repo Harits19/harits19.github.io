@@ -28,7 +28,9 @@ class WorkView extends StatelessWidget {
                     right: isReverse ? 0 : null,
                     child: TouchableOpacity(
                       onTap: () {
-                        launchUrl(context, project.link);
+                        if (project.link.isNotEmpty) {
+                          launchUrl(context, project.link);
+                        }
                       },
                       child: Container(
                         color: Colors.grey,

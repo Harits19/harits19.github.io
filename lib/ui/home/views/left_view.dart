@@ -33,6 +33,12 @@ class LeftView extends StatelessWidget {
             launchUrl(context, "https://github.com/Harits19");
           },
         ),
+        IconButton(
+          icon: const Icon(FontAwesome5.medium_m),
+          onPressed: () {
+            launchUrl(context, "https://harits-abdullah19.medium.com");
+          },
+        ),
       ],
     );
   }

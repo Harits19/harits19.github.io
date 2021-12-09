@@ -11,11 +11,10 @@ String? encodeQueryParameters(Map<String, String> params) {
 }
 
 launchUrl(BuildContext context, String url) async {
-  if (await canLaunch(url)) {
-    await launch(url);
+  if (!await launch(url)) {
+    showError(context, "Cant Launch URL");
     return;
   }
-  showError(context, "Cant Launch URL");
 }
 
 launchUrlEmail(
