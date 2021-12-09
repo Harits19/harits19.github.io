@@ -52,6 +52,8 @@ Widget subtitle(
     Text(
       text,
       textAlign: textAlign,
+      overflow: TextOverflow.ellipsis,
+      maxLines: 5,
       style: TextStyle(
         fontSize: 16,
         fontWeight: fontWeight,
