@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:harits_portofolio/ui/base/base_function.dart';
-import 'package:harits_portofolio/ui/base/base_widget.dart';
+import 'package:harits_portofolio/ui/base/base_style.dart';
 import 'package:harits_portofolio/ui/home/views/section_container.dart';
 
 class ContactView extends StatelessWidget {
@@ -12,8 +12,11 @@ class ContactView extends StatelessWidget {
       titleText: "Contact",
       children: [
         ElevatedButton(
-          onPressed: () => launchUrlEmail(context),
-          child: subtitle("Contact Me"),
+          onPressed: () => F.launchUrlEmail(context),
+          child: Text(
+            "Contact Me",
+            style: S.tStyle.subtitle,
+          ),
         )
       ],
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:harits_portofolio/ui/base/base_widget.dart';
+import 'package:harits_portofolio/ui/base/base_style.dart';
 import 'package:harits_portofolio/ui/home/views/section_container.dart';
+import 'package:harits_portofolio/ui/widgets/gap.dart';
 
 class OnboardingView extends StatelessWidget {
   const OnboardingView({Key? key}) : super(key: key);
@@ -9,8 +10,9 @@ class OnboardingView extends StatelessWidget {
   Widget build(BuildContext context) {
     return SectionContainer(
       children: [
-        subtitle(
+        Text(
           "Hi, my name is",
+          style: S.tStyle.subtitle,
         ),
         const Text(
           "Abdullah Harits",
@@ -20,11 +22,12 @@ class OnboardingView extends StatelessWidget {
           "I build mobile application",
           style: TextStyle(fontSize: 48, fontWeight: FontWeight.bold),
         ),
-        paddingV(8),
-        subtitle(
+        const Gap.v(8),
+        Text(
           "I’m a mobile application developer specializing building with Flutter and React Native frameworks. Currently, I’m working on PT Skyshi Digital Indonesia",
+          style: S.tStyle.subtitle,
         ),
-        paddingV(24),
+        const Gap.v(24),
         OutlinedButton(
           onPressed: () async {},
           child: const Text("Get Started"),

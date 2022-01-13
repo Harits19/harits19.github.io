@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:harits_portofolio/ui/base/base_constanta.dart';
 import 'package:harits_portofolio/ui/base/base_function.dart';
-import 'package:harits_portofolio/ui/base/base_widget.dart';
-import 'package:harits_portofolio/ui/home/views/about_me_view.dart';
+import 'package:harits_portofolio/ui/widgets/gap.dart';
 
 class HeaderView extends StatelessWidget {
   const HeaderView({
@@ -17,10 +16,10 @@ class HeaderView extends StatelessWidget {
     return Row(
       children: [
         const Spacer(),
-        ...listHeader.map(
+        ...C.string.listHeader.map(
           (e) => InkWell(
             onTap: () {
-              onTapHeader(listHeader.indexOf(e));
+              onTapHeader(C.string.listHeader.indexOf(e));
             },
             child: Padding(
               padding: const EdgeInsets.all(8),
@@ -31,15 +30,15 @@ class HeaderView extends StatelessWidget {
             ),
           ),
         ),
-        paddingH(8),
+        const Gap.h(8),
         OutlinedButton(
           child: const Text("Resume"),
           onPressed: () {
-            launchUrl(context,
+            F.launchUrl(context,
                 "https://docs.google.com/document/d/1sG-A9ulHr12cY02n_0s_DS6hUrgpGsopaEGPfsZP0uo/edit?usp=sharing");
           },
         ),
-        paddingH(8)
+        const Gap.h(8)
       ],
     );
   }

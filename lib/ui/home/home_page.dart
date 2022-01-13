@@ -1,15 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:harits_portofolio/ui/base/base_constanta.dart';
-import 'package:harits_portofolio/ui/base/base_widget.dart';
-import 'package:harits_portofolio/ui/home/views/about_me_view.dart';
-import 'package:harits_portofolio/ui/home/views/contact_view.dart';
-import 'package:harits_portofolio/ui/home/views/experience_view.dart';
 import 'package:harits_portofolio/ui/home/views/header_view.dart';
 import 'package:harits_portofolio/ui/home/views/left_view.dart';
-import 'package:harits_portofolio/ui/home/views/onboarding_view.dart';
 import 'package:harits_portofolio/ui/home/views/right_view.dart';
-import 'package:harits_portofolio/ui/home/views/work_view.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
@@ -105,13 +98,13 @@ class _HomePageState extends State<HomePage> {
                         padding: const EdgeInsets.all(4),
                         physics: const BouncingScrollPhysics(),
                         controller: controller,
-                        children: listBody.map<Widget>((e) {
-                          final index = listBody.indexOf(e);
+                        children: C.widget.listBody.map<Widget>((e) {
+                          final index = C.widget.listBody.indexOf(e);
                           return AutoScrollTag(
                             key: ValueKey(index),
                             controller: controller,
                             index: index,
-                            child: listBody[index],
+                            child: C.widget.listBody[index],
                             highlightColor: Colors.black.withOpacity(0.1),
                           );
                         }).toList()),

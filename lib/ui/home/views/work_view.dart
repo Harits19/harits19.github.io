@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:harits_portofolio/ui/base/base_constanta.dart';
 import 'package:harits_portofolio/ui/base/base_function.dart';
-import 'package:harits_portofolio/ui/base/base_widget.dart';
+import 'package:harits_portofolio/ui/base/base_style.dart';
 import 'package:harits_portofolio/ui/home/views/section_container.dart';
+import 'package:harits_portofolio/ui/widgets/gap.dart';
 import 'package:harits_portofolio/ui/widgets/touchable_opacity_widget.dart';
 
 class WorkView extends StatelessWidget {
@@ -14,10 +15,10 @@ class WorkView extends StatelessWidget {
       titleText: "Work",
       children: [
         ...List.generate(
-          listProject.length,
+          C.object.listProject.length,
           (index) {
             final isReverse = (index % 2) != 0;
-            final project = listProject[index];
+            final project = C.object.listProject[index];
             return Container(
               margin: const EdgeInsets.symmetric(vertical: 32),
               width: double.infinity,
@@ -29,7 +30,7 @@ class WorkView extends StatelessWidget {
                     child: TouchableOpacity(
                       onTap: () {
                         if (project.link.isNotEmpty) {
-                          launchUrl(context, project.link);
+                          F.launchUrl(context, project.link);
                         }
                       },
                       child: Container(
@@ -37,7 +38,11 @@ class WorkView extends StatelessWidget {
                         width: 360,
                         height: 240,
                         child: project.image.isEmpty
-                            ? Center(child: title("Not Found"))
+                            ? Center(
+                                child: Text(
+                                "Not Found",
+                                style: S.tStyle.title,
+                              ))
                             : Image.network(
                                 project.image,
                                 fit: BoxFit.cover,
@@ -56,20 +61,26 @@ class WorkView extends StatelessWidget {
                             ? CrossAxisAlignment.start
                             : CrossAxisAlignment.end,
                         children: [
-                          title(project.name),
-                          paddingV(16),
+                          Text(
+                            project.name,
+                            style: S.tStyle.title,
+                          ),
+                          const Gap.v(16),
                           SizedBox(
                             child: Card(
                               child: Padding(
                                 padding: const EdgeInsets.all(16),
-                                child: subtitle(
+                                child: Text(
                                   project.description,
                                   textAlign: isReverse ? null : TextAlign.right,
+                                  style: S.tStyle.subtitle,
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 5,
                                 ),
                               ),
                             ),
                           ),
-                          paddingV(16),
+                          const Gap.v(16),
                           Container(
                             color: Colors.grey.withOpacity(0.3),
                             child: Row(
@@ -79,8 +90,9 @@ class WorkView extends StatelessWidget {
                                       child: Padding(
                                         padding: const EdgeInsets.symmetric(
                                             horizontal: 4.0),
-                                        child: subtitle(
+                                        child: Text(
                                           e,
+                                          style: S.tStyle.subtitle,
                                         ),
                                       ),
                                     ))

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:harits_portofolio/ui/base/base_constanta.dart';
-import 'package:harits_portofolio/ui/base/base_widget.dart';
+import 'package:harits_portofolio/ui/base/base_style.dart';
 import 'package:harits_portofolio/ui/home/views/section_container.dart';
+import 'package:harits_portofolio/ui/widgets/gap.dart';
+import 'package:harits_portofolio/ui/widgets/text_icon.dart';
 
 class ExperienceView extends StatelessWidget {
   const ExperienceView({Key? key}) : super(key: key);
@@ -15,7 +17,12 @@ class ExperienceView extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Flexible(child: subtitle("Skyshi")),
+              Flexible(
+                child: Text(
+                  "Skyshi",
+                  style: S.tStyle.subtitle,
+                ),
+              ),
               const VerticalDivider(
                 color: Colors.black,
               ),
@@ -24,14 +31,19 @@ class ExperienceView extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    subtitle(
+                    Text(
                       "Mobile Developer",
-                      fontWeight: FontWeight.bold,
+                      style: S.tStyle.subtitle.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                    paddingV(8),
-                    subtitle("21 February 2021 - present"),
-                    paddingV(16),
-                    ...listSkyshiExperience.map((e) => textWithIcon(e)),
+                    const Gap.v(8),
+                    Text(
+                      "21 February 2021 - present",
+                      style: S.tStyle.subtitle,
+                    ),
+                    const Gap.v(16),
+                    ...C.string.listSkyshiExperience.map((e) => TextIcon(e)),
                   ],
                 ),
               )
