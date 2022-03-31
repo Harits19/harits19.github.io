@@ -1,19 +1,18 @@
-import 'package:flutter/material.dart';
 import 'package:harits_portofolio/models/project_model.dart';
-import 'package:harits_portofolio/ui/home/views/about_me_view.dart';
-import 'package:harits_portofolio/ui/home/views/contact_view.dart';
-import 'package:harits_portofolio/ui/home/views/experience_view.dart';
-import 'package:harits_portofolio/ui/home/views/onboarding_view.dart';
-import 'package:harits_portofolio/ui/home/views/work_view.dart';
 
 class C {
-  static const string = _String();
-  static const widget = _Widget();
+  static const text = _Text();
   static const object = _Object();
+  static const img = _Image();
 }
 
-class _String {
-  const _String();
+class _Image {
+  const _Image();
+  String get profile => "/assets/profile.jpg";
+}
+
+class _Text {
+  const _Text();
 
   String get email => "harits.abdullah19@gmail.com";
   List<String> get listOfSkill1 => [
@@ -37,20 +36,6 @@ class _String {
         "Fixed bugs found from UAT documentation",
         "Integrating mobile application with API and Firebase",
         "Creating mobile application according to design",
-      ];
-}
-
-class _Widget {
-  const _Widget();
-  List<Widget> get listBody => const [
-        OnboardingView(),
-        AboutMeView(),
-        ExperienceView(),
-        WorkView(),
-        ContactView(),
-        SizedBox(
-          height: 1000,
-        )
       ];
 }
 

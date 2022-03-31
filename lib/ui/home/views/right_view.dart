@@ -13,7 +13,7 @@ class RightView extends StatelessWidget {
         onTap: () => F.launchUrlEmail(context),
         child: RotatedBox(
           quarterTurns: 1,
-          child: Text(C.string.email),
+          child: Text(C.text.email),
         ),
       ),
     ]);

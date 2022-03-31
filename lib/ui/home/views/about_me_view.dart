@@ -43,12 +43,12 @@ class AboutMeView extends StatelessWidget {
           children: [
             Expanded(
               child: Column(
-                children: [...C.string.listOfSkill1.map((e) => TextIcon(e))],
+                children: [...C.text.listOfSkill1.map((e) => TextIcon(e))],
               ),
             ),
             Expanded(
               child: Column(
-                children: [...C.string.listOfSkill2.map((e) => TextIcon(e))],
+                children: [...C.text.listOfSkill2.map((e) => TextIcon(e))],
               ),
             ),
           ],

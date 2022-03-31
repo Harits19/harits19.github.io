@@ -43,7 +43,7 @@ class ExperienceView extends StatelessWidget {
                       style: S.tStyle.subtitle,
                     ),
                     const Gap.v(16),
-                    ...C.string.listSkyshiExperience.map((e) => TextIcon(e)),
+                    ...C.text.listSkyshiExperience.map((e) => TextIcon(e)),
                   ],
                 ),
               )
