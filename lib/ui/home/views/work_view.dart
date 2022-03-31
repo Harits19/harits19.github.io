@@ -3,6 +3,7 @@ import 'package:harits_portofolio/ui/base/base_constanta.dart';
 import 'package:harits_portofolio/ui/base/base_function.dart';
 import 'package:harits_portofolio/ui/base/base_style.dart';
 import 'package:harits_portofolio/ui/home/views/section_container.dart';
+import 'package:harits_portofolio/ui/widgets/dialog_widget.dart';
 import 'package:harits_portofolio/ui/widgets/gap.dart';
 import 'package:harits_portofolio/ui/widgets/touchable_opacity_widget.dart';
 
@@ -71,12 +72,37 @@ class WorkView extends StatelessWidget {
                             child: Card(
                               child: Padding(
                                 padding: const EdgeInsets.all(16),
-                                child: Text(
-                                  project.description,
-                                  textAlign: isReverse ? null : TextAlign.right,
-                                  style: S.tStyle.subtitle,
-                                  overflow: TextOverflow.ellipsis,
-                                  maxLines: 5,
+                                child: Column(
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.stretch,
+                                  children: [
+                                    Text(
+                                      project.description,
+                                      textAlign:
+                                          isReverse ? null : TextAlign.right,
+                                      style: S.tStyle.subtitle,
+                                      overflow: TextOverflow.ellipsis,
+                                      maxLines: 4,
+                                    ),
+                                    const Gap.v(8),
+                                    InkWell(
+                                      onTap: () {
+                                        showDialog(
+                                          context: context,
+                                          builder: (context) => DialogWidget(
+                                            text: project.description,
+                                          ),
+                                        );
+                                      },
+                                      child: Text(
+                                        "Lihat Selengkapnya",
+                                        textAlign:
+                                            isReverse ? null : TextAlign.right,
+                                        style: S.tStyle.subtitle
+                                            .copyWith(color: Colors.blue),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
                             ),

@@ -8,10 +8,18 @@ import 'package:harits_portofolio/ui/home/views/left_view.dart';
 import 'package:harits_portofolio/ui/home/views/onboarding_view.dart';
 import 'package:harits_portofolio/ui/home/views/right_view.dart';
 import 'package:harits_portofolio/ui/home/views/work_view.dart';
+import 'package:harits_portofolio/ui/widgets/dialog_widget.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  final _controller = AutoScrollController();
 
   List<Widget> get _listBody {
     return const [
@@ -27,11 +35,13 @@ class HomePage extends StatelessWidget {
   }
 
   @override
+  void dispose() {
+    super.dispose();
+    _controller.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance!.addPostFrameCallback((value) {
-      _showUnderDevelopmentDialog(context);
-    });
-    final _controller = AutoScrollController();
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -82,35 +92,7 @@ class HomePage extends StatelessWidget {
   _showUnderDevelopmentDialog(BuildContext context) async {
     showDialog(
         context: context,
-        builder: (BuildContext context) => Dialog(
-              backgroundColor: Colors.transparent,
-              child: Container(
-                padding: const EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                child: IntrinsicWidth(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      const Text(
-                        "Under Development...",
-                        style: TextStyle(
-                          fontSize: 32,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      TextButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          child: const Text("Close"))
-                    ],
-                  ),
-                ),
-              ),
-            ));
+        builder: (BuildContext context) =>
+            DialogWidget(text: "Under Development"));
   }
 }
