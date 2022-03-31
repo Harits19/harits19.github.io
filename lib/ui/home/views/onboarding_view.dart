@@ -19,12 +19,12 @@ class OnboardingView extends StatelessWidget {
           style: TextStyle(fontSize: 56, fontWeight: FontWeight.w900),
         ),
         const Text(
-          "I build mobile application",
+          "I fullstack developer",
           style: TextStyle(fontSize: 48, fontWeight: FontWeight.bold),
         ),
         const Gap.v(8),
         Text(
-          "I’m a mobile application developer specializing building with Flutter and React Native frameworks. Currently, I’m working on PT Skyshi Digital Indonesia",
+          "I’m a fullstack developer specializing building with Flutter and Go Language. Currently, I’m working on PT Imani Prima.",
           style: S.tStyle.subtitle,
         ),
         const Gap.v(24),

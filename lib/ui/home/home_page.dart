@@ -13,8 +13,6 @@ import 'package:scroll_to_index/scroll_to_index.dart';
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
-  AutoScrollController get _controller => AutoScrollController();
-
   List<Widget> get _listBody {
     return const [
       OnboardingView(),
@@ -33,6 +31,7 @@ class HomePage extends StatelessWidget {
     WidgetsBinding.instance!.addPostFrameCallback((value) {
       _showUnderDevelopmentDialog(context);
     });
+    final _controller = AutoScrollController();
     return Scaffold(
       body: SafeArea(
         child: Column(

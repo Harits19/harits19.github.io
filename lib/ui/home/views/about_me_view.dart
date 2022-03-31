@@ -19,16 +19,16 @@ class AboutMeView extends StatelessWidget {
             children: [
               Expanded(
                 child: Text(
-                  "I am Abdullah Harits, graduated from Information Technology Universitas Brawijaya in 2021. I have experience as a mobile developer with Flutter and React Native frameworks at PT Skyshi Digital Indonesia. I have an interest in a career as a mobile developer and proficient in understanding the latest technologies or frameworks. Known as a fast learner and likes to work on projects on time. ",
+                  "I am Abdullah Harits, graduated from Information Technology Universitas Brawijaya in 2021. I have experience as a fullstack developer. I have an interest in a career as a Flutter, Go and the latest technologies or frameworks. Known as a fast learner and likes to work on projects on time.",
                   style: S.tStyle.subtitle,
                 ),
               ),
               const Gap.h(8),
-              Expanded(
-                child: Container(
-                  color: Colors.grey,
-                  child: const Center(child: Text("Image")),
-                ),
+              Image.asset(
+                C.img.profile,
+                fit: BoxFit.cover,
+                height: 200,
+                width: 150,
               )
             ],
           ),

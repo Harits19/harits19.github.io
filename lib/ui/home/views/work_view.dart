@@ -34,7 +34,8 @@ class WorkView extends StatelessWidget {
                         }
                       },
                       child: Container(
-                        color: Colors.grey,
+                        color: Colors.white,
+                        padding: const EdgeInsets.all(16),
                         width: 360,
                         height: 240,
                         child: project.image.isEmpty
@@ -43,9 +44,9 @@ class WorkView extends StatelessWidget {
                                 "Not Found",
                                 style: S.tStyle.title,
                               ))
-                            : Image.network(
+                            : Image.asset(
                                 project.image,
-                                fit: BoxFit.cover,
+                                fit: BoxFit.contain,
                               ),
                       ),
                     ),
