@@ -1,16 +1,17 @@
-# harits_portofolio
+# Portofolio
+Ini adalah proyek untuk melengkapi kebutuhan rekrutmen.
 
-A new Flutter project.
+# Teknologi
 
-## Getting Started
+- [**fluttericon**](https://pub.dev/packages/fluttericon)  
+Untuk mendapatkan asset icon sosial media
+- [**responsive_framework**](https://pub.dev/packages/responsive_framework)  
+Untuk membantu menampilkan projek yang responsif terhadap berbagai macam ukuran layar
+- [**scroll_to_index**](https://pub.dev/packages/scroll_to_index)  
+Untuk membantu user ketika membutuhkan informasi tertentu dengan cara menscroll halaman secara otomatis
+- [**url_launcher**](https://pub.dev/packages/url_launcher)  
+Untuk membantu aplikasi ketika ingin membuka url
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# GIF
+Berikut merupakan demo dari aplikasi yang telah dibuat
+![Alt Text](https://github.com/Harits19/portofolio_web/raw/main/demo/demo.gif)
