@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:harits_portofolio/ui/base/constans/k_textstyle.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class DialogWidget extends StatelessWidget {
   const DialogWidget({Key? key, required this.text}) : super(key: key);
@@ -29,7 +30,7 @@ class DialogWidget extends StatelessWidget {
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  child: const Text("Close"))
+                  child: Text('close'.tr()))
             ],
           ),
         ),

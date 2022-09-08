@@ -1,6 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:harits_portofolio/models/experience_model.dart';
-import 'package:harits_portofolio/ui/base/constans/k_image.dart';
+import 'package:harits_portofolio/ui/base/constans/k_asset.dart';
 import 'package:harits_portofolio/ui/base/constans/k_object.dart';
 import 'package:harits_portofolio/ui/base/constans/k_textstyle.dart';
 import 'package:harits_portofolio/ui/home/views/section_container.dart';
@@ -13,7 +14,7 @@ class ExperienceView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SectionContainer(
-      titleText: "Experience",
+      titleText: tr('experience'),
       children: [...KObject.listExperience.map((e) => _buildWorkExperience(e))],
     );
   }
@@ -48,7 +49,7 @@ class ExperienceView extends StatelessWidget {
                   ),
                   const Gap.v(8),
                   Text(
-                    "21 February 2021 - present",
+                    item.time,
                     style: KTextStyle.subtitle,
                   ),
                   const Gap.v(16),

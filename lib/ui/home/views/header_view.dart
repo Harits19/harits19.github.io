@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:harits_portofolio/ui/base/utils/url_util.dart';
 import 'package:harits_portofolio/ui/base/constans/k_text.dart';
@@ -32,10 +33,9 @@ class HeaderView extends StatelessWidget {
         ),
         const Gap.h(8),
         OutlinedButton(
-          child: const Text("Resume"),
+          child: Text(tr('resume')),
           onPressed: () {
-            UrlUtil.launchUrl(context,
-                "https://docs.google.com/document/d/1sG-A9ulHr12cY02n_0s_DS6hUrgpGsopaEGPfsZP0uo/edit?usp=sharing");
+            UrlUtil.launchUrl(context, KText.resume);
           },
         ),
         const Gap.h(8)

@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:harits_portofolio/ui/base/constans/k_text.dart';
 import 'package:harits_portofolio/ui/base/constans/k_textstyle.dart';
 import 'package:harits_portofolio/ui/home/views/section_container.dart';
 import 'package:harits_portofolio/ui/widgets/gap.dart';
@@ -11,26 +13,26 @@ class OnboardingView extends StatelessWidget {
     return SectionContainer(
       children: [
         Text(
-          "Hi, my name is",
+          tr('my_name_is'),
           style: KTextStyle.subtitle,
         ),
         const Text(
-          "Abdullah Harits",
+          KText.abdullahHarits,
           style: TextStyle(fontSize: 56, fontWeight: FontWeight.w900),
         ),
-        const Text(
-          "I fullstack developer",
-          style: TextStyle(fontSize: 48, fontWeight: FontWeight.bold),
+        Text(
+          tr('i_full_stack_dev'),
+          style: const TextStyle(fontSize: 48, fontWeight: FontWeight.bold),
         ),
         const Gap.v(8),
         Text(
-          "I’m a fullstack developer specializing building with Flutter and Go Language. Currently, I’m working on PT Imani Prima.",
+          tr('onboarding_desc'),
           style: KTextStyle.subtitle,
         ),
         const Gap.v(24),
         OutlinedButton(
           onPressed: () async {},
-          child: const Text("Get Started"),
+          child: Text(tr("get_started")),
         ),
       ],
     );

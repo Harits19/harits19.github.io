@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:harits_portofolio/ui/base/constans/k_image.dart';
+import 'package:harits_portofolio/ui/base/constans/k_asset.dart';
+import 'package:harits_portofolio/ui/base/constans/k_locale.dart';
 import 'package:harits_portofolio/ui/home/views/about_me_view.dart';
 import 'package:harits_portofolio/ui/home/views/contact_view.dart';
 import 'package:harits_portofolio/ui/home/views/experience_view.dart';
@@ -93,6 +95,6 @@ class _HomePageState extends State<HomePage> {
     showDialog(
         context: context,
         builder: (BuildContext context) =>
-            DialogWidget(text: "Under Development"));
+            DialogWidget(text: "under_development".tr()));
   }
 }

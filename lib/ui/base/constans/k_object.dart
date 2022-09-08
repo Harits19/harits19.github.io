@@ -1,18 +1,16 @@
-
-
 import 'package:harits_portofolio/models/experience_model.dart';
 import 'package:harits_portofolio/models/project_model.dart';
-import 'package:harits_portofolio/ui/base/constans/k_image.dart';
+import 'package:harits_portofolio/ui/base/constans/k_asset.dart';
 
 class KObject {
   const KObject._();
 
- static const  List<ExperienceModel> listExperience = [
+  static const List<ExperienceModel> listExperience = [
     ExperienceModel(
       company: "PT. Skyshi Digital Indonesia",
       position: "Mobile Developer",
       time: "February 2021 - March 2022",
-      image: KImage.skyshi,
+      image: KAsset.skyshi,
       jobDesc: [
         "Creating mobile applications using Flutter framework or React Native",
         "Implementing mobile applications based on Business Process Documentation",
@@ -25,7 +23,7 @@ class KObject {
       company: "PT. Imani Prima",
       position: "Fullstack Developer",
       time: "March 2022 - May 2022",
-      image: KImage.imaniPrima,
+      image: KAsset.imaniPrima,
       jobDesc: [
         "Creating mobile and web applications using Flutter",
         "Implementing applications based on action plan",
@@ -42,7 +40,7 @@ class KObject {
       company: "PT. Smartfren Telecom Tbk",
       position: "Mobile & UI Engineer",
       time: "Jun 2022 - Present",
-      image: KImage.smarfren,
+      image: KAsset.smarfren,
       jobDesc: [
         "Creating mobile applications using Flutter",
         "Implementing mobile applications based on Jira Ticket",
@@ -69,7 +67,7 @@ class KObject {
 
   static const List<ProjectModel> listProject = [
     ProjectModel(
-      image: KImage.ayoLunas,
+      image: KAsset.ayoLunas,
       name: "AyoLunas",
       link: "",
       description:
@@ -77,7 +75,7 @@ class KObject {
       highlight: ["Flutter"],
     ),
     ProjectModel(
-      image: KImage.soundfren,
+      image: KAsset.soundfren,
       name: "Soundfren",
       description:
           "Mengerjakan projek ini sekaligus mempelajari React Native. Ditugaskan untuk membantu mengembangkan dan mengimplementasikan program 1000 startup pada aplikasi Soundfren. Didalamnya saya mengimplementasikan desain, mengintegrasikan API, dan menyelesaikan bug-bug yang ada.",
@@ -86,7 +84,7 @@ class KObject {
       highlight: ["React Native"],
     ),
     ProjectModel(
-      image: KImage.pejuang,
+      image: KAsset.pejuang,
       name: "Pejuang",
       link: "https://play.google.com/store/apps/details?id=com.bdn.pejuang",
       description:
@@ -94,7 +92,7 @@ class KObject {
       highlight: ["React Native"],
     ),
     ProjectModel(
-      image: KImage.batumbu,
+      image: KAsset.batumbu,
       name: "Batumbu",
       description:
           "Membuat aplikasi untuk mewadahi pemberi dana dan peminjam dana pada lingkungan UMKM. Didalamnya saya mengimplementasikan desain, mengintegrasikan API, dan menyelesaikan bug-bug yang ada.",
@@ -102,7 +100,7 @@ class KObject {
       highlight: ["Flutter"],
     ),
     ProjectModel(
-      image: KImage.protect,
+      image: KAsset.protect,
       name: "Protect",
       description:
           "Ini adalah projek pribadi saya. Tujuannya untuk mengisi waktu dan memenuhi kebutuhan mengenai penyimpanan dan pembuat password yang disimpan secara lokal",
@@ -118,7 +116,7 @@ class KObject {
     //   highlight: ["Flutter", "Go", "MongoDB"],
     // ),
     ProjectModel(
-      image: KImage.primasaver,
+      image: KAsset.primasaver,
       name: "Primasaver",
       description:
           "Ini adalah projek mengenai pembuatan aplikasi flutter dan backend golang untuk melakukan manajemen data pemakaian daya listrik dari pengguna",

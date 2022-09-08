@@ -1,5 +1,5 @@
-class KImage {
-  const KImage();
+class KAsset {
+  const KAsset._();
   static const _path = 'assets';
   static const String profile = "$_path/profile.jpg";
   static const String protect = "$_path/protect.webp";

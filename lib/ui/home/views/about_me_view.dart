@@ -1,5 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:harits_portofolio/ui/base/constans/k_image.dart';
+import 'package:harits_portofolio/ui/base/constans/k_asset.dart';
 import 'package:harits_portofolio/ui/base/constans/k_text.dart';
 import 'package:harits_portofolio/ui/base/constans/k_textstyle.dart';
 import 'package:harits_portofolio/ui/home/views/section_container.dart';
@@ -12,21 +13,21 @@ class AboutMeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SectionContainer(
-      titleText: "About Me",
+      titleText: "about_me".tr(),
       children: [
         IntrinsicHeight(
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              const Expanded(
+              Expanded(
                 child: Text(
-                  "I am Abdullah Harits, graduated from Information Technology Universitas Brawijaya in 2021. I have experience as a fullstack developer. I have an interest in a career as a Flutter, Go and the latest technologies or frameworks. Known as a fast learner and likes to work on projects on time.",
+                  tr('about_me_desc'),
                   style: KTextStyle.subtitle,
                 ),
               ),
               const Gap.h(8),
               Image.asset(
-                KImage.profile,
+                KAsset.profile,
                 fit: BoxFit.cover,
                 height: 200,
                 width: 150,
@@ -35,8 +36,8 @@ class AboutMeView extends StatelessWidget {
           ),
         ),
         const Gap.v(16),
-        const Text(
-          "Skills & Competencies:",
+        Text(
+          tr('skill_competencies'),
           style: KTextStyle.title,
         ),
         const Gap.v(8),

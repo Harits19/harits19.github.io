@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:harits_portofolio/ui/base/constans/k_image.dart';
 import 'package:harits_portofolio/ui/base/utils/url_util.dart';
 import 'package:harits_portofolio/ui/base/constans/k_object.dart';
 import 'package:harits_portofolio/ui/base/constans/k_textstyle.dart';
@@ -7,6 +6,7 @@ import 'package:harits_portofolio/ui/home/views/section_container.dart';
 import 'package:harits_portofolio/ui/widgets/dialog_widget.dart';
 import 'package:harits_portofolio/ui/widgets/gap.dart';
 import 'package:harits_portofolio/ui/widgets/touchable_opacity_widget.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class WorkView extends StatelessWidget {
   const WorkView({Key? key}) : super(key: key);
@@ -14,7 +14,7 @@ class WorkView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SectionContainer(
-      titleText: "Work",
+      titleText: "work".tr(),
       children: [
         ...List.generate(
           KObject.listProject.length,
@@ -41,9 +41,9 @@ class WorkView extends StatelessWidget {
                         width: 360,
                         height: 240,
                         child: project.image.isEmpty
-                            ? const Center(
+                            ? Center(
                                 child: Text(
-                                "Not Found",
+                                "not_found".tr(),
                                 style: KTextStyle.title,
                               ))
                             : Image.asset(
@@ -96,7 +96,7 @@ class WorkView extends StatelessWidget {
                                         );
                                       },
                                       child: Text(
-                                        "Lihat Selengkapnya",
+                                        "see_detail".tr(),
                                         textAlign:
                                             isReverse ? null : TextAlign.right,
                                         style: KTextStyle.subtitle
