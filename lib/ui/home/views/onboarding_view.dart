@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:harits_portofolio/ui/base/k_textstyle.dart';
+import 'package:harits_portofolio/ui/base/constans/k_textstyle.dart';
 import 'package:harits_portofolio/ui/home/views/section_container.dart';
 import 'package:harits_portofolio/ui/widgets/gap.dart';
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
-import 'package:harits_portofolio/ui/base/base_function.dart';
+import 'package:harits_portofolio/ui/base/utils/url_util.dart';
 import 'package:harits_portofolio/ui/widgets/side_container.dart';
 
 class LeftView extends StatelessWidget {
@@ -18,26 +18,25 @@ class LeftView extends StatelessWidget {
         IconButton(
           icon: const Icon(FontAwesome5.linkedin),
           onPressed: () {
-            KFunction.launchUrl(context, "https://linkedin.com/in/abd-harits");
+            UrlUtil.launchUrl(context, "https://linkedin.com/in/abd-harits");
           },
         ),
         IconButton(
           icon: const Icon(FontAwesome5.instagram),
           onPressed: () {
-            KFunction.launchUrl(context, "https://instagram.com/abd.harits19");
+            UrlUtil.launchUrl(context, "https://instagram.com/abd.harits19");
           },
         ),
         IconButton(
           icon: const Icon(FontAwesome5.github),
           onPressed: () {
-            KFunction.launchUrl(context, "https://github.com/Harits19");
+            UrlUtil.launchUrl(context, "https://github.com/Harits19");
           },
         ),
         IconButton(
           icon: const Icon(FontAwesome5.medium_m),
           onPressed: () {
-            KFunction.launchUrl(
-                context, "https://harits-abdullah19.medium.com");
+            UrlUtil.launchUrl(context, "https://harits-abdullah19.medium.com");
           },
         ),
       ],

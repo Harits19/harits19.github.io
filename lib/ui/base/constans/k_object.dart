@@ -2,7 +2,7 @@
 
 import 'package:harits_portofolio/models/experience_model.dart';
 import 'package:harits_portofolio/models/project_model.dart';
-import 'package:harits_portofolio/ui/base/k_image.dart';
+import 'package:harits_portofolio/ui/base/constans/k_image.dart';
 
 class KObject {
   const KObject._();

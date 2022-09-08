@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:harits_portofolio/ui/base/k_image.dart';
-import 'package:harits_portofolio/ui/base/base_function.dart';
-import 'package:harits_portofolio/ui/base/k_object.dart';
-import 'package:harits_portofolio/ui/base/k_textstyle.dart';
+import 'package:harits_portofolio/ui/base/constans/k_image.dart';
+import 'package:harits_portofolio/ui/base/utils/url_util.dart';
+import 'package:harits_portofolio/ui/base/constans/k_object.dart';
+import 'package:harits_portofolio/ui/base/constans/k_textstyle.dart';
 import 'package:harits_portofolio/ui/home/views/section_container.dart';
 import 'package:harits_portofolio/ui/widgets/dialog_widget.dart';
 import 'package:harits_portofolio/ui/widgets/gap.dart';
@@ -32,7 +32,7 @@ class WorkView extends StatelessWidget {
                     child: TouchableOpacity(
                       onTap: () {
                         if (project.link.isNotEmpty) {
-                          KFunction.launchUrl(context, project.link);
+                          UrlUtil.launchUrl(context, project.link);
                         }
                       },
                       child: Container(
@@ -41,7 +41,7 @@ class WorkView extends StatelessWidget {
                         width: 360,
                         height: 240,
                         child: project.image.isEmpty
-                            ? Center(
+                            ? const Center(
                                 child: Text(
                                 "Not Found",
                                 style: KTextStyle.title,

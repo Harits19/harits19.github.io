@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:harits_portofolio/ui/base/k_text.dart';
+import 'package:harits_portofolio/ui/base/constans/k_text.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class KFunction {
+class UrlUtil {
   static String? encodeQueryParameters(Map<String, String> params) {
     return params.entries
         .map((e) =>

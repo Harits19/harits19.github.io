@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:harits_portofolio/ui/base/base_function.dart';
-import 'package:harits_portofolio/ui/base/k_textstyle.dart';
+import 'package:harits_portofolio/ui/base/utils/url_util.dart';
+import 'package:harits_portofolio/ui/base/constans/k_textstyle.dart';
 import 'package:harits_portofolio/ui/home/views/section_container.dart';
 
 class ContactView extends StatelessWidget {
@@ -12,7 +12,7 @@ class ContactView extends StatelessWidget {
       titleText: "Contact",
       children: [
         ElevatedButton(
-          onPressed: () => KFunction.launchUrlEmail(context),
+          onPressed: () => UrlUtil.launchUrlEmail(context),
           child: const Text(
             "Contact Me",
             style: KTextStyle.subtitle,

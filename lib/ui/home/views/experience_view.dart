@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:harits_portofolio/models/experience_model.dart';
-import 'package:harits_portofolio/ui/base/k_image.dart';
-import 'package:harits_portofolio/ui/base/k_object.dart';
-import 'package:harits_portofolio/ui/base/k_textstyle.dart';
+import 'package:harits_portofolio/ui/base/constans/k_image.dart';
+import 'package:harits_portofolio/ui/base/constans/k_object.dart';
+import 'package:harits_portofolio/ui/base/constans/k_textstyle.dart';
 import 'package:harits_portofolio/ui/home/views/section_container.dart';
 import 'package:harits_portofolio/ui/widgets/gap.dart';
 import 'package:harits_portofolio/ui/widgets/text_icon.dart';

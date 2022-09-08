@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:harits_portofolio/ui/base/k_textstyle.dart';
+import 'package:harits_portofolio/ui/base/constans/k_textstyle.dart';
 
 class TextIcon extends StatelessWidget {
   const TextIcon(this.text, {Key? key, this.color}) : super(key: key);

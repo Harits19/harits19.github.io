@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:harits_portofolio/ui/base/k_textstyle.dart';
+import 'package:harits_portofolio/ui/base/constans/k_textstyle.dart';
 
 class DialogWidget extends StatelessWidget {
   const DialogWidget({Key? key, required this.text}) : super(key: key);

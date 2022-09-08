@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:harits_portofolio/ui/base/k_size.dart';
-import 'package:harits_portofolio/ui/base/k_textstyle.dart';
+import 'package:harits_portofolio/ui/base/constans/k_size.dart';
+import 'package:harits_portofolio/ui/base/constans/k_textstyle.dart';
 import 'package:harits_portofolio/ui/widgets/gap.dart';
 
 class SectionContainer extends StatelessWidget {
