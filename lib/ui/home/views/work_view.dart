@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:harits_portofolio/ui/base/base_constanta.dart';
+import 'package:harits_portofolio/ui/base/k_image.dart';
 import 'package:harits_portofolio/ui/base/base_function.dart';
-import 'package:harits_portofolio/ui/base/base_style.dart';
+import 'package:harits_portofolio/ui/base/k_object.dart';
+import 'package:harits_portofolio/ui/base/k_textstyle.dart';
 import 'package:harits_portofolio/ui/home/views/section_container.dart';
 import 'package:harits_portofolio/ui/widgets/dialog_widget.dart';
 import 'package:harits_portofolio/ui/widgets/gap.dart';
@@ -31,7 +32,7 @@ class WorkView extends StatelessWidget {
                     child: TouchableOpacity(
                       onTap: () {
                         if (project.link.isNotEmpty) {
-                          F.launchUrl(context, project.link);
+                          KFunction.launchUrl(context, project.link);
                         }
                       },
                       child: Container(
@@ -43,7 +44,7 @@ class WorkView extends StatelessWidget {
                             ? Center(
                                 child: Text(
                                 "Not Found",
-                                style: S.tStyle.title,
+                                style: KTextStyle.title,
                               ))
                             : Image.asset(
                                 project.image,
@@ -65,7 +66,7 @@ class WorkView extends StatelessWidget {
                         children: [
                           Text(
                             project.name,
-                            style: S.tStyle.title,
+                            style: KTextStyle.title,
                           ),
                           const Gap.v(16),
                           SizedBox(
@@ -80,7 +81,7 @@ class WorkView extends StatelessWidget {
                                       project.description,
                                       textAlign:
                                           isReverse ? null : TextAlign.right,
-                                      style: S.tStyle.subtitle,
+                                      style: KTextStyle.subtitle,
                                       overflow: TextOverflow.ellipsis,
                                       maxLines: 4,
                                     ),
@@ -98,7 +99,7 @@ class WorkView extends StatelessWidget {
                                         "Lihat Selengkapnya",
                                         textAlign:
                                             isReverse ? null : TextAlign.right,
-                                        style: S.tStyle.subtitle
+                                        style: KTextStyle.subtitle
                                             .copyWith(color: Colors.blue),
                                       ),
                                     ),
@@ -119,7 +120,7 @@ class WorkView extends StatelessWidget {
                                             horizontal: 4.0),
                                         child: Text(
                                           e,
-                                          style: S.tStyle.subtitle,
+                                          style: KTextStyle.subtitle,
                                         ),
                                       ),
                                     ))

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:harits_portofolio/models/experience_model.dart';
-import 'package:harits_portofolio/ui/base/base_constanta.dart';
-import 'package:harits_portofolio/ui/base/base_style.dart';
+import 'package:harits_portofolio/ui/base/k_image.dart';
+import 'package:harits_portofolio/ui/base/k_object.dart';
+import 'package:harits_portofolio/ui/base/k_textstyle.dart';
 import 'package:harits_portofolio/ui/home/views/section_container.dart';
 import 'package:harits_portofolio/ui/widgets/gap.dart';
 import 'package:harits_portofolio/ui/widgets/text_icon.dart';
@@ -28,7 +29,7 @@ class ExperienceView extends StatelessWidget {
               width: 80,
               child: Text(
                 item.company,
-                style: S.tStyle.subtitle,
+                style: KTextStyle.subtitle,
               ),
             ),
             const VerticalDivider(
@@ -41,14 +42,14 @@ class ExperienceView extends StatelessWidget {
                 children: [
                   Text(
                     item.position,
-                    style: S.tStyle.subtitle.copyWith(
+                    style: KTextStyle.subtitle.copyWith(
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   const Gap.v(8),
                   Text(
                     "21 February 2021 - present",
-                    style: S.tStyle.subtitle,
+                    style: KTextStyle.subtitle,
                   ),
                   const Gap.v(16),
                   ...item.jobDesc.map((e) => TextIcon(e)),

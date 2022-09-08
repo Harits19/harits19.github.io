@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:harits_portofolio/ui/base/base_constanta.dart';
+import 'package:harits_portofolio/ui/base/k_image.dart';
 import 'package:harits_portofolio/ui/base/base_function.dart';
+import 'package:harits_portofolio/ui/base/k_text.dart';
 import 'package:harits_portofolio/ui/widgets/gap.dart';
 
 class HeaderView extends StatelessWidget {
@@ -34,7 +35,7 @@ class HeaderView extends StatelessWidget {
         OutlinedButton(
           child: const Text("Resume"),
           onPressed: () {
-            F.launchUrl(context,
+            KFunction.launchUrl(context,
                 "https://docs.google.com/document/d/1sG-A9ulHr12cY02n_0s_DS6hUrgpGsopaEGPfsZP0uo/edit?usp=sharing");
           },
         ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:harits_portofolio/ui/base/base_constanta.dart';
+import 'package:harits_portofolio/ui/base/k_image.dart';
 import 'package:harits_portofolio/ui/home/views/about_me_view.dart';
 import 'package:harits_portofolio/ui/home/views/contact_view.dart';
 import 'package:harits_portofolio/ui/home/views/experience_view.dart';

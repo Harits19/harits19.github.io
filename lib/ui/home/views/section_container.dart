@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:harits_portofolio/ui/base/base_style.dart';
+import 'package:harits_portofolio/ui/base/k_size.dart';
+import 'package:harits_portofolio/ui/base/k_textstyle.dart';
 import 'package:harits_portofolio/ui/widgets/gap.dart';
 
 class SectionContainer extends StatelessWidget {
@@ -14,14 +15,14 @@ class SectionContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: S.paddingSection,
+      padding: KSize.paddingSection,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           if (titleText != null) ...[
             Text(
               titleText!,
-              style: S.tStyle.title,
+              style: KTextStyle.title,
             ),
             const Gap.v(16),
           ],

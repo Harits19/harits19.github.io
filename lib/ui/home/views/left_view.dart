@@ -18,25 +18,26 @@ class LeftView extends StatelessWidget {
         IconButton(
           icon: const Icon(FontAwesome5.linkedin),
           onPressed: () {
-            F.launchUrl(context, "https://linkedin.com/in/abd-harits");
+            KFunction.launchUrl(context, "https://linkedin.com/in/abd-harits");
           },
         ),
         IconButton(
           icon: const Icon(FontAwesome5.instagram),
           onPressed: () {
-            F.launchUrl(context, "https://instagram.com/abd.harits19");
+            KFunction.launchUrl(context, "https://instagram.com/abd.harits19");
           },
         ),
         IconButton(
           icon: const Icon(FontAwesome5.github),
           onPressed: () {
-            F.launchUrl(context, "https://github.com/Harits19");
+            KFunction.launchUrl(context, "https://github.com/Harits19");
           },
         ),
         IconButton(
           icon: const Icon(FontAwesome5.medium_m),
           onPressed: () {
-            F.launchUrl(context, "https://harits-abdullah19.medium.com");
+            KFunction.launchUrl(
+                context, "https://harits-abdullah19.medium.com");
           },
         ),
       ],

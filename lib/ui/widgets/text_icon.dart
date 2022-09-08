@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:harits_portofolio/ui/base/base_style.dart';
+import 'package:harits_portofolio/ui/base/k_textstyle.dart';
 
 class TextIcon extends StatelessWidget {
   const TextIcon(this.text, {Key? key, this.color}) : super(key: key);
@@ -18,7 +18,7 @@ class TextIcon extends StatelessWidget {
             Flexible(
                 child: Text(
               text,
-              style: S.tStyle.subtitle.copyWith(
+              style: KTextStyle.subtitle.copyWith(
                 color: color,
               ),
             )),

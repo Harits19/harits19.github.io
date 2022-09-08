@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:harits_portofolio/ui/base/base_constanta.dart';
-import 'package:harits_portofolio/ui/base/base_style.dart';
+import 'package:harits_portofolio/ui/base/k_textstyle.dart';
 
 class DialogWidget extends StatelessWidget {
   const DialogWidget({Key? key, required this.text}) : super(key: key);
@@ -24,7 +23,7 @@ class DialogWidget extends StatelessWidget {
             children: [
               Text(
                 text,
-                style: S.tStyle.subtitle,
+                style: KTextStyle.subtitle,
               ),
               TextButton(
                   onPressed: () {
