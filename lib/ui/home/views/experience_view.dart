@@ -13,9 +13,7 @@ class ExperienceView extends StatelessWidget {
   Widget build(BuildContext context) {
     return SectionContainer(
       titleText: "Experience",
-      children: [
-        ...C.object.listExperience.map((e) => _buildWorkExperience(e))
-      ],
+      children: [...KObject.listExperience.map((e) => _buildWorkExperience(e))],
     );
   }
 

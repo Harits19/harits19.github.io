@@ -25,7 +25,7 @@ class AboutMeView extends StatelessWidget {
               ),
               const Gap.h(8),
               Image.asset(
-                C.img.profile,
+                KImage.profile,
                 fit: BoxFit.cover,
                 height: 200,
                 width: 150,
@@ -43,12 +43,12 @@ class AboutMeView extends StatelessWidget {
           children: [
             Expanded(
               child: Column(
-                children: [...C.text.listOfSkill1.map((e) => TextIcon(e))],
+                children: [...KText.listOfSkill1.map((e) => TextIcon(e))],
               ),
             ),
             Expanded(
               child: Column(
-                children: [...C.text.listOfSkill2.map((e) => TextIcon(e))],
+                children: [...KText.listOfSkill2.map((e) => TextIcon(e))],
               ),
             ),
           ],

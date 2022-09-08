@@ -22,7 +22,7 @@ class F {
   ) {
     Uri emailLaunchUri = Uri(
       scheme: 'mailto',
-      path: C.text.email,
+      path: KText.email,
     );
     launchUrl(context, emailLaunchUri.toString());
   }

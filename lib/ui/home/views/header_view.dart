@@ -16,10 +16,10 @@ class HeaderView extends StatelessWidget {
     return Row(
       children: [
         const Spacer(),
-        ...C.text.listHeader.map(
+        ...KText.listHeader.map(
           (e) => InkWell(
             onTap: () {
-              onTapHeader(C.text.listHeader.indexOf(e));
+              onTapHeader(KText.listHeader.indexOf(e));
             },
             child: Padding(
               padding: const EdgeInsets.all(8),

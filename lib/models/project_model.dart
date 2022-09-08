@@ -1,11 +1,11 @@
 class ProjectModel {
-  String image;
-  String name;
-  String description;
-  String link;
-  List<String> highlight;
+  final String image;
+  final String name;
+  final String description;
+  final String link;
+  final List<String> highlight;
 
-  ProjectModel({
+  const ProjectModel({
     required this.image,
     required this.name,
     required this.description,

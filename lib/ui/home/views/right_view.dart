@@ -11,9 +11,9 @@ class RightView extends StatelessWidget {
     return SideContainer(children: [
       InkWell(
         onTap: () => F.launchUrlEmail(context),
-        child: RotatedBox(
+        child: const RotatedBox(
           quarterTurns: 1,
-          child: Text(C.text.email),
+          child: Text(KText.email),
         ),
       ),
     ]);

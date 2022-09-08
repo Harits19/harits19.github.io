@@ -16,10 +16,10 @@ class WorkView extends StatelessWidget {
       titleText: "Work",
       children: [
         ...List.generate(
-          C.object.listProject.length,
+          KObject.listProject.length,
           (index) {
             final isReverse = (index % 2) != 0;
-            final project = C.object.listProject[index];
+            final project = KObject.listProject[index];
             return Container(
               margin: const EdgeInsets.symmetric(vertical: 32),
               width: double.infinity,
