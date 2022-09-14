@@ -9,7 +9,7 @@ class KAsset {
   static const String batumbu = "$_path/batumbu.png";
   static const String tuntun = "$_path/tuntun.png";
   static const String primasaver = "$_path/primasaver.png";
-  static const String imaniPrima = '$_path/imaniPrima.png';
+  static const String imaniPrima = '$_path/imani_prima.png';
   static const String skyshi = '$_path/skyshi.png';
-  static const String smarfren = '$_path/smarfren.png';
+  static const String smarfren = '$_path/smartfren.png';
 }

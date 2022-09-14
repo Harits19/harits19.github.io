@@ -1,21 +1,30 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:harits_portofolio/models/experience_model.dart';
-import 'package:harits_portofolio/ui/base/constans/k_asset.dart';
 import 'package:harits_portofolio/ui/base/constans/k_object.dart';
+import 'package:harits_portofolio/ui/base/constans/k_size.dart';
 import 'package:harits_portofolio/ui/base/constans/k_textstyle.dart';
 import 'package:harits_portofolio/ui/home/views/section_container.dart';
 import 'package:harits_portofolio/ui/widgets/gap.dart';
 import 'package:harits_portofolio/ui/widgets/text_icon.dart';
 
-class ExperienceView extends StatelessWidget {
+class ExperienceView extends StatefulWidget {
   const ExperienceView({Key? key}) : super(key: key);
 
+  @override
+  State<ExperienceView> createState() => _ExperienceViewState();
+}
+
+class _ExperienceViewState extends State<ExperienceView> {
   @override
   Widget build(BuildContext context) {
     return SectionContainer(
       titleText: tr('experience'),
-      children: [...KObject.listExperience.map((e) => _buildWorkExperience(e))],
+      children: [
+        ...KObject.listExperience.map(
+          (e) => _buildWorkExperience(e),
+        ),
+      ],
     );
   }
 
@@ -26,13 +35,18 @@ class ExperienceView extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            SizedBox(
-              width: 80,
-              child: Text(
-                item.company,
-                style: KTextStyle.subtitle,
+            Align(
+              // alignment: Alignment.topCenter,
+              child: CircleAvatar(
+                backgroundColor: Colors.white,
+                radius: KSize.s48,
+                child: Image.asset(
+                  item.image,
+                  width: KSize.s48,
+                ),
               ),
             ),
+            const Gap.h(KSize.s16),
             const VerticalDivider(
               color: Colors.black,
             ),
@@ -41,16 +55,32 @@ class ExperienceView extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text(
-                    item.position,
-                    style: KTextStyle.subtitle.copyWith(
-                      fontWeight: FontWeight.bold,
-                    ),
+                  Row(
+                    children: [
+                      Text(
+                        item.company,
+                        style: KTextStyle.subtitle.copyWith(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        ' (${item.time})',
+                        style: KTextStyle.subtitle2
+                            .copyWith(fontStyle: FontStyle.italic),
+                      ),
+                    ],
                   ),
-                  const Gap.v(8),
-                  Text(
-                    item.time,
-                    style: KTextStyle.subtitle,
+                  const Gap.v(KSize.s8),
+                  Container(
+                    padding: const EdgeInsets.all(KSize.s4),
+                    color: Colors.blue,
+                    child: Text(
+                      item.position,
+                      style: KTextStyle.subtitle.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
                   ),
                   const Gap.v(16),
                   ...item.jobDesc.map((e) => TextIcon(e)),

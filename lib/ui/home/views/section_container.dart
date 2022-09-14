@@ -20,9 +20,16 @@ class SectionContainer extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           if (titleText != null) ...[
-            Text(
-              titleText!,
-              style: KTextStyle.title,
+            Row(
+              children: [
+                Text(
+                  titleText!,
+                  style: KTextStyle.title,
+                ),
+                const Gap.h(KSize.s16),
+                const Expanded(child: Divider()),
+                const Spacer(),
+              ],
             ),
             const Gap.v(16),
           ],

@@ -74,8 +74,9 @@ class WorkView extends StatelessWidget {
                               child: Padding(
                                 padding: const EdgeInsets.all(16),
                                 child: Column(
-                                  crossAxisAlignment:
-                                      CrossAxisAlignment.stretch,
+                                  crossAxisAlignment: !isReverse
+                                      ? CrossAxisAlignment.end
+                                      : CrossAxisAlignment.start,
                                   children: [
                                     Text(
                                       project.description,
@@ -88,6 +89,18 @@ class WorkView extends StatelessWidget {
                                     const Gap.v(8),
                                     InkWell(
                                       onTap: () {
+                                        showModalBottomSheet(
+                                          context: context,
+                                          isScrollControlled: true,
+                                          builder: (context) {
+                                            return Column(
+                                              children: [
+                                                Text(project.description),
+                                              ],
+                                            );
+                                          },
+                                        );
+                                        return;
                                         showDialog(
                                           context: context,
                                           builder: (context) => DialogWidget(
@@ -97,8 +110,6 @@ class WorkView extends StatelessWidget {
                                       },
                                       child: Text(
                                         "see_detail".tr(),
-                                        textAlign:
-                                            isReverse ? null : TextAlign.right,
                                         style: KTextStyle.subtitle
                                             .copyWith(color: Colors.blue),
                                       ),

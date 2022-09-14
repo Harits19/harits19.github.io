@@ -10,4 +10,7 @@ class KTextStyle {
   static const subtitle = TextStyle(
     fontSize: 16,
   );
+  static const subtitle2 = TextStyle(
+    fontSize: 12,
+  );
 }

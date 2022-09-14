@@ -75,7 +75,7 @@ class KObject {
     ProjectModel(
       image: KAsset.batumbu,
       name: "Batumbu",
-      description: "",
+      description: "batumbu_desc".tr(),
       link: "",
       highlight: ["Flutter"],
     ),

@@ -10,4 +10,5 @@ class KSize {
   static const double s40 = 40;
   static const double s24 = 24;
   static const double s8 = 8;
+  static const double s80 = 80;
 }
