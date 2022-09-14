@@ -16,3 +16,32 @@ not_found: Not Found
 see_detail: Lihat Selengkapnya
 under_development: Under development
 close: Close
+mobile_developer: Mobile Developer
+fullstack_developer: Fullstack Developer
+mobile_ui_engineer: Mobile & UI Engineer
+
+skyshi_time: February 2021 - March 2022
+skyshi_job_desc_1: Creating mobile applications using Flutter framework or React Native
+skyshi_job_desc_2: Implementing mobile applications based on Business Process Documentation
+skyshi_job_desc_3: Fixing bugs base on UAT documentation
+skyshi_job_desc_4: Integrating mobile application with API and Firebase
+skyshi_job_desc_5: Creating mobile application according to design
+
+imani_time: March 2022 - May 2022
+imani_job_desc_1: Creating mobile and web applications using Flutter
+imani_job_desc_2: Implementing applications based on action plan
+imani_job_desc_3: Fixed bugs found based action plan
+imani_job_desc_4: Integrating application with API
+imani_job_desc_5: Creating application according to design
+imani_job_desc_6: Creating API using Go Language
+imani_job_desc_7: Integrating MQTT using Go Language
+imani_job_desc_8: Creating Websocket using Go Language
+imani_job_desc_10: Management database MongoDB and MySQL
+
+smartfren_time: Jun 2022 - Present
+smartfren_job_desc_1: Creating mobile applications using Flutter
+smartfren_job_desc_2: Implementing mobile applications based on Jira Ticket
+smartfren_job_desc_3: Fixing bugs
+smartfren_job_desc_4: Integrating mobile application with API
+smartfren_job_desc_5: Integrating mobile application with API
+smartfren_job_desc_6: Creating mobile application according to design

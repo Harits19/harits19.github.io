@@ -1,53 +1,37 @@
 import 'package:harits_portofolio/models/experience_model.dart';
 import 'package:harits_portofolio/models/project_model.dart';
 import 'package:harits_portofolio/ui/base/constans/k_asset.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class KObject {
   const KObject._();
 
-  static const List<ExperienceModel> listExperience = [
+  static List<String> _jobDesc(String prefix, int length) {
+    return List.generate(length,
+        (index) => (prefix + "_job_desc_" + (index + 1).toString()).tr());
+  }
+
+  static final listExperience = [
     ExperienceModel(
       company: "PT. Skyshi Digital Indonesia",
-      position: "Mobile Developer",
-      time: "February 2021 - March 2022",
+      position: "mobile_developer".tr(),
+      time: "skyshi_time".tr(),
       image: KAsset.skyshi,
-      jobDesc: [
-        "Creating mobile applications using Flutter framework or React Native",
-        "Implementing mobile applications based on Business Process Documentation",
-        "Fixing bugs base on UAT documentation",
-        "Integrating mobile application with API and Firebase",
-        "Creating mobile application according to design",
-      ],
+      jobDesc: _jobDesc('skyshi', 5),
     ),
     ExperienceModel(
       company: "PT. Imani Prima",
-      position: "Fullstack Developer",
-      time: "March 2022 - May 2022",
+      position: "fullstack_developer".tr(),
+      time: "imani_time".tr(),
       image: KAsset.imaniPrima,
-      jobDesc: [
-        "Creating mobile and web applications using Flutter",
-        "Implementing applications based on action plan",
-        "Fixed bugs found based action plan",
-        "Integrating application with API",
-        "Creating application according to design",
-        "Creating API using Go Language",
-        "Integrating MQTT using Go Language",
-        "Creating Websocket using Go Language",
-        "Management database MongoDB and MySQL",
-      ],
+      jobDesc: _jobDesc('imani', 9),
     ),
     ExperienceModel(
       company: "PT. Smartfren Telecom Tbk",
-      position: "Mobile & UI Engineer",
-      time: "Jun 2022 - Present",
+      position: "mobile_ui_engineer".tr(),
+      time: "smartfren_time".tr(),
       image: KAsset.smarfren,
-      jobDesc: [
-        "Creating mobile applications using Flutter",
-        "Implementing mobile applications based on Jira Ticket",
-        "Fixing bugs",
-        "Integrating mobile application with API",
-        "Creating mobile application according to design",
-      ],
+      jobDesc: _jobDesc('smartfren', 6),
     ),
     // ExperienceModel(
     //   company: "Tuntun Les Privat",
@@ -65,20 +49,18 @@ class KObject {
     // ),
   ];
 
-  static const List<ProjectModel> listProject = [
+  static final listProject = [
     ProjectModel(
       image: KAsset.ayoLunas,
       name: "AyoLunas",
       link: "",
-      description:
-          "Mengerjakan projek ini setelah mempelajari tentang Flutter. Sebagian besar ditugaskan untuk menyelesaikan bug-bug yang ada. Tetapi juga ditugaskan untuk mengerjakan beberapa implementasi design dan integrasi API.",
+      description: "ayolunas_desc".tr(),
       highlight: ["Flutter"],
     ),
     ProjectModel(
       image: KAsset.soundfren,
       name: "Soundfren",
-      description:
-          "Mengerjakan projek ini sekaligus mempelajari React Native. Ditugaskan untuk membantu mengembangkan dan mengimplementasikan program 1000 startup pada aplikasi Soundfren. Didalamnya saya mengimplementasikan desain, mengintegrasikan API, dan menyelesaikan bug-bug yang ada.",
+      description: "soundfren_desc".tr(),
       link:
           "https://play.google.com/store/apps/details?id=com.amoeba.soundfren",
       highlight: ["React Native"],
@@ -87,23 +69,20 @@ class KObject {
       image: KAsset.pejuang,
       name: "Pejuang",
       link: "https://play.google.com/store/apps/details?id=com.bdn.pejuang",
-      description:
-          "Membuat aplikasi untuk membantu pembayaran berbagai kebutuhan di masyarakat. Didalamnya saya mengimplementasikan desain, mengintegrasikan API, dan menyelesaikan bug-bug yang ada.",
+      description: "pejuang_desc".tr(),
       highlight: ["React Native"],
     ),
     ProjectModel(
       image: KAsset.batumbu,
       name: "Batumbu",
-      description:
-          "Membuat aplikasi untuk mewadahi pemberi dana dan peminjam dana pada lingkungan UMKM. Didalamnya saya mengimplementasikan desain, mengintegrasikan API, dan menyelesaikan bug-bug yang ada.",
+      description: "",
       link: "",
       highlight: ["Flutter"],
     ),
     ProjectModel(
       image: KAsset.protect,
       name: "Protect",
-      description:
-          "Ini adalah projek pribadi saya. Tujuannya untuk mengisi waktu dan memenuhi kebutuhan mengenai penyimpanan dan pembuat password yang disimpan secara lokal",
+      description: "protect_desc".tr(),
       link: "https://play.google.com/store/apps/details?id=com.my_password_app",
       highlight: ["Flutter"],
     ),
@@ -118,8 +97,7 @@ class KObject {
     ProjectModel(
       image: KAsset.primasaver,
       name: "Primasaver",
-      description:
-          "Ini adalah projek mengenai pembuatan aplikasi flutter dan backend golang untuk melakukan manajemen data pemakaian daya listrik dari pengguna",
+      description: "primasaver_desc".tr(),
       link: "https://primasaver.com/home",
       highlight: ["Flutter", "Go", "MongoDB"],
     ),
