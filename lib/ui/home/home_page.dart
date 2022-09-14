@@ -1,7 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:harits_portofolio/ui/base/constans/k_asset.dart';
 import 'package:harits_portofolio/ui/base/constans/k_locale.dart';
+import 'package:harits_portofolio/ui/base/cubits/home/home_cubit.dart';
 import 'package:harits_portofolio/ui/home/views/about_me_view.dart';
 import 'package:harits_portofolio/ui/home/views/contact_view.dart';
 import 'package:harits_portofolio/ui/home/views/experience_view.dart';
@@ -44,6 +46,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final homeRead = context.read<HomeCubit>();
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -55,6 +58,7 @@ class _HomePageState extends State<HomePage> {
                   selectedIndex + 1,
                   preferPosition: AutoScrollPosition.begin,
                 );
+                homeRead.currentIndexView = selectedIndex;
               },
             ),
             const Divider(

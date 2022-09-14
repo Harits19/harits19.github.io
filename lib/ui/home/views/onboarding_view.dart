@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:harits_portofolio/ui/base/constans/k_size.dart';
 import 'package:harits_portofolio/ui/base/constans/k_text.dart';
 import 'package:harits_portofolio/ui/base/constans/k_textstyle.dart';
 import 'package:harits_portofolio/ui/home/views/section_container.dart';
@@ -12,6 +13,7 @@ class OnboardingView extends StatelessWidget {
   Widget build(BuildContext context) {
     return SectionContainer(
       children: [
+        const Gap.v(KSize.s48),
         Text(
           tr('my_name_is'),
           style: KTextStyle.subtitle,

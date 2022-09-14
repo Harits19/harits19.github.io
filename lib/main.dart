@@ -1,9 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:easy_localization_loader/easy_localization_loader.dart';
 import 'package:flutter/material.dart';
-import 'package:harits_portofolio/ui/base/constans/k_asset.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:harits_portofolio/ui/base/constans/k_locale.dart';
+import 'package:harits_portofolio/ui/base/constans/k_size.dart';
 import 'package:harits_portofolio/ui/base/constans/k_text.dart';
+import 'package:harits_portofolio/ui/base/cubits/home/home_cubit.dart';
 import 'package:harits_portofolio/ui/home/home_page.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
@@ -39,23 +41,33 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: const ColorScheme.light(secondary: Colors.black),
         outlinedButtonTheme: OutlinedButtonThemeData(
-          style: ButtonStyle(
-            foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
-            overlayColor:
-                MaterialStateProperty.all<Color>(Colors.black.withOpacity(0.2)),
-          ),
+          style: () {
+            const color = Colors.blue;
+            return OutlinedButton.styleFrom(
+              foregroundColor: color,
+              surfaceTintColor: color,
+              shadowColor: color,
+              side: const BorderSide(
+                color: color,
+              ),
+              minimumSize: const Size(0, KSize.s48),
+            );
+          }(),
         ),
       ),
-      home: ResponsiveWrapper.builder(const HomePage(),
-          maxWidth: 1200,
-          minWidth: 480,
-          defaultScale: true,
-          breakpoints: [
-            const ResponsiveBreakpoint.resize(480, name: MOBILE),
-            const ResponsiveBreakpoint.autoScale(800, name: TABLET),
-            const ResponsiveBreakpoint.resize(1000, name: DESKTOP),
-          ],
-          background: Container(color: const Color(0xFFF5F5F5))),
+      home: BlocProvider(
+        create: (context) => HomeCubit(),
+        child: ResponsiveWrapper.builder(const HomePage(),
+            maxWidth: 1200,
+            minWidth: 480,
+            defaultScale: true,
+            breakpoints: [
+              const ResponsiveBreakpoint.resize(480, name: MOBILE),
+              const ResponsiveBreakpoint.autoScale(800, name: TABLET),
+              const ResponsiveBreakpoint.resize(1000, name: DESKTOP),
+            ],
+            background: Container(color: const Color(0xFFF5F5F5))),
+      ),
     );
   }
 }
