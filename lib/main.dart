@@ -40,6 +40,12 @@ class MyApp extends StatelessWidget {
       locale: context.locale,
       theme: ThemeData(
         colorScheme: const ColorScheme.light(secondary: Colors.black),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.blue,
+            shadowColor: Colors.blue,
+          ),
+        ),
         outlinedButtonTheme: OutlinedButtonThemeData(
           style: () {
             const color = Colors.blue;

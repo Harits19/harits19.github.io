@@ -8,14 +8,16 @@ class RightView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SideContainer(children: [
-      InkWell(
-        onTap: () => UrlUtil.launchUrlEmail(context),
-        child: const RotatedBox(
-          quarterTurns: 1,
-          child: Text(KText.email),
+    return SideContainer(
+      children: [
+        InkWell(
+          onTap: () => UrlUtil.launchUrlEmail(context),
+          child: const RotatedBox(
+            quarterTurns: 1,
+            child: Text(KText.email),
+          ),
         ),
-      ),
-    ]);
+      ],
+    );
   }
 }

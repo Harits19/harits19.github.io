@@ -3,20 +3,20 @@ import 'package:flutter/material.dart';
 class Gap extends StatelessWidget {
   const Gap.v(double? size, {Key? key})
       : width = null,
-        heigth = size,
+        height = size,
         super(key: key);
 
   const Gap.h(double? size, {Key? key})
       : width = size,
-        heigth = null,
+        height = null,
         super(key: key);
 
-  final double? width, heigth;
+  final double? width, height;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: heigth,
+      height: height,
       width: width,
     );
   }

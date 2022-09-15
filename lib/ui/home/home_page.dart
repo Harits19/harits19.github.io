@@ -1,6 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:harits_portofolio/ui/base/constans/k_curves.dart';
+import 'package:harits_portofolio/ui/base/constans/k_duration.dart';
 import 'package:harits_portofolio/ui/base/cubits/home/home_cubit.dart';
 import 'package:harits_portofolio/ui/home/views/about_me_view.dart';
 import 'package:harits_portofolio/ui/home/views/contact_view.dart';
@@ -26,7 +28,7 @@ class _HomePageState extends State<HomePage> {
   final ItemPositionsListener? _itemPositionListener =
       ItemPositionsListener.create();
   late final homeRead = context.read<HomeCubit>();
-  final _duration = const Duration(milliseconds: 300);
+  late final _duration = KDuration.d300.value;
   bool _isScrolling = false;
 
   @override
@@ -42,21 +44,19 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _positionListener() async {
-    final item =
-        _itemPositionListener?.itemPositions.value.reduce((value, element) {
+    final itemPosition = _itemPositionListener?.itemPositions.value;
+    if (itemPosition?.isEmpty ?? true) return;
+    final item = itemPosition!.reduce((value, element) {
       if (value.itemLeadingEdge < element.itemLeadingEdge) {
         return value;
       }
       return element;
     });
-    final currentIndex = item?.index;
-    if (currentIndex == null ||
-        item?.itemLeadingEdge == null ||
-        homeRead.state.currentIndexView == currentIndex ||
-        _isScrolling) {
+    final currentIndex = item.index;
+    if (homeRead.state.currentIndexView == currentIndex || _isScrolling) {
       return;
     }
-    homeRead.currentIndexView = currentIndex - 1;
+    homeRead.currentIndexView = currentIndex;
   }
 
   List<Widget> get _listBody {
@@ -84,9 +84,9 @@ class _HomePageState extends State<HomePage> {
                 _isScrolling = true;
                 setState(() {});
                 await _itemScrollController.scrollTo(
-                  index: selectedIndex + 1,
+                  index: selectedIndex,
                   duration: _duration,
-                  curve: Curves.fastOutSlowIn,
+                  curve: KCurves.kFastOutSlowIn.value,
                 );
                 _isScrolling = false;
                 homeRead.currentIndexView = selectedIndex;
