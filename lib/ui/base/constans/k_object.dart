@@ -16,21 +16,21 @@ class KObject {
       company: "PT. Skyshi Digital Indonesia",
       position: "mobile_developer".tr(),
       time: "skyshi_time".tr(),
-      image: KAsset.skyshi,
+      image: KAsset.skyshi.value,
       jobDesc: _jobDesc('skyshi', 5),
     ),
     ExperienceModel(
       company: "PT. Imani Prima",
       position: "fullstack_developer".tr(),
       time: "imani_time".tr(),
-      image: KAsset.imaniPrima,
+      image: KAsset.imaniPrima.value,
       jobDesc: _jobDesc('imani', 9),
     ),
     ExperienceModel(
       company: "PT. Smartfren Telecom Tbk",
       position: "mobile_ui_engineer".tr(),
       time: "smartfren_time".tr(),
-      image: KAsset.smarfren,
+      image: KAsset.smarfren.value,
       jobDesc: _jobDesc('smartfren', 6),
     ),
     // ExperienceModel(
@@ -51,14 +51,14 @@ class KObject {
 
   static final listProject = [
     ProjectModel(
-      image: KAsset.ayoLunas,
+      image: KAsset.ayoLunas.value,
       name: "AyoLunas",
       link: "",
       description: "ayolunas_desc".tr(),
       highlight: ["Flutter"],
     ),
     ProjectModel(
-      image: KAsset.soundfren,
+      image: KAsset.soundfren.value,
       name: "Soundfren",
       description: "soundfren_desc".tr(),
       link:
@@ -66,21 +66,21 @@ class KObject {
       highlight: ["React Native"],
     ),
     ProjectModel(
-      image: KAsset.pejuang,
+      image: KAsset.pejuang.value,
       name: "Pejuang",
       link: "https://play.google.com/store/apps/details?id=com.bdn.pejuang",
       description: "pejuang_desc".tr(),
       highlight: ["React Native"],
     ),
     ProjectModel(
-      image: KAsset.batumbu,
+      image: KAsset.batumbu.value,
       name: "Batumbu",
       description: "batumbu_desc".tr(),
       link: "",
       highlight: ["Flutter"],
     ),
     ProjectModel(
-      image: KAsset.protect,
+      image: KAsset.protect.value,
       name: "Protect",
       description: "protect_desc".tr(),
       link: "https://play.google.com/store/apps/details?id=com.my_password_app",
@@ -95,7 +95,7 @@ class KObject {
     //   highlight: ["Flutter", "Go", "MongoDB"],
     // ),
     ProjectModel(
-      image: KAsset.primasaver,
+      image: KAsset.primasaver.value,
       name: "Primasaver",
       description: "primasaver_desc".tr(),
       link: "https://primasaver.com/home",

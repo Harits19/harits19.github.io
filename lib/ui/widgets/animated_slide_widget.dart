@@ -36,7 +36,7 @@ class _AnimatedSlideWidgetState extends State<AnimatedSlideWidget> {
     return AnimatedSlide(
       duration: KDuration.d500.value,
       offset: _offset,
-      curve: KCurves.kFastOutSlowIn.value,
+      curve: KCurves.fastOutSlowIn.value,
       child: widget.child,
     );
   }

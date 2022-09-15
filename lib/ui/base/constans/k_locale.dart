@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
-class KLocale {
-  KLocale._();
-  
-  static const translationPath = 'assets/translations';
-  static const id = Locale('id', 'ID');
-  static const en = Locale('en', 'US');
-  static const supportedLocales = [id, en];
+enum KLocale {
+  id(Locale('id', 'ID')),
+  en(Locale('en', 'US'));
+
+  static const translationPath = ('assets/translations');
+  static final supportedLocales = KLocale.values.map((e) => e.value).toList();
+
+  const KLocale(this.value);
+  final Locale value;
 }

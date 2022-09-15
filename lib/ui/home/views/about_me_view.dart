@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:harits_portofolio/ui/base/constans/k_asset.dart';
+import 'package:harits_portofolio/ui/base/constans/k_size.dart';
 import 'package:harits_portofolio/ui/base/constans/k_text.dart';
 import 'package:harits_portofolio/ui/base/constans/k_textstyle.dart';
 import 'package:harits_portofolio/ui/home/views/section_container.dart';
@@ -25,9 +26,9 @@ class AboutMeView extends StatelessWidget {
                   style: KTextStyle.subtitle,
                 ),
               ),
-              const Gap.h(8),
+              Gap.h(KSize.s8),
               Image.asset(
-                KAsset.profile,
+                KAsset.profile.value,
                 fit: BoxFit.cover,
                 height: 200,
                 width: 150,
@@ -35,12 +36,12 @@ class AboutMeView extends StatelessWidget {
             ],
           ),
         ),
-        const Gap.v(16),
+        Gap.v(KSize.s16),
         Text(
           tr('skill_competencies'),
           style: KTextStyle.title,
         ),
-        const Gap.v(8),
+         Gap.v(KSize.s8),
         Row(
           children: [
             Expanded(

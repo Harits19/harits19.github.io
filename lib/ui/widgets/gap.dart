@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:harits_portofolio/ui/base/constans/k_locale.dart';
+import 'package:harits_portofolio/ui/base/constans/k_size.dart';
 
 class Gap extends StatelessWidget {
-  const Gap.v(double? size, {Key? key})
+  Gap.v(KSize? size, {Key? key})
       : width = null,
-        height = size,
+        height = size?.value,
         super(key: key);
 
-  const Gap.h(double? size, {Key? key})
-      : width = size,
+  Gap.h(KSize? size, {Key? key})
+      : width = size?.value,
         height = null,
         super(key: key);
 

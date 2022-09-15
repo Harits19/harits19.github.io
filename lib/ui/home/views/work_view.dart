@@ -46,9 +46,9 @@ class WorkView extends StatelessWidget {
                             project.name,
                             style: KTextStyle.title,
                           ),
-                          const Gap.v(KSize.s8),
+                          Gap.v(KSize.s8),
                           _HighlightWidget(highlight: project.highlight),
-                          const Gap.v(16),
+                          Gap.v(KSize.s16),
                           SizedBox(
                             child: Card(
                               child: Padding(
@@ -66,7 +66,7 @@ class WorkView extends StatelessWidget {
                                       overflow: TextOverflow.ellipsis,
                                       maxLines: 4,
                                     ),
-                                    const Gap.v(8),
+                                    Gap.v(KSize.s8),
                                     InkWell(
                                       onTap: () =>
                                           _showDetailWork(context, project),
@@ -102,9 +102,9 @@ class WorkView extends StatelessWidget {
       builder: (context) {
         return Dialog(
           backgroundColor: Colors.white,
-          insetPadding: const EdgeInsets.all(KSize.s24),
+          insetPadding: EdgeInsets.all(KSize.s24.value),
           child: Padding(
-            padding: const EdgeInsets.all(KSize.s40),
+            padding: EdgeInsets.all(KSize.s40.value),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
@@ -130,9 +130,9 @@ class WorkView extends StatelessWidget {
                               item.name,
                               style: KTextStyle.title,
                             ),
-                            const Gap.v(KSize.s8),
+                            Gap.v(KSize.s8),
                             _HighlightWidget(highlight: item.highlight),
-                            const Gap.v(KSize.s16),
+                            Gap.v(KSize.s16),
                             Text(
                               item.description,
                               style: KTextStyle.subtitle,
@@ -160,7 +160,7 @@ class _HighlightWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Wrap(
-      spacing: KSize.s8,
+      spacing: KSize.s8.value,
       children: [
         ...highlight.map(
           (e) => Container(
@@ -200,7 +200,7 @@ class _ImageWorkWidget extends StatelessWidget {
             }
           },
           child: Padding(
-            padding: const EdgeInsets.all(KSize.s16),
+            padding: EdgeInsets.all(KSize.s16.value),
             child: Image.asset(project.image),
           ),
         ),

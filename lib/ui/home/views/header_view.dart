@@ -34,15 +34,15 @@ class _HeaderViewState extends State<HeaderView> {
         setState(() {});
       },
       child: Container(
-        padding: const EdgeInsets.all(KSize.s16),
+        padding:  EdgeInsets.all(KSize.s16.value),
         child: Row(
           children: [
             InkWell(
               onTap: () {
                 widget.onTapHeader(0);
               },
-              child: const CircleAvatar(
-                backgroundImage: AssetImage(KAsset.profile),
+              child: CircleAvatar(
+                backgroundImage: AssetImage(KAsset.profile.value),
               ),
             ),
             const Spacer(),
@@ -96,14 +96,14 @@ class _HeaderViewState extends State<HeaderView> {
                 },
               );
             }(),
-            const Gap.h(8),
+             Gap.h(KSize.s8),
             OutlinedButton(
               child: Text(tr('resume')),
               onPressed: () {
                 UrlUtil.launchUrl(context, KText.resume);
               },
             ),
-            const Gap.h(8)
+             Gap.h(KSize.s8)
           ],
         ),
       ),

@@ -13,8 +13,8 @@ class AnimatedInitialWidget extends StatefulWidget {
 }
 
 class _AnimatedInitialWidgetState extends State<AnimatedInitialWidget> {
-  EdgeInsets _top = const EdgeInsets.only(
-    top: KSize.s40,
+  EdgeInsets _top = EdgeInsets.only(
+    top: KSize.s40.value,
   );
 
   double _opacity = 0;
@@ -33,7 +33,7 @@ class _AnimatedInitialWidgetState extends State<AnimatedInitialWidget> {
   @override
   Widget build(BuildContext context) {
     final duration = KDuration.d2000.value;
-    final curves = KCurves.kFastOutSlowIn.value;
+    final curves = KCurves.fastOutSlowIn.value;
     return AnimatedPadding(
       duration: duration,
       curve: curves,

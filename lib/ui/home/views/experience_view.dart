@@ -39,14 +39,14 @@ class _ExperienceViewState extends State<ExperienceView> {
               // alignment: Alignment.topCenter,
               child: CircleAvatar(
                 backgroundColor: Colors.white,
-                radius: KSize.s48,
+                radius: KSize.s48.value,
                 child: Image.asset(
                   item.image,
-                  width: KSize.s48,
+                  width: KSize.s48.value,
                 ),
               ),
             ),
-            const Gap.h(KSize.s16),
+             Gap.h(KSize.s16),
             const VerticalDivider(
               color: Colors.black,
             ),
@@ -70,9 +70,9 @@ class _ExperienceViewState extends State<ExperienceView> {
                       ),
                     ],
                   ),
-                  const Gap.v(KSize.s8),
+                   Gap.v(KSize.s8),
                   Container(
-                    padding: const EdgeInsets.all(KSize.s4),
+                    padding:  EdgeInsets.all(KSize.s4.value),
                     color: Colors.blue,
                     child: Text(
                       item.position,
@@ -82,7 +82,7 @@ class _ExperienceViewState extends State<ExperienceView> {
                       ),
                     ),
                   ),
-                  const Gap.v(16),
+                   Gap.v(KSize.s16),
                   ...item.jobDesc.map((e) => TextIcon(e)),
                 ],
               ),

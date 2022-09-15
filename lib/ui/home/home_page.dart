@@ -86,7 +86,7 @@ class _HomePageState extends State<HomePage> {
                 await _itemScrollController.scrollTo(
                   index: selectedIndex,
                   duration: _duration,
-                  curve: KCurves.kFastOutSlowIn.value,
+                  curve: KCurves.fastOutSlowIn.value,
                 );
                 _isScrolling = false;
                 homeRead.currentIndexView = selectedIndex;
