@@ -5,7 +5,7 @@ part 'home_state.dart';
 class HomeCubit extends Cubit<HomeState> {
   HomeCubit() : super(HomeState(currentIndexView: null));
 
-  set currentIndexView(int newIndex) {
+  set currentIndexView(int? newIndex) {
     emit(
       state.copyWith(
         currentIndexView: newIndex,

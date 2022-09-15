@@ -1,8 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:harits_portofolio/ui/base/constans/k_asset.dart';
-import 'package:harits_portofolio/ui/base/constans/k_locale.dart';
 import 'package:harits_portofolio/ui/base/cubits/home/home_cubit.dart';
 import 'package:harits_portofolio/ui/home/views/about_me_view.dart';
 import 'package:harits_portofolio/ui/home/views/contact_view.dart';
@@ -13,7 +11,7 @@ import 'package:harits_portofolio/ui/home/views/onboarding_view.dart';
 import 'package:harits_portofolio/ui/home/views/right_view.dart';
 import 'package:harits_portofolio/ui/home/views/work_view.dart';
 import 'package:harits_portofolio/ui/widgets/dialog_widget.dart';
-import 'package:scroll_to_index/scroll_to_index.dart';
+import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -23,7 +21,43 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final _controller = AutoScrollController();
+  final _itemScrollController = ItemScrollController();
+
+  final ItemPositionsListener? _itemPositionListener =
+      ItemPositionsListener.create();
+  late final homeRead = context.read<HomeCubit>();
+  final _duration = const Duration(milliseconds: 300);
+  bool _isScrolling = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _itemPositionListener?.itemPositions.addListener(_positionListener);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _itemPositionListener?.itemPositions.removeListener(_positionListener);
+  }
+
+  void _positionListener() async {
+    final item =
+        _itemPositionListener?.itemPositions.value.reduce((value, element) {
+      if (value.itemLeadingEdge < element.itemLeadingEdge) {
+        return value;
+      }
+      return element;
+    });
+    final currentIndex = item?.index;
+    if (currentIndex == null ||
+        item?.itemLeadingEdge == null ||
+        homeRead.state.currentIndexView == currentIndex ||
+        _isScrolling) {
+      return;
+    }
+    homeRead.currentIndexView = currentIndex - 1;
+  }
 
   List<Widget> get _listBody {
     return const [
@@ -39,26 +73,24 @@ class _HomePageState extends State<HomePage> {
   }
 
   @override
-  void dispose() {
-    super.dispose();
-    _controller.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    final homeRead = context.read<HomeCubit>();
     return Scaffold(
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             HeaderView(
-              onTapHeader: (selectedIndex) {
-                _controller.scrollToIndex(
-                  selectedIndex + 1,
-                  preferPosition: AutoScrollPosition.begin,
+              onTapHeader: (selectedIndex) async {
+                _isScrolling = true;
+                setState(() {});
+                await _itemScrollController.scrollTo(
+                  index: selectedIndex + 1,
+                  duration: _duration,
+                  curve: Curves.fastOutSlowIn,
                 );
+                _isScrolling = false;
                 homeRead.currentIndexView = selectedIndex;
+                setState(() {});
               },
             ),
             const Divider(
@@ -70,20 +102,14 @@ class _HomePageState extends State<HomePage> {
                   const LeftView(),
                   Expanded(
                     flex: 3,
-                    child: ListView(
-                        padding: const EdgeInsets.all(4),
-                        physics: const BouncingScrollPhysics(),
-                        controller: _controller,
-                        children: _listBody.map<Widget>((e) {
-                          final index = _listBody.indexOf(e);
-                          return AutoScrollTag(
-                            key: ValueKey(index),
-                            controller: _controller,
-                            index: index,
-                            child: _listBody[index],
-                            highlightColor: Colors.black.withOpacity(0.1),
-                          );
-                        }).toList()),
+                    child: ScrollablePositionedList.builder(
+                      itemPositionsListener: _itemPositionListener,
+                      itemCount: _listBody.length,
+                      itemScrollController: _itemScrollController,
+                      itemBuilder: ((context, index) {
+                        return _listBody[index];
+                      }),
+                    ),
                   ),
                   const RightView(),
                 ],
