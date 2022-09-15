@@ -59,19 +59,19 @@ class SideContainer extends StatelessWidget {
             return Expanded(
               child: LayoutBuilder(
                 builder: (context, constraint) {
-                  print(
-                      'max height: ${constraint.maxHeight}, height: ${MediaQuery.of(context).size.height}');
                   return RotatedBox(
                     quarterTurns: reverse ? 2 : 0,
                     child: ClipRect(
                       clipper: RectCustomClipper(constraint.maxHeight),
-                      child: Column(children: [
-                        ...List.generate(
-                          constraint.maxHeight ~/ KSize.s24,
-                          (index) =>
-                              index % 2 == 0 ? line : const Gap.v(KSize.s24),
-                        ),
-                      ]),
+                      child: Column(
+                        children: [
+                          ...List.generate(
+                            constraint.maxHeight ~/ KSize.s24 ~/ 2,
+                            (index) =>
+                                index % 2 == 0 ? line : const Gap.v(KSize.s24),
+                          ),
+                        ],
+                      ),
                     ),
                   );
                 },
