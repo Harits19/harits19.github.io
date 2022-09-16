@@ -21,11 +21,11 @@ class _AnimatedSlideWidgetState extends State<AnimatedSlideWidget> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(KDuration.d100.value).then((value) {
+    Future.delayed(KDuration.d100).then((value) {
       if (widget.onHalfEnd == null) return;
       widget.onHalfEnd!();
     });
-    Future.delayed(KDuration.d0.value).then((value) {
+    Future.delayed(KDuration.d0).then((value) {
       _offset = Offset.zero;
       setState(() {});
     });
@@ -34,9 +34,9 @@ class _AnimatedSlideWidgetState extends State<AnimatedSlideWidget> {
   @override
   Widget build(BuildContext context) {
     return AnimatedSlide(
-      duration: KDuration.d500.value,
+      duration: KDuration.d500,
       offset: _offset,
-      curve: KCurves.kFastOutSlowIn.value,
+      curve: KCurves.kFastOutSlowIn,
       child: widget.child,
     );
   }

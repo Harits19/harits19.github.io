@@ -65,7 +65,7 @@ class _HeaderViewState extends State<HeaderView> {
                             fontWeight: isActive ? FontWeight.bold : null,
                             color: isActive ? Colors.blue : Colors.black,
                           ),
-                          duration: KDuration.d100.value,
+                          duration: KDuration.d100,
                           child: Text(
                             listHeader[e],
                           ),

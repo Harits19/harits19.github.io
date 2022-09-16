@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 
-enum KCurves {
-  kFastOutSlowIn(Curves.fastOutSlowIn);
+class KCurves {
+  KCurves._();
 
-  const KCurves(this._curves);
-
-  final Cubic _curves;
-
-  Cubic get value => _curves;
+  static const kFastOutSlowIn = Curves.fastOutSlowIn;
 }

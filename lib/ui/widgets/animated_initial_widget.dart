@@ -23,7 +23,7 @@ class _AnimatedInitialWidgetState extends State<AnimatedInitialWidget> {
   void initState() {
     super.initState();
 
-    Future.delayed(KDuration.d0.value).then((value) {
+    Future.delayed(KDuration.d0).then((value) {
       _top = EdgeInsets.zero;
       _opacity = 1;
       setState(() {});
@@ -32,8 +32,8 @@ class _AnimatedInitialWidgetState extends State<AnimatedInitialWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final duration = KDuration.d2000.value;
-    final curves = KCurves.kFastOutSlowIn.value;
+    final duration = KDuration.d2000;
+    const curves = KCurves.kFastOutSlowIn;
     return AnimatedPadding(
       duration: duration,
       curve: curves,

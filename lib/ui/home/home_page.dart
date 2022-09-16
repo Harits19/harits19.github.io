@@ -28,7 +28,7 @@ class _HomePageState extends State<HomePage> {
   final ItemPositionsListener? _itemPositionListener =
       ItemPositionsListener.create();
   late final homeRead = context.read<HomeCubit>();
-  late final _duration = KDuration.d300.value;
+  late final _duration = KDuration.d300;
   bool _isScrolling = false;
 
   @override
@@ -86,7 +86,7 @@ class _HomePageState extends State<HomePage> {
                 await _itemScrollController.scrollTo(
                   index: selectedIndex,
                   duration: _duration,
-                  curve: KCurves.kFastOutSlowIn.value,
+                  curve: KCurves.kFastOutSlowIn,
                 );
                 _isScrolling = false;
                 homeRead.currentIndexView = selectedIndex;

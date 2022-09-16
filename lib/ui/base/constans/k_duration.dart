@@ -1,14 +1,16 @@
-enum KDuration {
-  d300(300),
-  d100(100),
-  d500(500),
-  d2000(2000),
-  d0(0);
+class KDuration {
+  KDuration._();
 
-  const KDuration(this._milliseconds);
-  final int _milliseconds;
+  static final d300 = 300.toMilliseconds,
+      d100 = 100.toMilliseconds,
+      d500 = 500.toMilliseconds,
+      d2000 = 2000.toMilliseconds,
+      d0 = 0.toMilliseconds,
+      d600 = 600.toMilliseconds;
+}
 
-  Duration get value {
-    return Duration(milliseconds: _milliseconds);
+extension on int {
+  Duration get toMilliseconds {
+    return Duration(milliseconds: this);
   }
 }
