@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:harits_portofolio/ui/base/constans/k_text.dart';
 import 'package:harits_portofolio/ui/base/utils/url_util.dart';
-import 'package:harits_portofolio/ui/widgets/animated_initial_widget.dart';
 import 'package:harits_portofolio/ui/widgets/side_container.dart';
 import 'package:easy_localization/easy_localization.dart';
 

@@ -6,6 +6,7 @@ import 'package:harits_portofolio/ui/base/constans/k_asset.dart';
 import 'package:harits_portofolio/ui/base/constans/k_enum.dart';
 import 'package:harits_portofolio/ui/base/constans/k_locale.dart';
 import 'package:harits_portofolio/ui/base/constans/k_size.dart';
+import 'package:harits_portofolio/ui/base/cubits/app/app_cubit.dart';
 import 'package:harits_portofolio/ui/base/cubits/home/home_cubit.dart';
 import 'package:harits_portofolio/ui/base/utils/url_util.dart';
 import 'package:harits_portofolio/ui/base/constans/k_text.dart';
@@ -58,16 +59,28 @@ class _HeaderViewState extends State<HeaderView> {
                         return state.currentIndexView == index;
                       },
                       builder: (context, isActive) {
-                        return AnimatedDefaultTextStyle(
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: isActive ? FontWeight.bold : null,
-                            color: isActive ? Colors.blue : Colors.black,
-                          ),
-                          duration: KDuration.d100,
-                          child: Text(
-                            listHeader[index].toString(),
-                          ),
+                        return BlocBuilder<AppCubit, AppState>(
+                          builder: (context, state) {
+                            return AnimatedDefaultTextStyle(
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: isActive ? FontWeight.bold : null,
+                                color: () {
+                                  if (isActive) {
+                                    return Colors.blue;
+                                  }
+                                  if (state.themeMode == ThemeMode.dark) {
+                                    return Colors.white;
+                                  }
+                                  return Colors.black;
+                                }(),
+                              ),
+                              duration: KDuration.d100,
+                              child: Text(
+                                listHeader[index].toString(),
+                              ),
+                            );
+                          },
                         );
                       },
                     ),
@@ -125,7 +138,27 @@ class _HeaderViewState extends State<HeaderView> {
                   EasyLocalization.of(context)?.setLocale(updateLocaleTo);
                 },
               );
-            }()
+            }(),
+            BlocSelector<AppCubit, AppState, ThemeMode>(
+              selector: (state) {
+                return state.themeMode;
+              },
+              builder: (context, themeMode) {
+                return IconButton(
+                  onPressed: context.read<AppCubit>().toggleTheme,
+                  icon: Icon(
+                    () {
+                      if (themeMode == ThemeMode.dark) {
+                        return Icons.light_mode;
+                      }
+                      if (themeMode == ThemeMode.light) {
+                        return Icons.dark_mode;
+                      }
+                    }(),
+                  ),
+                );
+              },
+            )
           ],
         ),
       ),

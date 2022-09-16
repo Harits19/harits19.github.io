@@ -101,7 +101,6 @@ class WorkView extends StatelessWidget {
       // backgroundColor: Colors.transparent,
       builder: (context) {
         return Dialog(
-          backgroundColor: Colors.white,
           insetPadding: const EdgeInsets.all(KSize.s24),
           child: Padding(
             padding: const EdgeInsets.all(KSize.s40),

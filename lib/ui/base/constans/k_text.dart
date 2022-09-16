@@ -1,5 +1,3 @@
-import 'package:easy_localization/easy_localization.dart';
-
 class KText {
   const KText._();
 
@@ -24,6 +22,4 @@ class KText {
         "Functional Programming",
         "Go",
       ];
-
 }
-
