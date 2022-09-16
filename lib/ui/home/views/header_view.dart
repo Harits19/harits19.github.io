@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:harits_portofolio/ui/base/constans/k_duration.dart';
 import 'package:harits_portofolio/ui/base/constans/k_asset.dart';
+import 'package:harits_portofolio/ui/base/constans/k_enum.dart';
 import 'package:harits_portofolio/ui/base/constans/k_locale.dart';
 import 'package:harits_portofolio/ui/base/constans/k_size.dart';
 import 'package:harits_portofolio/ui/base/cubits/home/home_cubit.dart';
@@ -14,20 +15,18 @@ import 'package:harits_portofolio/ui/widgets/gap.dart';
 class HeaderView extends StatefulWidget {
   const HeaderView({
     Key? key,
-    required this.onTapHeader,
   }) : super(key: key);
-
-  final ValueChanged<int> onTapHeader;
 
   @override
   State<HeaderView> createState() => _HeaderViewState();
 }
 
 class _HeaderViewState extends State<HeaderView> {
-  final _showHeader = KText.listHeader.map((e) => false).toList();
+  final _showHeader = Header.values.map((e) => false).toList();
 
   @override
   Widget build(BuildContext context) {
+    final homeRead = context.read<HomeCubit>();
     return AnimatedSlideWidget(
       onHalfEnd: () {
         // start animation
@@ -40,7 +39,7 @@ class _HeaderViewState extends State<HeaderView> {
           children: [
             InkWell(
               onTap: () {
-                widget.onTapHeader(0);
+                homeRead.currentIndexView = (Header.home.index);
               },
               child: const CircleAvatar(
                 backgroundImage: AssetImage(KAsset.profile),
@@ -48,11 +47,10 @@ class _HeaderViewState extends State<HeaderView> {
             ),
             const Gap.h(KSize.s24),
             ...() {
-              final listHeader = KText.listHeader;
+              const listHeader = Header.values;
               return List.generate(
                 listHeader.length,
-                (e) {
-                  final index = e + 1;
+                (index) {
                   final header = Padding(
                     padding: const EdgeInsets.all(8),
                     child: BlocSelector<HomeCubit, HomeState, bool>(
@@ -68,7 +66,7 @@ class _HeaderViewState extends State<HeaderView> {
                           ),
                           duration: KDuration.d100,
                           child: Text(
-                            listHeader[e],
+                            listHeader[index].toString(),
                           ),
                         );
                       },
@@ -76,15 +74,16 @@ class _HeaderViewState extends State<HeaderView> {
                   );
                   return InkWell(
                     onTap: () {
-                      widget.onTapHeader(index);
+                      homeRead.currentIndexView = index;
                     },
-                    child: _showHeader[e]
+                    child: _showHeader[index]
                         ? AnimatedSlideWidget(
                             onHalfEnd: () {
-                              if (index == listHeader.length) {
+                              final newIndex = index + 1;
+                              if (newIndex == listHeader.length) {
                                 return;
                               }
-                              _showHeader[index] = true;
+                              _showHeader[newIndex] = true;
                               setState(() {});
                             },
                             child: header,

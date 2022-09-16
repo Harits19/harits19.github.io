@@ -1,6 +1,5 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:harits_portofolio/ui/base/constans/k_curves.dart';
@@ -14,7 +13,6 @@ import 'package:harits_portofolio/ui/home/views/left_view.dart';
 import 'package:harits_portofolio/ui/home/views/onboarding_view.dart';
 import 'package:harits_portofolio/ui/home/views/right_view.dart';
 import 'package:harits_portofolio/ui/home/views/work_view.dart';
-import 'package:harits_portofolio/ui/widgets/dialog_widget.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 class HomePage extends StatefulWidget {
@@ -36,6 +34,11 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      _itemScrollController.jumpTo(
+        index: homeRead.state.currentIndexView,
+      );
+    });
     _itemPositionListener?.itemPositions.addListener(_positionListener);
   }
 
@@ -75,55 +78,49 @@ class _HomePageState extends State<HomePage> {
     ];
     return Scaffold(
       body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            HeaderView(
-              onTapHeader: (selectedIndex) async {
-                _isScrolling = true;
-                setState(() {});
-                await _itemScrollController.scrollTo(
-                  index: selectedIndex,
-                  duration: _duration,
-                  curve: KCurves.kFastOutSlowIn,
-                );
-                _isScrolling = false;
-                homeRead.currentIndexView = selectedIndex;
-                setState(() {});
-              },
-            ),
-            const Divider(
-              height: 0,
-            ),
-            Expanded(
-              child: Row(
-                children: [
-                  const LeftView(),
-                  Expanded(
-                    flex: 3,
-                    child: ScrollablePositionedList.builder(
-                      itemPositionsListener: _itemPositionListener,
-                      itemCount: _listBody.length,
-                      itemScrollController: _itemScrollController,
-                      itemBuilder: ((context, index) {
-                        return _listBody[index];
-                      }),
-                    ),
-                  ),
-                  const RightView(),
-                ],
+        child: BlocListener<HomeCubit, HomeState>(
+          listener: (context, state) async {
+            final currentIndex = state.currentIndexView;
+            _isScrolling = true;
+            setState(() {});
+            await _itemScrollController.scrollTo(
+              index: currentIndex,
+              duration: _duration,
+              curve: KCurves.kFastOutSlowIn,
+            );
+            _isScrolling = false;
+            setState(() {});
+          },
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              HeaderView(),
+              const Divider(
+                height: 0,
               ),
-            )
-          ],
+              Expanded(
+                child: Row(
+                  children: [
+                    const LeftView(),
+                    Expanded(
+                      flex: 3,
+                      child: ScrollablePositionedList.builder(
+                        itemPositionsListener: _itemPositionListener,
+                        itemCount: _listBody.length,
+                        itemScrollController: _itemScrollController,
+                        itemBuilder: ((context, index) {
+                          return _listBody[index];
+                        }),
+                      ),
+                    ),
+                    const RightView(),
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
-  }
-
-  _showUnderDevelopmentDialog(BuildContext context) async {
-    showDialog(
-        context: context,
-        builder: (BuildContext context) =>
-            DialogWidget(text: "under_development".tr()));
   }
 }

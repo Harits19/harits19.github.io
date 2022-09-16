@@ -25,10 +25,5 @@ class KText {
         "Go",
       ];
 
-  static get listHeader => [
-        "about_me".tr(),
-        "experience".tr(),
-        "work".tr(),
-        "contact".tr(),
-      ];
 }
+
