@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:harits_portofolio/ui/base/constans/k_duration.dart';
 import 'package:harits_portofolio/ui/base/constans/k_asset.dart';
+import 'package:harits_portofolio/ui/base/constans/k_locale.dart';
 import 'package:harits_portofolio/ui/base/constans/k_size.dart';
 import 'package:harits_portofolio/ui/base/cubits/home/home_cubit.dart';
 import 'package:harits_portofolio/ui/base/utils/url_util.dart';
@@ -45,7 +46,7 @@ class _HeaderViewState extends State<HeaderView> {
                 backgroundImage: AssetImage(KAsset.profile),
               ),
             ),
-            const Spacer(),
+            const Gap.h(KSize.s24),
             ...() {
               final listHeader = KText.listHeader;
               return List.generate(
@@ -103,7 +104,29 @@ class _HeaderViewState extends State<HeaderView> {
                 UrlUtil.launchUrl(context, KText.resume);
               },
             ),
-            const Gap.h(8)
+            const Spacer(),
+            () {
+              final currentLocale = EasyLocalization.of(context)?.currentLocale;
+              var localeText = KLocale.id.languageCode.toUpperCase();
+              var updateLocaleTo = KLocale.id;
+              if (currentLocale == KLocale.id) {
+                updateLocaleTo = KLocale.en;
+                localeText = KLocale.en.languageCode.toUpperCase();
+              }
+
+              return IconButton(
+                icon: Text(
+                  localeText,
+                  style: const TextStyle(
+                    color: Colors.blue,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                onPressed: () {
+                  EasyLocalization.of(context)?.setLocale(updateLocaleTo);
+                },
+              );
+            }()
           ],
         ),
       ),

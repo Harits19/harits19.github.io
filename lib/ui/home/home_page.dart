@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -59,21 +61,18 @@ class _HomePageState extends State<HomePage> {
     homeRead.currentIndexView = currentIndex;
   }
 
-  List<Widget> get _listBody {
-    return const [
+  @override
+  Widget build(BuildContext context) {
+    final _listBody = [
       OnboardingView(),
       AboutMeView(),
       ExperienceView(),
       WorkView(),
       ContactView(),
-      SizedBox(
+      const SizedBox(
         height: 1000,
       )
     ];
-  }
-
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: Column(

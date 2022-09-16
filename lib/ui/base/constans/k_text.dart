@@ -25,10 +25,10 @@ class KText {
         "Go",
       ];
 
-  static final listHeader = [
-    "about_me".tr(),
-    "experience".tr(),
-    "work".tr(),
-    "contact".tr(),
-  ];
+  static get listHeader => [
+        "about_me".tr(),
+        "experience".tr(),
+        "work".tr(),
+        "contact".tr(),
+      ];
 }
