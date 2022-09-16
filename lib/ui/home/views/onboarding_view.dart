@@ -13,7 +13,7 @@ class OnboardingView extends StatelessWidget {
   Widget build(BuildContext context) {
     return SectionContainer(
       children: [
-        Gap.v(KSize.s48),
+        const Gap.v(KSize.s48),
         Text(
           tr('my_name_is'),
           style: KTextStyle.subtitle,
@@ -26,12 +26,12 @@ class OnboardingView extends StatelessWidget {
           tr('i_full_stack_dev'),
           style: const TextStyle(fontSize: 48, fontWeight: FontWeight.bold),
         ),
-         Gap.v(KSize.s8),
+        const Gap.v(8),
         Text(
           tr('onboarding_desc'),
           style: KTextStyle.subtitle,
         ),
-         Gap.v(KSize.s24),
+        const Gap.v(24),
         OutlinedButton(
           onPressed: () async {},
           child: Text(tr("get_started")),

@@ -16,10 +16,10 @@ void main() async {
   runApp(
     EasyLocalization(
       supportedLocales: KLocale.supportedLocales,
-      fallbackLocale: KLocale.en.value,
+      fallbackLocale: KLocale.en,
       path: KLocale.translationPath,
       assetLoader: YamlAssetLoader(),
-      startLocale: KLocale.en.value,
+      startLocale: KLocale.en,
       useOnlyLangCode: true,
       child: const MyApp(),
     ),
@@ -56,7 +56,7 @@ class MyApp extends StatelessWidget {
               side: const BorderSide(
                 color: color,
               ),
-              minimumSize:  Size(0, KSize.s48.value),
+              minimumSize: const Size(0, KSize.s48),
             );
           }(),
         ),

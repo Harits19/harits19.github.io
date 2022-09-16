@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
 
-enum KSize {
-  
-  s16(16),
-  s48(48),
-  s4(4),
-  s40(40),
-  s24(24),
-  s8(8),
-  s80(80);
+class KSize {
+  const KSize._();
 
-  const KSize(this.value);
-
-  final double value;
   static const paddingSection = EdgeInsets.symmetric(vertical: 40);
+  static const double s16 = 16;
+  static const double s48 = 48;
+  static const double s4 = 4;
+  static const double s40 = 40;
+  static const double s24 = 24;
+  static const double s8 = 8;
+  static const double s80 = 80;
 }

@@ -22,13 +22,13 @@ class SideContainer extends StatelessWidget {
           verticalDirection:
               reverse ? VerticalDirection.up : VerticalDirection.down,
           children: [
-            Gap.v(KSize.s40),
+            const Gap.v(KSize.s40),
             ...children.map((e) => e),
-            Gap.v(KSize.s16),
+            const Gap.v(KSize.s16),
             () {
-              final circle = Icon(
+              const circle = Icon(
                 Icons.circle,
-                size: KSize.s8.value,
+                size: KSize.s8,
                 color: Colors.grey,
               );
 
@@ -36,7 +36,7 @@ class SideContainer extends StatelessWidget {
                 children: [
                   Positioned.fill(
                     child: Column(
-                      children: [
+                      children: const [
                         circle,
                         Spacer(),
                         circle,
@@ -46,13 +46,13 @@ class SideContainer extends StatelessWidget {
                   Align(
                     alignment: Alignment.center,
                     child: Container(
-                      margin:  EdgeInsets.symmetric(vertical: KSize.s4.value),
+                      margin: const EdgeInsets.symmetric(vertical: KSize.s4),
                       decoration: BoxDecoration(
                         color: Colors.grey.shade300,
-                        borderRadius: BorderRadius.circular(KSize.s4.value),
+                        borderRadius: BorderRadius.circular(KSize.s4),
                       ),
-                      height: KSize.s24.value,
-                      width: KSize.s4.value,
+                      height: KSize.s24,
+                      width: KSize.s4,
                     ),
                   ),
                 ],
@@ -68,10 +68,10 @@ class SideContainer extends StatelessWidget {
                         child: Column(
                           children: [
                             ...List.generate(
-                              constraint.maxHeight ~/ KSize.s24.value ~/ 2,
+                              constraint.maxHeight ~/ KSize.s24 ~/ 2,
                               (index) => index % 2 == 0
                                   ? line
-                                  :  Gap.v(KSize.s24),
+                                  : const Gap.v(KSize.s24),
                             ),
                           ],
                         ),
