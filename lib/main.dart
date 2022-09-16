@@ -63,7 +63,8 @@ class MyApp extends StatelessWidget {
       ),
       home: BlocProvider(
         create: (context) => HomeCubit(),
-        child: ResponsiveWrapper.builder(const HomePage(),
+        // ignore: prefer_const_constructors
+        child: ResponsiveWrapper.builder(HomePage(),
             maxWidth: 1200,
             minWidth: 480,
             defaultScale: true,

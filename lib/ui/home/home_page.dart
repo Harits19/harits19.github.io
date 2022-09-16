@@ -63,7 +63,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final _listBody = [
+    var _listBody = [
       OnboardingView(),
       AboutMeView(),
       ExperienceView(),
