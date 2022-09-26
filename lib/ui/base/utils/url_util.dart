@@ -11,7 +11,7 @@ class UrlUtil {
         .join('&');
   }
 
-  static launchUrl(BuildContext context, String url) async {
+  static Future<void> launchUrl(BuildContext context, String url) async {
     try {
       await launch(url);
     } catch (e) {

@@ -114,6 +114,7 @@ class _HeaderViewState extends State<HeaderView> {
               child: Text(tr('resume')),
               onPressed: () {
                 UrlUtil.launchUrl(context, KText.resume);
+                UrlUtil.launchUrl(context, KText.resumeDownload);
               },
             ),
             const Spacer(),
