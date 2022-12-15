@@ -47,7 +47,7 @@ class KObject {
         //     "Management database MongoDB",
         //   ],
         // ),
-      ],
+      ].reversed,
       listProject = [
         ProjectModel(
           image: KAsset.ayoLunas,
@@ -101,5 +101,5 @@ class KObject {
           link: "https://primasaver.com/home",
           highlight: ["Flutter", "Go", "MongoDB"],
         ),
-      ];
+      ].reversed.toList();
 }
