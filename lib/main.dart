@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    // Test CI CD
+    // Test CI CD 1
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => AppCubit()),
