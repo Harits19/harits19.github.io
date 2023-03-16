@@ -36,7 +36,6 @@ class MyApp extends StatelessWidget {
   // TODO make easylocalization with flutter_bloc
   // TODO make page responsive to mobile
   // TODO update translation file
-  
 
   // This widget is the root of your application.
   @override
