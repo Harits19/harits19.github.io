@@ -29,9 +29,6 @@ jobs:
       - name: Get dependencies
         run: flutter pub get
 
-      - name: Enable Web
-        run: flutter create .
-
       - name: Start Web Release Build
         run: flutter build web --release
      
