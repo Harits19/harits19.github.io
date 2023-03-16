@@ -10,5 +10,6 @@ class KSize {
       s40 = 40,
       s24 = 24,
       s8 = 8,
-      s80 = 80;
+      s80 = 80,
+      mobileView= 848;
 }

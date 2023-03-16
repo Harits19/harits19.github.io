@@ -10,9 +10,9 @@ import 'package:harits_portofolio/ui/home/views/contact_view.dart';
 import 'package:harits_portofolio/ui/home/views/experience_view.dart';
 import 'package:harits_portofolio/ui/home/views/header_view.dart';
 import 'package:harits_portofolio/ui/home/views/left_view.dart';
+import 'package:harits_portofolio/ui/home/views/menu_view.dart';
 import 'package:harits_portofolio/ui/home/views/onboarding_view.dart';
 import 'package:harits_portofolio/ui/home/views/right_view.dart';
-import 'package:harits_portofolio/ui/home/views/work_view.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 class HomePage extends StatefulWidget {
@@ -34,12 +34,12 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      _itemScrollController.jumpTo(
-        index: homeRead.state.currentIndexView,
-      );
-    });
-    _itemPositionListener?.itemPositions.addListener(_positionListener);
+    // WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+    //   _itemScrollController.jumpTo(
+    //     index: homeRead.state.currentIndexView,
+    //   );
+    // });
+    // _itemPositionListener?.itemPositions.addListener(_positionListener);
   }
 
   @override
@@ -70,13 +70,16 @@ class _HomePageState extends State<HomePage> {
       OnboardingView(),
       AboutMeView(),
       ExperienceView(),
-      WorkView(),
+      // WorkView(),
       ContactView(),
       const SizedBox(
         height: 1000,
       )
     ];
     return Scaffold(
+      endDrawer: Drawer(
+        child: MenuView(),
+      ),
       body: SafeArea(
         child: BlocListener<HomeCubit, HomeState>(
           listener: (context, state) async {
@@ -104,14 +107,20 @@ class _HomePageState extends State<HomePage> {
                     const LeftView(),
                     Expanded(
                       flex: 3,
-                      child: ScrollablePositionedList.builder(
-                        itemPositionsListener: _itemPositionListener,
-                        itemCount: _listBody.length,
-                        itemScrollController: _itemScrollController,
-                        itemBuilder: ((context, index) {
-                          return _listBody[index];
-                        }),
-                      ),
+                      child: true
+                          ? SingleChildScrollView(
+                              child: Column(
+                                children: _listBody,
+                              ),
+                            )
+                          : ScrollablePositionedList.builder(
+                              itemPositionsListener: _itemPositionListener,
+                              itemCount: _listBody.length,
+                              itemScrollController: _itemScrollController,
+                              itemBuilder: ((context, index) {
+                                return _listBody[index];
+                              }),
+                            ),
                     ),
                     const RightView(),
                   ],

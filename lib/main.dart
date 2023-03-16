@@ -10,7 +10,6 @@ import 'package:harits_portofolio/ui/base/constans/k_theme.dart';
 import 'package:harits_portofolio/ui/base/cubits/app/app_cubit.dart';
 import 'package:harits_portofolio/ui/base/cubits/home/home_cubit.dart';
 import 'package:harits_portofolio/ui/home/home_page.dart';
-import 'package:responsive_framework/responsive_framework.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -63,18 +62,7 @@ class MyApp extends StatelessWidget {
               elevatedButtonTheme: KTheme.elevatedButtonTheme,
               outlinedButtonTheme: KTheme.outlinedButtonTheme,
             ),
-            home: ResponsiveWrapper.builder(HomePage(),
-                maxWidth: 1200,
-                minWidth: 480,
-                defaultScale: true,
-                breakpoints: [
-                  const ResponsiveBreakpoint.resize(480, name: MOBILE),
-                  const ResponsiveBreakpoint.autoScale(800, name: TABLET),
-                  const ResponsiveBreakpoint.resize(1000, name: DESKTOP),
-                ],
-                background: Container(
-                  color: Colors.blue,
-                )),
+            home: HomePage(),
           );
         },
       ),
