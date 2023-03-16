@@ -15,6 +15,7 @@ import 'package:responsive_framework/responsive_framework.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
+  // deploy 1
 
   runApp(
     EasyLocalization(
