@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:harits_portofolio/ui/base/constans/k_text.dart';
-import 'package:harits_portofolio/ui/base/utils/widget_util.dart';
+import 'package:harits_portofolio/ui/utils/widget_util.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class UrlUtil {

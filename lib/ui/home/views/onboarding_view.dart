@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:harits_portofolio/extensions/num_extension.dart';
 import 'package:harits_portofolio/ui/base/constans/k_enum.dart';
 import 'package:harits_portofolio/ui/base/constans/k_size.dart';
 import 'package:harits_portofolio/ui/base/constans/k_text.dart';
@@ -21,13 +22,19 @@ class OnboardingView extends StatelessWidget {
           tr('my_name_is'),
           style: KTextStyle.subtitle,
         ),
-        const Text(
+        Text(
           KText.abdullahHarits,
-          style: TextStyle(fontSize: 56, fontWeight: FontWeight.w900),
+          style: TextStyle(
+            fontSize: 56.sp(context),
+            fontWeight: FontWeight.w900,
+          ),
         ),
         Text(
           tr('i_full_stack_dev'),
-          style: const TextStyle(fontSize: 48, fontWeight: FontWeight.bold),
+          style: TextStyle(
+            fontSize: 48.sp(context),
+            fontWeight: FontWeight.bold,
+          ),
         ),
         const Gap.v(8),
         Text(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:harits_portofolio/ui/base/utils/url_util.dart';
+import 'package:harits_portofolio/ui/utils/url_util.dart';
 import 'package:harits_portofolio/ui/base/constans/k_text.dart';
 import 'package:harits_portofolio/ui/widgets/side_container.dart';
 

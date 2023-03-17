@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:harits_portofolio/models/project_model.dart';
 import 'package:harits_portofolio/ui/base/constans/k_size.dart';
-import 'package:harits_portofolio/ui/base/utils/url_util.dart';
+import 'package:harits_portofolio/ui/utils/url_util.dart';
 import 'package:harits_portofolio/ui/base/constans/k_object.dart';
 import 'package:harits_portofolio/ui/base/constans/k_textstyle.dart';
 import 'package:harits_portofolio/ui/home/views/section_container.dart';

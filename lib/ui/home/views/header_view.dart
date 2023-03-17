@@ -10,7 +10,7 @@ import 'package:harits_portofolio/ui/base/cubits/home/home_cubit.dart';
 import 'package:harits_portofolio/ui/home/views/menu_view.dart';
 import 'package:harits_portofolio/ui/widgets/animated_slide_widget.dart';
 import 'package:harits_portofolio/ui/widgets/gap.dart';
-import 'package:harits_portofolio/ui/widgets/responsive_widget.dart';
+import 'package:harits_portofolio/ui/utils/responsive_util.dart';
 
 class HeaderView extends StatefulWidget {
   const HeaderView({
@@ -45,7 +45,7 @@ class _HeaderViewState extends State<HeaderView> {
               ),
             ),
             const Gap.h(KSize.s24),
-            if (ResponsiveWidget.isDesktop(context)) const MenuView(),
+            if (ResponsiveUtil.isDesktop(context)) const MenuView(),
             const Spacer(),
             () {
               final currentLocale = EasyLocalization.of(context)?.currentLocale;
@@ -89,7 +89,7 @@ class _HeaderViewState extends State<HeaderView> {
                 );
               },
             ),
-            if (ResponsiveWidget.isMobile(context))
+            if (ResponsiveUtil.isMobile(context))
               IconButton(
                   onPressed: () {
                     Scaffold.of(context).openEndDrawer();

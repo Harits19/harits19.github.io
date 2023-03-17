@@ -7,8 +7,8 @@ import 'package:harits_portofolio/ui/base/constans/k_size.dart';
 import 'package:harits_portofolio/ui/base/constans/k_text.dart';
 import 'package:harits_portofolio/ui/base/cubits/app/app_cubit.dart';
 import 'package:harits_portofolio/ui/base/cubits/home/home_cubit.dart';
-import 'package:harits_portofolio/ui/base/utils/url_util.dart';
-import 'package:harits_portofolio/ui/widgets/responsive_widget.dart';
+import 'package:harits_portofolio/ui/utils/url_util.dart';
+import 'package:harits_portofolio/ui/utils/responsive_util.dart';
 
 class MenuView extends StatelessWidget {
   const MenuView({
@@ -24,7 +24,7 @@ class MenuView extends StatelessWidget {
 
     return Wrap(
       direction:
-          ResponsiveWidget.isMobile(context) ? Axis.vertical : Axis.horizontal,
+          ResponsiveUtil.isMobile(context) ? Axis.vertical : Axis.horizontal,
       alignment: WrapAlignment.center,
       crossAxisAlignment: WrapCrossAlignment.center,
       runAlignment: WrapAlignment.center,
