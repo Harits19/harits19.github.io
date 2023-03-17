@@ -13,6 +13,7 @@ import 'package:harits_portofolio/ui/home/views/left_view.dart';
 import 'package:harits_portofolio/ui/home/views/menu_view.dart';
 import 'package:harits_portofolio/ui/home/views/onboarding_view.dart';
 import 'package:harits_portofolio/ui/home/views/right_view.dart';
+import 'package:harits_portofolio/ui/home/views/work_view.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 class HomePage extends StatefulWidget {
@@ -24,22 +25,15 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final _itemScrollController = ItemScrollController();
-
   final ItemPositionsListener? _itemPositionListener =
       ItemPositionsListener.create();
-  late final homeRead = context.read<HomeCubit>();
-  late final _duration = KDuration.d300;
+
   bool _isScrolling = false;
 
   @override
   void initState() {
     super.initState();
-    // WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-    //   _itemScrollController.jumpTo(
-    //     index: homeRead.state.currentIndexView,
-    //   );
-    // });
-    // _itemPositionListener?.itemPositions.addListener(_positionListener);
+    _itemPositionListener?.itemPositions.addListener(_positionListener);
   }
 
   @override
@@ -49,6 +43,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _positionListener() async {
+    final homeRead = context.read<HomeCubit>();
     final itemPosition = _itemPositionListener?.itemPositions.value;
     if (itemPosition?.isEmpty ?? true) return;
     final item = itemPosition!.reduce((value, element) {
@@ -66,19 +61,24 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    var _listBody = [
+    final _listBody = [
       OnboardingView(),
       AboutMeView(),
       ExperienceView(),
-      // WorkView(),
+      WorkView(),
       ContactView(),
       const SizedBox(
         height: 1000,
       )
     ];
+
     return Scaffold(
       endDrawer: Drawer(
-        child: MenuView(),
+        child: MenuView(
+          onTapMenu: () {
+            Navigator.pop(context);
+          },
+        ),
       ),
       body: SafeArea(
         child: BlocListener<HomeCubit, HomeState>(
@@ -88,7 +88,7 @@ class _HomePageState extends State<HomePage> {
             setState(() {});
             await _itemScrollController.scrollTo(
               index: currentIndex,
-              duration: _duration,
+              duration: KDuration.d300,
               curve: KCurves.kFastOutSlowIn,
             );
             _isScrolling = false;
@@ -107,20 +107,14 @@ class _HomePageState extends State<HomePage> {
                     const LeftView(),
                     Expanded(
                       flex: 3,
-                      child: true
-                          ? SingleChildScrollView(
-                              child: Column(
-                                children: _listBody,
-                              ),
-                            )
-                          : ScrollablePositionedList.builder(
-                              itemPositionsListener: _itemPositionListener,
-                              itemCount: _listBody.length,
-                              itemScrollController: _itemScrollController,
-                              itemBuilder: ((context, index) {
-                                return _listBody[index];
-                              }),
-                            ),
+                      child: ScrollablePositionedList.builder(
+                        itemPositionsListener: _itemPositionListener,
+                        itemCount: _listBody.length,
+                        itemScrollController: _itemScrollController,
+                        itemBuilder: ((context, index) {
+                          return _listBody[index];
+                        }),
+                      ),
                     ),
                     const RightView(),
                   ],

@@ -11,7 +11,12 @@ import 'package:harits_portofolio/ui/base/utils/url_util.dart';
 import 'package:harits_portofolio/ui/widgets/responsive_widget.dart';
 
 class MenuView extends StatelessWidget {
-  const MenuView({super.key});
+  const MenuView({
+    super.key,
+    this.onTapMenu,
+  });
+
+  final VoidCallback? onTapMenu;
 
   @override
   Widget build(BuildContext context) {
@@ -66,6 +71,8 @@ class MenuView extends StatelessWidget {
               return InkWell(
                 onTap: () {
                   homeRead.currentIndexView = index;
+                  if (onTapMenu == null) return;
+                  onTapMenu!();
                 },
                 child: header,
               );
