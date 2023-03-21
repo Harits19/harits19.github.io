@@ -9,19 +9,21 @@ class TextIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return Container(
       padding: const EdgeInsets.symmetric(vertical: 4),
       child: IntrinsicHeight(
         child: Row(
+          mainAxisSize: MainAxisSize.min,
           children: [
             const VerticalDivider(),
-            Flexible(
-                child: Text(
-              text,
-              style: KTextStyle.subtitle.copyWith(
-                color: color,
+            Expanded(
+              child: Text(
+                text,
+                style: KTextStyle.subtitle.copyWith(
+                  color: color,
+                ),
               ),
-            )),
+            ),
           ],
         ),
       ),

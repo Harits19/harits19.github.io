@@ -10,7 +10,8 @@ class KText {
       instagram = "https://instagram.com/abd.harits19",
       github = "https://github.com/Harits19",
       medium = "https://harits-abdullah19.medium.com",
-      googlePlay = 'https://play.google.com/store/apps/developer?id=Abdullah+Harits',
+      googlePlay =
+          'https://play.google.com/store/apps/developer?id=Abdullah+Harits',
       abdullahHarits = 'Abdullah Harits',
       listOfSkill1 = [
         "Flutter",
@@ -18,8 +19,6 @@ class KText {
         "Object Oriented Programming",
         "MongoDB",
         "MySQL",
-      ],
-      listOfSkill2 = [
         "CI/CD",
         "GIT",
         "Functional Programming",

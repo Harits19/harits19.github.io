@@ -1,0 +1,37 @@
+import 'package:flutter/material.dart';
+
+class GridViewView<T> extends StatelessWidget {
+  const GridViewView({
+    super.key,
+    this.list = const [],
+    required this.crossAxisCount,
+    required this.renderItem,
+  });
+
+  final List<T> list;
+  final int crossAxisCount;
+
+  final Widget Function(T item) renderItem;
+
+  @override
+  Widget build(BuildContext context) {
+    final chunks = <Widget>[];
+
+    var len = list.length;
+
+    for (var i = 0; i < len; i += crossAxisCount) {
+      var end = (i + crossAxisCount < len) ? i + crossAxisCount : len;
+      final row = Row(
+        children: [
+          ...list.sublist(i, end).map(
+                (e) => Expanded(child: renderItem(e)),
+              ),
+        ],
+      );
+      chunks.add(row);
+    }
+    return Column(
+      children: chunks,
+    );
+  }
+}
