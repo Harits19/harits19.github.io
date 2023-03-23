@@ -14,6 +14,7 @@ import 'package:harits_portofolio/ui/home/views/menu_view.dart';
 import 'package:harits_portofolio/ui/home/views/onboarding_view.dart';
 import 'package:harits_portofolio/ui/home/views/right_view.dart';
 import 'package:harits_portofolio/ui/home/views/work_view.dart';
+import 'package:harits_portofolio/ui/utils/responsive_util.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 class HomePage extends StatefulWidget {
@@ -104,7 +105,7 @@ class _HomePageState extends State<HomePage> {
               Expanded(
                 child: Row(
                   children: [
-                    const LeftView(),
+                     const LeftView(),
                     Expanded(
                       flex: 3,
                       child: ScrollablePositionedList.builder(

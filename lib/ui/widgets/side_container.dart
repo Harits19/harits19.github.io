@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:harits_portofolio/ui/base/constans/k_size.dart';
+import 'package:harits_portofolio/ui/utils/responsive_util.dart';
 import 'package:harits_portofolio/ui/widgets/animated_initial_widget.dart';
 import 'package:harits_portofolio/ui/widgets/gap.dart';
 
@@ -15,6 +16,11 @@ class SideContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (Rspnsv.isMobile(context)) {
+      return const SizedBox(
+        width: KSize.s32,
+      );
+    }
     return Expanded(
       flex: 1,
       child: AnimatedInitialWidget(

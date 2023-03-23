@@ -11,6 +11,7 @@ class KSize {
       s24 = 24,
       s8 = 8,
       s80 = 80,
+      s32 = 32,
       mobileWidth = 848,
       desktopWidth = 1680.0;
 }

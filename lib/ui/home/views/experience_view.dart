@@ -41,72 +41,63 @@ class _WorkExperience extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: IntrinsicHeight(
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Flexible(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(KSize.s16),
-                    child: Row(
-                      children: [
-                        CircleAvatar(
-                          backgroundColor: Colors.white,
-                          radius: KSize.s48,
-                          child: Image.asset(
-                            item.image,
-                            width: KSize.s48,
-                          ),
-                        ),
-                        const Gap.h(KSize.s16),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              RichText(
-                                text: TextSpan(children: [
-                                  TextSpan(
-                                    text: item.company,
-                                    style: KTextStyle.subtitle.copyWith(
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  TextSpan(
-                                    text: '\n(${item.time})',
-                                    style: KTextStyle.subtitle2
-                                        .copyWith(fontStyle: FontStyle.italic),
-                                  )
-                                ]),
-                              ),
-                              const Gap.v(KSize.s8),
-                              Container(
-                                padding: const EdgeInsets.all(KSize.s4),
-                                color: Colors.blue,
-                                child: Text(
-                                  item.position,
-                                  style: KTextStyle.subtitle.copyWith(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(KSize.s16),
+            child: Row(
+              children: [
+                CircleAvatar(
+                  backgroundColor: Colors.white,
+                  radius: KSize.s48,
+                  child: Image.asset(
+                    item.image,
+                    width: KSize.s48,
                   ),
-                  const Gap.v(16),
-                  ...item.jobDesc.map((e) => TextIcon(e)),
-                ],
-              ),
-            )
-          ],
-        ),
+                ),
+                const Gap.h(KSize.s16),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      RichText(
+                        text: TextSpan(children: [
+                          TextSpan(
+                            text: item.company,
+                            style: KTextStyle.subtitle.copyWith(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          TextSpan(
+                            text: '\n(${item.time})',
+                            style: KTextStyle.subtitle2
+                                .copyWith(fontStyle: FontStyle.italic),
+                          )
+                        ]),
+                      ),
+                      const Gap.v(KSize.s8),
+                      Container(
+                        padding: const EdgeInsets.all(KSize.s4),
+                        color: Colors.blue,
+                        child: Text(
+                          item.position,
+                          style: KTextStyle.subtitle.copyWith(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const Gap.v(16),
+          ...item.jobDesc.map((e) => TextIcon(e)),
+        ],
       ),
     );
   }
