@@ -1,6 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:harits_portofolio/models/menu_model.dart';
 import 'package:harits_portofolio/ui/base/constans/k_asset.dart';
 import 'package:harits_portofolio/ui/base/constans/k_locale.dart';
 import 'package:harits_portofolio/ui/base/constans/k_size.dart';
@@ -20,7 +19,7 @@ class HeaderView extends ConsumerStatefulWidget {
     required this.onTapMenu,
   }) : super(key: key);
 
-  final List<MenuModel> menus;
+  final List<Menus> menus;
   final ValueChanged<int> onTapMenu;
 
   @override

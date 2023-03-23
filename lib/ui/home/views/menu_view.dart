@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:harits_portofolio/models/menu_model.dart';
 import 'package:harits_portofolio/ui/base/constans/k_duration.dart';
 import 'package:harits_portofolio/ui/base/constans/k_size.dart';
 import 'package:harits_portofolio/ui/base/constans/k_text.dart';
 import 'package:harits_portofolio/ui/base/providers/app/app_notifier.dart';
 import 'package:harits_portofolio/ui/base/providers/home/home_notifier.dart';
+import 'package:harits_portofolio/ui/home/home_page.dart';
 import 'package:harits_portofolio/ui/utils/url_util.dart';
 import 'package:harits_portofolio/ui/utils/responsive_util.dart';
 
@@ -18,7 +18,7 @@ class MenuView extends ConsumerWidget {
   });
 
   final ValueChanged<int> onTapMenu;
-  final List<MenuModel> menus;
+  final List<Menus> menus;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

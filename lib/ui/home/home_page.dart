@@ -2,10 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:harits_portofolio/models/menu_model.dart';
-import 'package:harits_portofolio/ui/base/constans/k_size.dart';
 import 'package:harits_portofolio/ui/base/providers/home/home_notifier.dart';
 import 'package:harits_portofolio/ui/home/views/about_me_view.dart';
+import 'package:harits_portofolio/ui/home/views/bottom_view.dart';
 import 'package:harits_portofolio/ui/home/views/contact_view.dart';
 import 'package:harits_portofolio/ui/home/views/experience_view.dart';
 import 'package:harits_portofolio/ui/home/views/header_view.dart';
@@ -15,7 +14,6 @@ import 'package:harits_portofolio/ui/home/views/onboarding_view.dart';
 import 'package:harits_portofolio/ui/home/views/right_view.dart';
 import 'package:harits_portofolio/ui/home/views/work_view.dart';
 import 'package:harits_portofolio/ui/utils/responsive_util.dart';
-import 'package:harits_portofolio/ui/widgets/gap.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 enum Menus {
@@ -23,7 +21,14 @@ enum Menus {
   aboutMe(text: "About Me", view: AboutMeView()),
   experience(text: "Experience", view: ExperienceView()),
   work(text: "Work", view: WorkView()),
-  contact(text: "Contact", view: ContactView());
+  contact(text: "Contact", view: ContactView()),
+  socialMedia(text: "", view: BottomView()),
+  space(
+    text: "",
+    view: SizedBox(
+      height: 1000,
+    ),
+  );
 
   const Menus({
     required this.text,
@@ -32,10 +37,6 @@ enum Menus {
 
   final String text;
   final Widget view;
-
-  MenuModel get menuModel {
-    return MenuModel(text: text, view: view);
-  }
 }
 
 class HomePage extends ConsumerStatefulWidget {
@@ -50,34 +51,14 @@ class _HomePageState extends ConsumerState<HomePage> {
   Widget build(BuildContext context) {
     final homeWatch = ref.watch(homeProvider);
     final homeRead = ref.read(homeProvider.notifier);
-    final _listBody = <MenuModel>[
-      ...Menus.values.map((e) => e.menuModel),
-      if (Rspnsv.isMobile(context))
-        MenuModel(
-          text: "",
-          view: Column(
-            children: [
-              Gap.v(KSize.s32),
-              LeftView.poweredBy,
-              Gap.v(KSize.s8),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: LeftView.items(context),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: RightView.items(context),
-              ),
-              Gap.v(KSize.s32),
-            ],
-          ),
-        ),
-      MenuModel(
-        text: "",
-        view: SizedBox(
-          height: 1000,
-        ),
-      )
+    final _listBody = <Menus>[
+      Menus.home,
+      Menus.aboutMe,
+      Menus.experience,
+      Menus.work,
+      Menus.contact,
+      if (Rspnsv.isMobile(context)) Menus.socialMedia,
+      Menus.space,
     ];
 
     return Scaffold(
