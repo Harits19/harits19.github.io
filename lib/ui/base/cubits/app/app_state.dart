@@ -10,4 +10,10 @@ class AppState {
       themeMode: themeMode ?? this.themeMode,
     );
   }
+
+  bool get isDarkMode {
+    return themeMode == ThemeMode.dark;
+  }
+
+  bool get isLightMode => !isDarkMode;
 }

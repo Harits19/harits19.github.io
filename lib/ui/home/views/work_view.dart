@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:harits_portofolio/models/project_model.dart';
 import 'package:harits_portofolio/ui/base/constans/k_size.dart';
+import 'package:harits_portofolio/ui/base/cubits/app/app_cubit.dart';
 import 'package:harits_portofolio/ui/utils/responsive_util.dart';
 import 'package:harits_portofolio/ui/utils/url_util.dart';
 import 'package:harits_portofolio/ui/base/constans/k_object.dart';
@@ -10,11 +12,11 @@ import 'package:harits_portofolio/ui/home/views/section_container.dart';
 import 'package:harits_portofolio/ui/widgets/gap.dart';
 import 'package:easy_localization/easy_localization.dart';
 
-class WorkView extends StatelessWidget {
+class WorkView extends ConsumerWidget {
   const WorkView({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ref) {
     return SectionContainer(
       titleText: "work".tr(),
       children: [
@@ -60,7 +62,10 @@ class WorkView extends StatelessWidget {
                       child: _ImageWorkWidget(project: project),
                     ),
                     Container(
-                      color: Colors.black.withOpacity(0.7),
+                      color: (ref.watch(appProvider).isDarkMode
+                              ? Colors.black
+                              : Colors.white)
+                          .withOpacity(0.7),
                       padding: const EdgeInsets.all(KSize.s16),
                       constraints: const BoxConstraints(
                         minHeight: 240,

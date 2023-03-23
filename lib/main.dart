@@ -4,6 +4,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:easy_localization_loader/easy_localization_loader.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:harits_portofolio/ui/base/constans/k_locale.dart';
 import 'package:harits_portofolio/ui/base/constans/k_text.dart';
 import 'package:harits_portofolio/ui/base/constans/k_theme.dart';
@@ -24,12 +25,14 @@ void main() async {
       assetLoader: YamlAssetLoader(),
       startLocale: KLocale.en,
       useOnlyLangCode: true,
-      child: const MyApp(),
+      child: ProviderScope(
+        child: const MyApp(),
+      ),
     ),
   );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerWidget {
   const MyApp({Key? key}) : super(key: key);
 
   // TODO make easylocalization with flutter_bloc
@@ -39,33 +42,28 @@ class MyApp extends StatelessWidget {
 
   // This widget is the root of your application.
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ref) {
     // Test CI CD 1
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => AppCubit()),
         BlocProvider(create: (context) => HomeCubit()),
       ],
-      child: BlocBuilder<AppCubit, AppState>(
-        builder: (context, state) {
-          return MaterialApp(
-            title: KText.abdullahHarits,
-            debugShowCheckedModeBanner: false,
-            localizationsDelegates: context.localizationDelegates,
-            supportedLocales: context.supportedLocales,
-            locale: context.locale,
-            themeMode: state.themeMode,
-            darkTheme: ThemeData.dark().copyWith(
-              elevatedButtonTheme: KTheme.elevatedButtonTheme,
-              outlinedButtonTheme: KTheme.outlinedButtonTheme,
-            ),
-            theme: ThemeData(
-              elevatedButtonTheme: KTheme.elevatedButtonTheme,
-              outlinedButtonTheme: KTheme.outlinedButtonTheme,
-            ),
-            home: HomePage(),
-          );
-        },
+      child: MaterialApp(
+        title: KText.abdullahHarits,
+        debugShowCheckedModeBanner: false,
+        localizationsDelegates: context.localizationDelegates,
+        supportedLocales: context.supportedLocales,
+        locale: context.locale,
+        themeMode: ref.watch(appProvider).themeMode,
+        darkTheme: ThemeData.dark().copyWith(
+          elevatedButtonTheme: KTheme.elevatedButtonTheme,
+          outlinedButtonTheme: KTheme.outlinedButtonTheme,
+        ),
+        theme: ThemeData(
+          elevatedButtonTheme: KTheme.elevatedButtonTheme,
+          outlinedButtonTheme: KTheme.outlinedButtonTheme,
+        ),
+        home: HomePage(),
       ),
     );
   }

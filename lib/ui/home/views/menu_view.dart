@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:harits_portofolio/ui/base/constans/k_duration.dart';
 import 'package:harits_portofolio/ui/base/constans/k_enum.dart';
 import 'package:harits_portofolio/ui/base/constans/k_size.dart';
@@ -10,7 +11,7 @@ import 'package:harits_portofolio/ui/base/cubits/home/home_cubit.dart';
 import 'package:harits_portofolio/ui/utils/url_util.dart';
 import 'package:harits_portofolio/ui/utils/responsive_util.dart';
 
-class MenuView extends StatelessWidget {
+class MenuView extends ConsumerWidget {
   const MenuView({
     super.key,
     this.onTapMenu,
@@ -19,8 +20,9 @@ class MenuView extends StatelessWidget {
   final VoidCallback? onTapMenu;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final homeRead = context.read<HomeCubit>();
+    final app = ref.watch(appProvider);
 
     return Wrap(
       direction:
@@ -42,28 +44,24 @@ class MenuView extends StatelessWidget {
                     return state.currentIndexView == index;
                   },
                   builder: (context, isActive) {
-                    return BlocBuilder<AppCubit, AppState>(
-                      builder: (context, state) {
-                        return AnimatedDefaultTextStyle(
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: isActive ? FontWeight.bold : null,
-                            color: () {
-                              if (isActive) {
-                                return Colors.blue;
-                              }
-                              if (state.themeMode == ThemeMode.dark) {
-                                return Colors.white;
-                              }
-                              return Colors.black;
-                            }(),
-                          ),
-                          duration: KDuration.d100,
-                          child: Text(
-                            listHeader[index].toString(),
-                          ),
-                        );
-                      },
+                    return AnimatedDefaultTextStyle(
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: isActive ? FontWeight.bold : null,
+                        color: () {
+                          if (isActive) {
+                            return Colors.blue;
+                          }
+                          if (app.themeMode == ThemeMode.dark) {
+                            return Colors.white;
+                          }
+                          return Colors.black;
+                        }(),
+                      ),
+                      duration: KDuration.d100,
+                      child: Text(
+                        listHeader[index].toString(),
+                      ),
                     );
                   },
                 ),

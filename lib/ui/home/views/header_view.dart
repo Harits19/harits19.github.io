@@ -11,17 +11,18 @@ import 'package:harits_portofolio/ui/home/views/menu_view.dart';
 import 'package:harits_portofolio/ui/widgets/animated_slide_widget.dart';
 import 'package:harits_portofolio/ui/widgets/gap.dart';
 import 'package:harits_portofolio/ui/utils/responsive_util.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class HeaderView extends StatefulWidget {
+class HeaderView extends ConsumerStatefulWidget {
   const HeaderView({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<HeaderView> createState() => _HeaderViewState();
+  ConsumerState<HeaderView> createState() => _HeaderViewState();
 }
 
-class _HeaderViewState extends State<HeaderView> {
+class _HeaderViewState extends ConsumerState<HeaderView> {
   @override
   Widget build(BuildContext context) {
     final homeRead = context.read<HomeCubit>();
@@ -69,25 +70,19 @@ class _HeaderViewState extends State<HeaderView> {
                 },
               );
             }(),
-            BlocSelector<AppCubit, AppState, ThemeMode>(
-              selector: (state) {
-                return state.themeMode;
-              },
-              builder: (context, themeMode) {
-                return IconButton(
-                  onPressed: context.read<AppCubit>().toggleTheme,
-                  icon: Icon(
-                    () {
-                      if (themeMode == ThemeMode.dark) {
-                        return Icons.light_mode;
-                      }
-                      if (themeMode == ThemeMode.light) {
-                        return Icons.dark_mode;
-                      }
-                    }(),
-                  ),
-                );
-              },
+            IconButton(
+              onPressed: ref.read(appProvider.notifier).toggleTheme,
+              icon: Icon(
+                () {
+                  final themeMode = ref.watch(appProvider).themeMode;
+                  if (themeMode == ThemeMode.dark) {
+                    return Icons.light_mode;
+                  }
+                  if (themeMode == ThemeMode.light) {
+                    return Icons.dark_mode;
+                  }
+                }(),
+              ),
             ),
             if (ResponsiveUtil.isMobile(context))
               IconButton(
