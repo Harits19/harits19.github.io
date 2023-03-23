@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:harits_portofolio/ui/base/constans/k_curves.dart';
 import 'package:harits_portofolio/ui/base/constans/k_duration.dart';
+import 'package:harits_portofolio/ui/base/constans/k_size.dart';
 import 'package:harits_portofolio/ui/base/cubits/home/home_cubit.dart';
 import 'package:harits_portofolio/ui/home/views/about_me_view.dart';
 import 'package:harits_portofolio/ui/home/views/contact_view.dart';
@@ -14,7 +15,7 @@ import 'package:harits_portofolio/ui/home/views/menu_view.dart';
 import 'package:harits_portofolio/ui/home/views/onboarding_view.dart';
 import 'package:harits_portofolio/ui/home/views/right_view.dart';
 import 'package:harits_portofolio/ui/home/views/work_view.dart';
-import 'package:harits_portofolio/ui/utils/responsive_util.dart';
+import 'package:harits_portofolio/ui/widgets/gap.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 class HomePage extends StatefulWidget {
@@ -68,8 +69,21 @@ class _HomePageState extends State<HomePage> {
       ExperienceView(),
       WorkView(),
       ContactView(),
-      const SizedBox(
-        height: 1000,
+      Column(
+        children: [
+          Gap.v(KSize.s32),
+          LeftView.poweredBy,
+          Gap.v(KSize.s8),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: LeftView.items(context),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: RightView.items(context),
+          ),
+          Gap.v(KSize.s32),
+        ],
       )
     ];
 
@@ -105,7 +119,7 @@ class _HomePageState extends State<HomePage> {
               Expanded(
                 child: Row(
                   children: [
-                     const LeftView(),
+                    const LeftView(),
                     Expanded(
                       flex: 3,
                       child: ScrollablePositionedList.builder(

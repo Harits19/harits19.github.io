@@ -1,9 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:harits_portofolio/models/experience_model.dart';
 import 'package:harits_portofolio/ui/base/constans/k_object.dart';
 import 'package:harits_portofolio/ui/base/constans/k_size.dart';
 import 'package:harits_portofolio/ui/base/constans/k_textstyle.dart';
+import 'package:harits_portofolio/ui/base/cubits/app/app_cubit.dart';
 import 'package:harits_portofolio/ui/home/views/section_container.dart';
 import 'package:harits_portofolio/ui/widgets/gap.dart';
 import 'package:harits_portofolio/ui/widgets/text_icon.dart';
@@ -30,7 +32,7 @@ class _ExperienceViewState extends State<ExperienceView> {
   }
 }
 
-class _WorkExperience extends StatelessWidget {
+class _WorkExperience extends ConsumerWidget {
   const _WorkExperience({
     required this.item,
   });
@@ -38,7 +40,7 @@ class _WorkExperience extends StatelessWidget {
   final ExperienceModel item;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ref) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
@@ -63,19 +65,26 @@ class _WorkExperience extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       RichText(
-                        text: TextSpan(children: [
-                          TextSpan(
-                            text: item.company,
-                            style: KTextStyle.subtitle.copyWith(
-                              fontWeight: FontWeight.bold,
-                            ),
+                        text: TextSpan(
+                          style: TextStyle(
+                            color: ref.watch(appProvider).isDarkMode
+                                ? Colors.white
+                                : Colors.black,
                           ),
-                          TextSpan(
-                            text: '\n(${item.time})',
-                            style: KTextStyle.subtitle2
-                                .copyWith(fontStyle: FontStyle.italic),
-                          )
-                        ]),
+                          children: [
+                            TextSpan(
+                              text: item.company,
+                              style: KTextStyle.subtitle.copyWith(
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            TextSpan(
+                              text: '\n(${item.time})',
+                              style: KTextStyle.subtitle2
+                                  .copyWith(fontStyle: FontStyle.italic),
+                            )
+                          ],
+                        ),
                       ),
                       const Gap.v(KSize.s8),
                       Container(
