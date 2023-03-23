@@ -5,6 +5,7 @@ import 'package:harits_portofolio/ui/base/constans/k_asset.dart';
 import 'package:harits_portofolio/ui/base/constans/k_locale.dart';
 import 'package:harits_portofolio/ui/base/constans/k_size.dart';
 import 'package:harits_portofolio/ui/base/providers/app/app_notifier.dart';
+import 'package:harits_portofolio/ui/base/providers/home/home_notifier.dart';
 import 'package:harits_portofolio/ui/home/views/menu_view.dart';
 import 'package:harits_portofolio/ui/widgets/animated_slide_widget.dart';
 import 'package:harits_portofolio/ui/widgets/gap.dart';
@@ -16,12 +17,10 @@ class HeaderView extends ConsumerStatefulWidget {
     Key? key,
     this.menus = const [],
     required this.onTapMenu,
-    required this.activeMenuIndex,
   }) : super(key: key);
 
   final List<MenuModel> menus;
   final ValueChanged<int> onTapMenu;
-  final int activeMenuIndex;
 
   @override
   ConsumerState<HeaderView> createState() => _HeaderViewState();
@@ -30,20 +29,16 @@ class HeaderView extends ConsumerStatefulWidget {
 class _HeaderViewState extends ConsumerState<HeaderView> {
   @override
   Widget build(BuildContext context) {
-    // final homeRead = ref.read(homeProvider.notifier);
-
     return AnimatedSlideWidget(
-      onHalfEnd: () {
-        // start animation
-        // _showHeader[0] = true;
-        // setState(() {});
-      },
+      onHalfEnd: () {},
       child: Container(
         padding: const EdgeInsets.all(KSize.s16),
         child: Row(
           children: [
             InkWell(
-              onTap: () {},
+              onTap: () {
+                ref.read(homeProvider.notifier).scroll(0);
+              },
               child: const CircleAvatar(
                 backgroundImage: AssetImage(KAsset.profile),
               ),
@@ -51,7 +46,6 @@ class _HeaderViewState extends ConsumerState<HeaderView> {
             const Gap.h(KSize.s24),
             if (ResponsiveUtil.isDesktop(context))
               MenuView(
-                activeMenuIndex: widget.activeMenuIndex,
                 menus: widget.menus,
                 onTapMenu: widget.onTapMenu,
               ),

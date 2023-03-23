@@ -3,9 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:harits_portofolio/models/menu_model.dart';
-import 'package:harits_portofolio/ui/base/constans/k_curves.dart';
-import 'package:harits_portofolio/ui/base/constans/k_duration.dart';
 import 'package:harits_portofolio/ui/base/constans/k_size.dart';
+import 'package:harits_portofolio/ui/base/providers/home/home_notifier.dart';
 import 'package:harits_portofolio/ui/home/views/about_me_view.dart';
 import 'package:harits_portofolio/ui/home/views/contact_view.dart';
 import 'package:harits_portofolio/ui/home/views/experience_view.dart';
@@ -27,53 +26,10 @@ class HomePage extends ConsumerStatefulWidget {
 }
 
 class _HomePageState extends ConsumerState<HomePage> {
-  final _itemScrollController = ItemScrollController();
-  final ItemPositionsListener? _itemPositionListener =
-      ItemPositionsListener.create();
-
-  int activeMenuIndex = 0;
-  bool _isScrolling = false;
-
-  @override
-  void initState() {
-    super.initState();
-    _itemPositionListener?.itemPositions.addListener(_positionListener);
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    _itemPositionListener?.itemPositions.removeListener(_positionListener);
-  }
-
-  void _positionListener() async {
-    if (_isScrolling) return;
-    final itemPosition = _itemPositionListener?.itemPositions.value;
-    if (itemPosition?.isEmpty ?? true) return;
-    final item = itemPosition!.reduce((value, element) {
-      if (value.itemLeadingEdge < element.itemLeadingEdge) {
-        return value;
-      }
-      return element;
-    });
-    activeMenuIndex = item.index;
-    setState(() {});
-  }
-
-  void scroll(index) async {
-    _isScrolling = true;
-    setState(() {});
-    await _itemScrollController.scrollTo(
-      index: index,
-      duration: KDuration.d300,
-      curve: KCurves.kFastOutSlowIn,
-    );
-    _isScrolling = false;
-    setState(() {});
-  }
-
   @override
   Widget build(BuildContext context) {
+    final homeWatch = ref.watch(homeProvider);
+    final homeRead = ref.read(homeProvider.notifier);
     final _listBody = <MenuModel>[
       MenuModel(text: "Home", view: OnboardingView()),
       MenuModel(text: "About Me", view: AboutMeView()),
@@ -112,9 +68,8 @@ class _HomePageState extends ConsumerState<HomePage> {
       endDrawer: Drawer(
         child: MenuView(
           menus: _listBody,
-          activeMenuIndex: activeMenuIndex,
           onTapMenu: (value) {
-            scroll(value);
+            homeRead.scroll(value);
             Navigator.pop(context);
           },
         ),
@@ -124,9 +79,8 @@ class _HomePageState extends ConsumerState<HomePage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             HeaderView(
-              activeMenuIndex: activeMenuIndex,
               menus: _listBody,
-              onTapMenu: scroll,
+              onTapMenu: homeRead.scroll,
             ),
             const Divider(
               height: 0,
@@ -138,9 +92,9 @@ class _HomePageState extends ConsumerState<HomePage> {
                   Expanded(
                     flex: 3,
                     child: ScrollablePositionedList.builder(
-                      itemPositionsListener: _itemPositionListener,
+                      itemPositionsListener: homeWatch.positionsListener,
                       itemCount: _listBody.length,
-                      itemScrollController: _itemScrollController,
+                      itemScrollController: homeWatch.controller,
                       itemBuilder: ((context, index) {
                         return _listBody[index].view;
                       }),

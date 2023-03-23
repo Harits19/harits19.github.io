@@ -5,6 +5,7 @@ import 'package:harits_portofolio/extensions/num_extension.dart';
 import 'package:harits_portofolio/ui/base/constans/k_size.dart';
 import 'package:harits_portofolio/ui/base/constans/k_text.dart';
 import 'package:harits_portofolio/ui/base/constans/k_textstyle.dart';
+import 'package:harits_portofolio/ui/base/providers/home/home_notifier.dart';
 import 'package:harits_portofolio/ui/home/views/section_container.dart';
 import 'package:harits_portofolio/ui/widgets/gap.dart';
 
@@ -42,7 +43,7 @@ class OnboardingView extends ConsumerWidget {
         const Gap.v(24),
         OutlinedButton(
           onPressed: () async {
-        
+            ref.read(homeProvider.notifier).scroll(0);
           },
           child: Text(tr("get_started")),
         ),

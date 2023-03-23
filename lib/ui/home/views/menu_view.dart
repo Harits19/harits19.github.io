@@ -6,6 +6,7 @@ import 'package:harits_portofolio/ui/base/constans/k_duration.dart';
 import 'package:harits_portofolio/ui/base/constans/k_size.dart';
 import 'package:harits_portofolio/ui/base/constans/k_text.dart';
 import 'package:harits_portofolio/ui/base/providers/app/app_notifier.dart';
+import 'package:harits_portofolio/ui/base/providers/home/home_notifier.dart';
 import 'package:harits_portofolio/ui/utils/url_util.dart';
 import 'package:harits_portofolio/ui/utils/responsive_util.dart';
 
@@ -14,12 +15,10 @@ class MenuView extends ConsumerWidget {
     super.key,
     required this.onTapMenu,
     required this.menus,
-    required this.activeMenuIndex,
   });
 
   final ValueChanged<int> onTapMenu;
   final List<MenuModel> menus;
-  final int activeMenuIndex;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -38,7 +37,7 @@ class MenuView extends ConsumerWidget {
           return List.generate(
             listHeader.length,
             (index) {
-              final isActive = activeMenuIndex == index;
+              final isActive = ref.watch(homeProvider).activeMenuIndex == index;
               final headerText = listHeader[index].toString();
               if (headerText.isEmpty) return const SizedBox();
               final header = Padding(
