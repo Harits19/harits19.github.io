@@ -1,27 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:harits_portofolio/models/menu_model.dart';
 import 'package:harits_portofolio/ui/base/constans/k_duration.dart';
-import 'package:harits_portofolio/ui/base/constans/k_enum.dart';
 import 'package:harits_portofolio/ui/base/constans/k_size.dart';
 import 'package:harits_portofolio/ui/base/constans/k_text.dart';
-import 'package:harits_portofolio/ui/base/cubits/app/app_cubit.dart';
-import 'package:harits_portofolio/ui/base/cubits/home/home_cubit.dart';
+import 'package:harits_portofolio/ui/base/providers/app/app_notifier.dart';
 import 'package:harits_portofolio/ui/utils/url_util.dart';
 import 'package:harits_portofolio/ui/utils/responsive_util.dart';
 
 class MenuView extends ConsumerWidget {
   const MenuView({
     super.key,
-    this.onTapMenu,
+    required this.onTapMenu,
+    required this.menus,
+    required this.activeMenuIndex,
   });
 
-  final VoidCallback? onTapMenu;
+  final ValueChanged<int> onTapMenu;
+  final List<MenuModel> menus;
+  final int activeMenuIndex;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final homeRead = context.read<HomeCubit>();
     final app = ref.watch(appProvider);
 
     return Wrap(
@@ -33,44 +34,38 @@ class MenuView extends ConsumerWidget {
       spacing: KSize.s16,
       children: [
         ...() {
-          const listHeader = Header.values;
+          final listHeader = menus.map((e) => e.text).toList();
           return List.generate(
             listHeader.length,
             (index) {
+              final isActive = activeMenuIndex == index;
+              final headerText = listHeader[index].toString();
+              if (headerText.isEmpty) return const SizedBox();
               final header = Padding(
                 padding: const EdgeInsets.all(8),
-                child: BlocSelector<HomeCubit, HomeState, bool>(
-                  selector: (state) {
-                    return state.currentIndexView == index;
-                  },
-                  builder: (context, isActive) {
-                    return AnimatedDefaultTextStyle(
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: isActive ? FontWeight.bold : null,
-                        color: () {
-                          if (isActive) {
-                            return Colors.blue;
-                          }
-                          if (app.themeMode == ThemeMode.dark) {
-                            return Colors.white;
-                          }
-                          return Colors.black;
-                        }(),
-                      ),
-                      duration: KDuration.d100,
-                      child: Text(
-                        listHeader[index].toString(),
-                      ),
-                    );
-                  },
+                child: AnimatedDefaultTextStyle(
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: isActive ? FontWeight.bold : null,
+                    color: () {
+                      if (isActive) {
+                        return Colors.blue;
+                      }
+                      if (app.themeMode == ThemeMode.dark) {
+                        return Colors.white;
+                      }
+                      return Colors.black;
+                    }(),
+                  ),
+                  duration: KDuration.d100,
+                  child: Text(
+                    headerText,
+                  ),
                 ),
               );
               return InkWell(
                 onTap: () {
-                  homeRead.currentIndexView = index;
-                  if (onTapMenu == null) return;
-                  onTapMenu!();
+                  onTapMenu(index);
                 },
                 child: header,
               );

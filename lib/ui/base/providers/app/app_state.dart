@@ -1,4 +1,4 @@
-part of 'app_cubit.dart';
+part of 'app_notifier.dart';
 
 class AppState {
   final ThemeMode themeMode;

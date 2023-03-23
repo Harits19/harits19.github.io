@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:harits_portofolio/models/project_model.dart';
 import 'package:harits_portofolio/ui/base/constans/k_size.dart';
-import 'package:harits_portofolio/ui/base/cubits/app/app_cubit.dart';
+import 'package:harits_portofolio/ui/base/providers/app/app_notifier.dart';
 import 'package:harits_portofolio/ui/utils/responsive_util.dart';
 import 'package:harits_portofolio/ui/utils/url_util.dart';
 import 'package:harits_portofolio/ui/base/constans/k_object.dart';
@@ -116,7 +116,11 @@ class WorkView extends ConsumerWidget {
                 children: [
                   Positioned(
                     right: isReverse ? 0 : null,
-                    child: SizedBox(child: _ImageWorkWidget(project: project)),
+                    child: SizedBox(
+                      width: 360,
+                      height: 240,
+                      child: _ImageWorkWidget(project: project),
+                    ),
                   ),
                   Positioned(
                     right: isReverse ? null : 0,

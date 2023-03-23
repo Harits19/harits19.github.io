@@ -33,7 +33,6 @@ dependencies:
   easy_localization_loader: ^1.0.0
   flutter:
     sdk: flutter
-  flutter_bloc: ^8.1.1
   fluttericon: ^2.0.0
   google_fonts: ^2.1.0
   responsive_framework: ^0.1.5

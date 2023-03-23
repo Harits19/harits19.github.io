@@ -5,7 +5,7 @@ import 'package:harits_portofolio/models/experience_model.dart';
 import 'package:harits_portofolio/ui/base/constans/k_object.dart';
 import 'package:harits_portofolio/ui/base/constans/k_size.dart';
 import 'package:harits_portofolio/ui/base/constans/k_textstyle.dart';
-import 'package:harits_portofolio/ui/base/cubits/app/app_cubit.dart';
+import 'package:harits_portofolio/ui/base/providers/app/app_notifier.dart';
 import 'package:harits_portofolio/ui/home/views/section_container.dart';
 import 'package:harits_portofolio/ui/widgets/gap.dart';
 import 'package:harits_portofolio/ui/widgets/text_icon.dart';

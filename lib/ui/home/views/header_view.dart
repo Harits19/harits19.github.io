@@ -1,12 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:harits_portofolio/models/menu_model.dart';
 import 'package:harits_portofolio/ui/base/constans/k_asset.dart';
-import 'package:harits_portofolio/ui/base/constans/k_enum.dart';
 import 'package:harits_portofolio/ui/base/constans/k_locale.dart';
 import 'package:harits_portofolio/ui/base/constans/k_size.dart';
-import 'package:harits_portofolio/ui/base/cubits/app/app_cubit.dart';
-import 'package:harits_portofolio/ui/base/cubits/home/home_cubit.dart';
+import 'package:harits_portofolio/ui/base/providers/app/app_notifier.dart';
 import 'package:harits_portofolio/ui/home/views/menu_view.dart';
 import 'package:harits_portofolio/ui/widgets/animated_slide_widget.dart';
 import 'package:harits_portofolio/ui/widgets/gap.dart';
@@ -16,7 +14,14 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class HeaderView extends ConsumerStatefulWidget {
   const HeaderView({
     Key? key,
+    this.menus = const [],
+    required this.onTapMenu,
+    required this.activeMenuIndex,
   }) : super(key: key);
+
+  final List<MenuModel> menus;
+  final ValueChanged<int> onTapMenu;
+  final int activeMenuIndex;
 
   @override
   ConsumerState<HeaderView> createState() => _HeaderViewState();
@@ -25,7 +30,7 @@ class HeaderView extends ConsumerStatefulWidget {
 class _HeaderViewState extends ConsumerState<HeaderView> {
   @override
   Widget build(BuildContext context) {
-    final homeRead = context.read<HomeCubit>();
+    // final homeRead = ref.read(homeProvider.notifier);
 
     return AnimatedSlideWidget(
       onHalfEnd: () {
@@ -38,15 +43,18 @@ class _HeaderViewState extends ConsumerState<HeaderView> {
         child: Row(
           children: [
             InkWell(
-              onTap: () {
-                homeRead.currentIndexView = (Header.home.index);
-              },
+              onTap: () {},
               child: const CircleAvatar(
                 backgroundImage: AssetImage(KAsset.profile),
               ),
             ),
             const Gap.h(KSize.s24),
-            if (ResponsiveUtil.isDesktop(context)) const MenuView(),
+            if (ResponsiveUtil.isDesktop(context))
+              MenuView(
+                activeMenuIndex: widget.activeMenuIndex,
+                menus: widget.menus,
+                onTapMenu: widget.onTapMenu,
+              ),
             const Spacer(),
             () {
               final currentLocale = EasyLocalization.of(context)?.currentLocale;
