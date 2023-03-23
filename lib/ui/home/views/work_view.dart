@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:harits_portofolio/models/project_model.dart';
 import 'package:harits_portofolio/ui/base/constans/k_size.dart';
+import 'package:harits_portofolio/ui/utils/responsive_util.dart';
 import 'package:harits_portofolio/ui/utils/url_util.dart';
 import 'package:harits_portofolio/ui/base/constans/k_object.dart';
 import 'package:harits_portofolio/ui/base/constans/k_textstyle.dart';
@@ -21,6 +23,86 @@ class WorkView extends StatelessWidget {
           (index) {
             final isReverse = (index % 2) != 0;
             final project = KObject.listProject[index];
+
+            final projectName = Text(
+              project.name,
+              style: KTextStyle.title.copyWith(
+                fontSize: Rspnsv.isMobile(context) ? KSize.s24 : null,
+              ),
+            );
+
+            final projectDescription = Text(
+              project.description,
+              textAlign: Rspnsv.isMobile(context)
+                  ? null
+                  : isReverse
+                      ? null
+                      : TextAlign.right,
+              style: KTextStyle.subtitle,
+              overflow: TextOverflow.ellipsis,
+              maxLines: 4,
+            );
+
+            final seeDetail = InkWell(
+              onTap: () => _showDetailWork(context, project),
+              child: Text(
+                "see_detail".tr(),
+                style: KTextStyle.subtitle.copyWith(color: Colors.blue),
+              ),
+            );
+
+            if (Rspnsv.isMobile(context)) {
+              return Padding(
+                padding: const EdgeInsets.only(bottom: KSize.s16),
+                child: Stack(
+                  children: [
+                    Positioned.fill(
+                      child: _ImageWorkWidget(project: project),
+                    ),
+                    Container(
+                      color: Colors.black.withOpacity(0.7),
+                      padding: const EdgeInsets.all(KSize.s16),
+                      constraints: const BoxConstraints(
+                        minHeight: 240,
+                        minWidth: double.infinity,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          projectName,
+                          const Gap.v(KSize.s32),
+                          projectDescription,
+                          seeDetail,
+                          const Gap.v(KSize.s24),
+                          _HighlightWidget(highlight: project.highlight),
+                          const Gap.v(KSize.s16),
+                          Row(
+                            children: [
+                              IconButton(
+                                onPressed: () {
+                                  UrlUtil.launchUrl(context, project.link);
+                                },
+                                icon: const Icon(
+                                  FontAwesome5.external_link_alt,
+                                  size: KSize.s16,
+                                ),
+                              ),
+                              IconButton(
+                                onPressed: () {},
+                                icon: const Icon(
+                                  FontAwesome5.github,
+                                  size: KSize.s16,
+                                ),
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              );
+            }
             return Container(
               margin: const EdgeInsets.symmetric(vertical: 32),
               width: double.infinity,
@@ -29,7 +111,7 @@ class WorkView extends StatelessWidget {
                 children: [
                   Positioned(
                     right: isReverse ? 0 : null,
-                    child: _ImageWorkWidget(project: project),
+                    child: SizedBox(child: _ImageWorkWidget(project: project)),
                   ),
                   Positioned(
                     right: isReverse ? null : 0,
@@ -42,10 +124,7 @@ class WorkView extends StatelessWidget {
                             ? CrossAxisAlignment.start
                             : CrossAxisAlignment.end,
                         children: [
-                          Text(
-                            project.name,
-                            style: KTextStyle.title,
-                          ),
+                          projectName,
                           const Gap.v(KSize.s8),
                           _HighlightWidget(highlight: project.highlight),
                           const Gap.v(16),
@@ -58,24 +137,9 @@ class WorkView extends StatelessWidget {
                                       ? CrossAxisAlignment.end
                                       : CrossAxisAlignment.start,
                                   children: [
-                                    Text(
-                                      project.description,
-                                      textAlign:
-                                          isReverse ? null : TextAlign.right,
-                                      style: KTextStyle.subtitle,
-                                      overflow: TextOverflow.ellipsis,
-                                      maxLines: 4,
-                                    ),
+                                    projectDescription,
                                     const Gap.v(8),
-                                    InkWell(
-                                      onTap: () =>
-                                          _showDetailWork(context, project),
-                                      child: Text(
-                                        "see_detail".tr(),
-                                        style: KTextStyle.subtitle
-                                            .copyWith(color: Colors.blue),
-                                      ),
-                                    ),
+                                    seeDetail,
                                   ],
                                 ),
                               ),
@@ -114,33 +178,43 @@ class WorkView extends StatelessWidget {
                   },
                 ),
                 const Spacer(),
-                IntrinsicHeight(
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Expanded(child: _ImageWorkWidget(project: item)),
-                      const VerticalDivider(),
-                      Expanded(
-                        flex: 2,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              item.name,
-                              style: KTextStyle.title,
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.all(KSize.s4),
+                          width: KSize.s48,
+                          height: KSize.s48,
+                          decoration: const BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(
+                                KSize.s48 / 2,
+                              ),
                             ),
-                            const Gap.v(KSize.s8),
-                            _HighlightWidget(highlight: item.highlight),
-                            const Gap.v(KSize.s16),
-                            Text(
-                              item.description,
-                              style: KTextStyle.subtitle,
-                            )
-                          ],
+                          ),
+                          child: Image.asset(
+                            item.image,
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
+                        const Gap.h(KSize.s16),
+                        Text(
+                          item.name,
+                          style: KTextStyle.title.copyWith(
+                            fontSize:
+                                Rspnsv.isMobile(context) ? KSize.s24 : null,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const Gap.v(KSize.s16),
+                    Text(
+                      item.description,
+                      style: KTextStyle.subtitle,
+                    )
+                  ],
                 ),
                 const Spacer(),
               ],
@@ -190,8 +264,6 @@ class _ImageWorkWidget extends StatelessWidget {
     return Material(
       color: Colors.white,
       child: Ink(
-        width: 360,
-        height: 240,
         child: InkWell(
           onTap: () {
             if (project.link.isNotEmpty) {
@@ -200,7 +272,9 @@ class _ImageWorkWidget extends StatelessWidget {
           },
           child: Padding(
             padding: const EdgeInsets.all(KSize.s16),
-            child: Image.asset(project.image),
+            child: Image.asset(
+              project.image,
+            ),
           ),
         ),
       ),
