@@ -47,7 +47,7 @@ class KObject {
         //     "Management database MongoDB",
         //   ],
         // ),
-      ].reversed,
+      ].reversed.toList(),
       listProject = [
         ProjectModel(
           image: KAsset.ayoLunas,

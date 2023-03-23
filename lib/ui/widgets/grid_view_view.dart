@@ -17,7 +17,7 @@ class GridViewView<T> extends StatelessWidget {
   Widget build(BuildContext context) {
     final chunks = <Widget>[];
 
-    var len = list.length;
+    final len = list.length;
 
     for (var i = 0; i < len; i += crossAxisCount) {
       var end = (i + crossAxisCount < len) ? i + crossAxisCount : len;
