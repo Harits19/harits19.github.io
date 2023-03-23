@@ -6,6 +6,7 @@ import 'package:harits_portofolio/ui/base/constans/k_locale.dart';
 import 'package:harits_portofolio/ui/base/constans/k_size.dart';
 import 'package:harits_portofolio/ui/base/providers/app/app_notifier.dart';
 import 'package:harits_portofolio/ui/base/providers/home/home_notifier.dart';
+import 'package:harits_portofolio/ui/home/home_page.dart';
 import 'package:harits_portofolio/ui/home/views/menu_view.dart';
 import 'package:harits_portofolio/ui/widgets/animated_slide_widget.dart';
 import 'package:harits_portofolio/ui/widgets/gap.dart';
@@ -37,7 +38,7 @@ class _HeaderViewState extends ConsumerState<HeaderView> {
           children: [
             InkWell(
               onTap: () {
-                ref.read(homeProvider.notifier).scroll(0);
+                ref.read(homeProvider.notifier).scroll(Menus.home.index);
               },
               child: const CircleAvatar(
                 backgroundImage: AssetImage(KAsset.profile),

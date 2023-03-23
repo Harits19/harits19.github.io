@@ -18,6 +18,26 @@ import 'package:harits_portofolio/ui/utils/responsive_util.dart';
 import 'package:harits_portofolio/ui/widgets/gap.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
+enum Menus {
+  home(text: "Home", view: OnboardingView()),
+  aboutMe(text: "About Me", view: AboutMeView()),
+  experience(text: "Experience", view: ExperienceView()),
+  work(text: "Work", view: WorkView()),
+  contact(text: "Contact", view: ContactView());
+
+  const Menus({
+    required this.text,
+    required this.view,
+  });
+
+  final String text;
+  final Widget view;
+
+  MenuModel get menuModel {
+    return MenuModel(text: text, view: view);
+  }
+}
+
 class HomePage extends ConsumerStatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -31,11 +51,7 @@ class _HomePageState extends ConsumerState<HomePage> {
     final homeWatch = ref.watch(homeProvider);
     final homeRead = ref.read(homeProvider.notifier);
     final _listBody = <MenuModel>[
-      MenuModel(text: "Home", view: OnboardingView()),
-      MenuModel(text: "About Me", view: AboutMeView()),
-      MenuModel(text: "Experience", view: ExperienceView()),
-      MenuModel(text: "Work", view: WorkView()),
-      MenuModel(text: "Contact", view: ContactView()),
+      ...Menus.values.map((e) => e.menuModel),
       if (Rspnsv.isMobile(context))
         MenuModel(
           text: "",
