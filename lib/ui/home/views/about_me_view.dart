@@ -8,9 +8,9 @@ import 'package:harits_portofolio/ui/base/constans/k_textstyle.dart';
 import 'package:harits_portofolio/ui/base/providers/language/language_notifier.dart';
 import 'package:harits_portofolio/ui/home/views/section_container.dart';
 import 'package:harits_portofolio/ui/utils/responsive_util.dart';
-import 'package:harits_portofolio/ui/widgets/gap.dart';
-import 'package:harits_portofolio/ui/widgets/grid_view_view.dart';
-import 'package:harits_portofolio/ui/widgets/text_icon.dart';
+import 'package:harits_portofolio/ui/widgets/gap_widget.dart';
+import 'package:harits_portofolio/ui/widgets/grid_view_widget.dart';
+import 'package:harits_portofolio/ui/widgets/text_icon_widget.dart';
 
 class AboutMeView extends ConsumerWidget {
   const AboutMeView({Key? key}) : super(key: key);
@@ -35,24 +35,24 @@ class AboutMeView extends ConsumerWidget {
         IntrinsicHeight(
           child: Rspnsv.isMobile(context)
               ? Column(
-                  children: [desc, const Gap.v(KSize.s16), image],
+                  children: [desc, const GapWidget.v(KSize.s16), image],
                 )
               : Row(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [desc, const Gap.h(8), image],
+                  children: [desc, const GapWidget.h(8), image],
                 ),
         ),
-        const Gap.v(16),
+        const GapWidget.v(16),
         Text(
           tr('skill_competencies', ref),
           style: KTextStyle.title,
         ),
-        const Gap.v(8),
-        GridViewView<String>(
+        const GapWidget.v(8),
+        GridViewWidget<String>(
           list: KText.listOfSkill,
           crossAxisCount: 2,
           renderItem: (e) {
-            return TextIcon(e);
+            return TextIconWidget(e);
           },
         )
       ],

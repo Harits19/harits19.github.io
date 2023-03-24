@@ -1,17 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
+import 'package:harits_portofolio/models/icon_model.dart';
 import 'package:harits_portofolio/ui/base/constans/k_text.dart';
 import 'package:harits_portofolio/ui/base/providers/language/language_notifier.dart';
 import 'package:harits_portofolio/ui/utils/url_util.dart';
-import 'package:harits_portofolio/ui/widgets/side_container.dart';
+import 'package:harits_portofolio/ui/widgets/side_container_widget.dart';
 
-class IconModel {
-  final IconData iconData;
-  final String url;
 
-  IconModel({required this.iconData, required this.url});
-}
 
 class LeftView extends ConsumerWidget {
   const LeftView({Key? key}) : super(key: key);
@@ -36,7 +32,7 @@ class LeftView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
-    return SideContainer(
+    return SideContainerWidget(
       reverse: true,
       children: [...items(context), const PoweredBy()],
     );

@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:harits_portofolio/ui/base/constans/k_size.dart';
 import 'package:harits_portofolio/ui/utils/responsive_util.dart';
 import 'package:harits_portofolio/ui/widgets/animated_initial_widget.dart';
-import 'package:harits_portofolio/ui/widgets/gap.dart';
+import 'package:harits_portofolio/ui/widgets/gap_widget.dart';
 
-class SideContainer extends StatelessWidget {
-  const SideContainer({
+class SideContainerWidget extends StatelessWidget {
+  const SideContainerWidget({
     Key? key,
     this.children = const [],
     this.reverse = false,
@@ -28,9 +28,9 @@ class SideContainer extends StatelessWidget {
           verticalDirection:
               reverse ? VerticalDirection.up : VerticalDirection.down,
           children: [
-            const Gap.v(KSize.s40),
+            const GapWidget.v(KSize.s40),
             ...children.map((e) => e),
-            const Gap.v(KSize.s16),
+            const GapWidget.v(KSize.s16),
             () {
               const circle = Icon(
                 Icons.circle,
@@ -77,7 +77,7 @@ class SideContainer extends StatelessWidget {
                               constraint.maxHeight ~/ KSize.s24 ~/ 2,
                               (index) => index % 2 == 0
                                   ? line
-                                  : const Gap.v(KSize.s24),
+                                  : const GapWidget.v(KSize.s24),
                             ),
                           ],
                         ),

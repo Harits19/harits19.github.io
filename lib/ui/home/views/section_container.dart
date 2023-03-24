@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:harits_portofolio/ui/base/constans/k_size.dart';
 import 'package:harits_portofolio/ui/base/constans/k_textstyle.dart';
 import 'package:harits_portofolio/ui/widgets/animated_initial_widget.dart';
-import 'package:harits_portofolio/ui/widgets/gap.dart';
+import 'package:harits_portofolio/ui/widgets/gap_widget.dart';
 
 class SectionContainer extends StatelessWidget {
   const SectionContainer({
@@ -28,12 +28,12 @@ class SectionContainer extends StatelessWidget {
                     titleText!,
                     style: KTextStyle.title,
                   ),
-                  const Gap.h(KSize.s16),
+                  const GapWidget.h(KSize.s16),
                   const Expanded(child: Divider()),
                   const Spacer(),
                 ],
               ),
-              const Gap.v(16),
+              const GapWidget.v(16),
             ],
             ...children.map((e) => e),
           ],

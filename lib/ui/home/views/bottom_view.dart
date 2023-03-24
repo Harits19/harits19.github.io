@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:harits_portofolio/ui/base/constans/k_size.dart';
 import 'package:harits_portofolio/ui/home/views/left_view.dart';
 import 'package:harits_portofolio/ui/home/views/right_view.dart';
-import 'package:harits_portofolio/ui/widgets/gap.dart';
+import 'package:harits_portofolio/ui/widgets/gap_widget.dart';
 
 class BottomView extends StatelessWidget {
   const BottomView({super.key});
@@ -11,9 +11,9 @@ class BottomView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Gap.v(KSize.s32),
+        const GapWidget.v(KSize.s32),
         const PoweredBy(),
-        const Gap.v(KSize.s8),
+        const GapWidget.v(KSize.s8),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: LeftView.items(context),
@@ -22,7 +22,7 @@ class BottomView extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: RightView.items(context),
         ),
-        const Gap.v(KSize.s32),
+        const GapWidget.v(KSize.s32),
       ],
     );
   }

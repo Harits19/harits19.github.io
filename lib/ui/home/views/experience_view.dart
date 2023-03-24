@@ -7,8 +7,8 @@ import 'package:harits_portofolio/ui/base/constans/k_textstyle.dart';
 import 'package:harits_portofolio/ui/base/providers/app/app_notifier.dart';
 import 'package:harits_portofolio/ui/base/providers/language/language_notifier.dart';
 import 'package:harits_portofolio/ui/home/views/section_container.dart';
-import 'package:harits_portofolio/ui/widgets/gap.dart';
-import 'package:harits_portofolio/ui/widgets/text_icon.dart';
+import 'package:harits_portofolio/ui/widgets/gap_widget.dart';
+import 'package:harits_portofolio/ui/widgets/text_icon_widget.dart';
 
 class ExperienceView extends ConsumerStatefulWidget {
   const ExperienceView({Key? key}) : super(key: key);
@@ -59,7 +59,7 @@ class _WorkExperience extends ConsumerWidget {
                     width: KSize.s48,
                   ),
                 ),
-                const Gap.h(KSize.s16),
+                const GapWidget.h(KSize.s16),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -86,7 +86,7 @@ class _WorkExperience extends ConsumerWidget {
                           ],
                         ),
                       ),
-                      const Gap.v(KSize.s8),
+                      const GapWidget.v(KSize.s8),
                       Container(
                         padding: const EdgeInsets.all(KSize.s4),
                         color: Colors.blue,
@@ -104,8 +104,8 @@ class _WorkExperience extends ConsumerWidget {
               ],
             ),
           ),
-          const Gap.v(16),
-          ...item.jobDesc.map((e) => TextIcon(e)),
+          const GapWidget.v(16),
+          ...item.jobDesc.map((e) => TextIconWidget(e)),
         ],
       ),
     );

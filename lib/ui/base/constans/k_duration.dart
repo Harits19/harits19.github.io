@@ -1,3 +1,5 @@
+import 'package:harits_portofolio/extensions/int_extension.dart';
+
 class KDuration {
   KDuration._();
 
@@ -9,8 +11,3 @@ class KDuration {
       d600 = 600.toMilliseconds;
 }
 
-extension on int {
-  Duration get toMilliseconds {
-    return Duration(milliseconds: this);
-  }
-}

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class GridViewView<T> extends StatelessWidget {
-  const GridViewView({
+class GridViewWidget<T> extends StatelessWidget {
+  const GridViewWidget({
     super.key,
     this.list = const [],
     required this.crossAxisCount,

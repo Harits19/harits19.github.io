@@ -14,9 +14,5 @@ class ResponsiveUtil {
     return width(context) <= KSize.mobileWidth;
   }
 
-  static double size(BuildContext context, num size) {
-    return isMobile(context)
-        ? KSize.mobileWidth / KSize.desktopWidth * size
-        : size.toDouble();
-  }
+
 }

@@ -10,7 +10,7 @@ import 'package:harits_portofolio/ui/utils/url_util.dart';
 import 'package:harits_portofolio/ui/base/constans/k_object.dart';
 import 'package:harits_portofolio/ui/base/constans/k_textstyle.dart';
 import 'package:harits_portofolio/ui/home/views/section_container.dart';
-import 'package:harits_portofolio/ui/widgets/gap.dart';
+import 'package:harits_portofolio/ui/widgets/gap_widget.dart';
 
 class WorkView extends ConsumerWidget {
   const WorkView({Key? key}) : super(key: key);
@@ -75,12 +75,12 @@ class WorkView extends ConsumerWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           projectName,
-                          const Gap.v(KSize.s32),
+                          const GapWidget.v(KSize.s32),
                           projectDescription,
                           seeDetail,
-                          const Gap.v(KSize.s24),
+                          const GapWidget.v(KSize.s24),
                           _HighlightWidget(highlight: project.highlight),
-                          const Gap.v(KSize.s16),
+                          const GapWidget.v(KSize.s16),
                           Row(
                             children: [
                               IconButton(
@@ -134,9 +134,9 @@ class WorkView extends ConsumerWidget {
                             : CrossAxisAlignment.end,
                         children: [
                           projectName,
-                          const Gap.v(KSize.s8),
+                          const GapWidget.v(KSize.s8),
                           _HighlightWidget(highlight: project.highlight),
-                          const Gap.v(16),
+                          const GapWidget.v(16),
                           SizedBox(
                             child: Card(
                               child: Padding(
@@ -147,7 +147,7 @@ class WorkView extends ConsumerWidget {
                                       : CrossAxisAlignment.start,
                                   children: [
                                     projectDescription,
-                                    const Gap.v(8),
+                                    const GapWidget.v(8),
                                     seeDetail,
                                   ],
                                 ),
@@ -208,7 +208,7 @@ class WorkView extends ConsumerWidget {
                             item.image,
                           ),
                         ),
-                        const Gap.h(KSize.s16),
+                        const GapWidget.h(KSize.s16),
                         Text(
                           item.name,
                           style: KTextStyle.title.copyWith(
@@ -218,7 +218,7 @@ class WorkView extends ConsumerWidget {
                         ),
                       ],
                     ),
-                    const Gap.v(KSize.s16),
+                    const GapWidget.v(KSize.s16),
                     Text(
                       item.description,
                       style: KTextStyle.subtitle,

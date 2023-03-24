@@ -7,7 +7,7 @@ import 'package:harits_portofolio/ui/base/providers/home/home_notifier.dart';
 import 'package:harits_portofolio/ui/base/providers/language/language_notifier.dart';
 import 'package:harits_portofolio/ui/home/home_page.dart';
 import 'package:harits_portofolio/ui/home/views/section_container.dart';
-import 'package:harits_portofolio/ui/widgets/gap.dart';
+import 'package:harits_portofolio/ui/widgets/gap_widget.dart';
 
 class OnboardingView extends ConsumerWidget {
   const OnboardingView({Key? key}) : super(key: key);
@@ -16,7 +16,7 @@ class OnboardingView extends ConsumerWidget {
   Widget build(BuildContext context, ref) {
     return SectionContainer(
       children: [
-        const Gap.v(KSize.s48),
+        const GapWidget.v(KSize.s48),
         Text(
           tr('my_name_is', ref),
           style: KTextStyle.subtitle,
@@ -35,12 +35,12 @@ class OnboardingView extends ConsumerWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        const Gap.v(8),
+        const GapWidget.v(8),
         Text(
           tr('onboarding_desc', ref),
           style: KTextStyle.subtitle,
         ),
-        const Gap.v(24),
+        const GapWidget.v(24),
         OutlinedButton(
           onPressed: () async {
             ref.read(homeProvider.notifier).scroll(Menus.aboutMe.index);

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:harits_portofolio/ui/base/constans/k_text.dart';
-import 'package:harits_portofolio/ui/utils/widget_util.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:harits_portofolio/ui/widgets/snack_bar_widget.dart';
+import 'package:url_launcher/url_launcher.dart' as urlLauncher;
 
 class UrlUtil {
   static String? encodeQueryParameters(Map<String, String> params) {
@@ -12,11 +12,9 @@ class UrlUtil {
   }
 
   static Future<void> launchUrl(BuildContext context, String url) async {
-    try {
-      await launch(url);
-    } catch (e) {
-      WidgetUtil.showError(context, e);
-    }
+    SnackBarWidget.catchErr(context, () async {
+      await urlLauncher.launchUrl(Uri.parse(url));
+    });
   }
 
   static Future<void> launchUrlEmail(BuildContext context) async {

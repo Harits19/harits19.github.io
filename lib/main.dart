@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:harits_portofolio/ui/base/constans/k_locale.dart';
 import 'package:harits_portofolio/ui/base/constans/k_text.dart';
 import 'package:harits_portofolio/ui/base/constans/k_theme.dart';
 import 'package:harits_portofolio/ui/base/providers/app/app_notifier.dart';
@@ -21,9 +20,7 @@ void main() async {
 class MyApp extends ConsumerWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // TODO make easylocalization with riverpod
   // TODO update translation file
-  // TODO fix issue traslation
 
   // This widget is the root of your application.
   @override

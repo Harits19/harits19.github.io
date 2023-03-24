@@ -7,7 +7,7 @@ import 'package:harits_portofolio/ui/base/providers/language/language_notifier.d
 import 'package:harits_portofolio/ui/home/home_page.dart';
 import 'package:harits_portofolio/ui/home/views/menu_view.dart';
 import 'package:harits_portofolio/ui/widgets/animated_slide_widget.dart';
-import 'package:harits_portofolio/ui/widgets/gap.dart';
+import 'package:harits_portofolio/ui/widgets/gap_widget.dart';
 import 'package:harits_portofolio/ui/utils/responsive_util.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -42,7 +42,7 @@ class _HeaderViewState extends ConsumerState<HeaderView> {
                 backgroundImage: AssetImage(KAsset.profile),
               ),
             ),
-            const Gap.h(KSize.s24),
+            const GapWidget.h(KSize.s24),
             if (ResponsiveUtil.isDesktop(context))
               MenuView(
                 menus: widget.menus,
