@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:harits_portofolio/ui/base/constans/k_curves.dart';
 import 'package:harits_portofolio/ui/base/constans/k_duration.dart';
 
-class AnimatedSlidseWidget extends StatefulWidget {
+class AnimatedSlideWidget extends StatefulWidget {
   const AnimatedSlideWidget({
     Key? key,
     this.child,
