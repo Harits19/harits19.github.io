@@ -30,7 +30,7 @@ jobs:
         run: flutter pub get
 
       - name: Enable Web
-        run: flutter create --project-name=Portofolio .
+        run: flutter create --project-name=portfolio .
 
       - name: Start Web Release Build
         run: flutter build web --release
