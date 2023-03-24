@@ -33,7 +33,7 @@ class _AnimatedInitialWidgetState extends State<AnimatedInitialWidget> {
   @override
   Widget build(BuildContext context) {
     final duration = KDuration.d2000;
-    const curves = KCurves.kFastOutSlowIn;
+    const curves = KCurves.defaultCurves;
     return AnimatedPadding(
       duration: duration,
       curve: curves,

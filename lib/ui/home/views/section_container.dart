@@ -17,7 +17,7 @@ class SectionContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return AnimatedInitialWidget(
       child: Padding(
-        padding: KSize.paddingSection,
+        padding: const EdgeInsets.symmetric(vertical: 40),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

@@ -13,7 +13,7 @@ class KText {
       googlePlay =
           'https://play.google.com/store/apps/developer?id=Abdullah+Harits',
       abdullahHarits = 'Abdullah Harits',
-      listOfSkill1 = [
+      listOfSkill = [
         "Flutter",
         "React Native",
         "Object Oriented Programming",

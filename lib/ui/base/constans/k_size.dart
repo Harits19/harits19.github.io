@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 class KSize {
   const KSize._();
 
-  static const paddingSection = EdgeInsets.symmetric(vertical: 40);
   static const double s16 = 16,
       s48 = 48,
       s4 = 4,

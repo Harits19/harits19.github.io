@@ -18,10 +18,10 @@ void main() async {
   runApp(
     EasyLocalization(
       supportedLocales: KLocale.supportedLocales,
-      fallbackLocale: KLocale.en,
+      fallbackLocale: KLocaleEnum.en.locale,
       path: KLocale.translationPath,
       assetLoader: YamlAssetLoader(),
-      startLocale: KLocale.en,
+      startLocale: KLocaleEnum.en.locale,
       useOnlyLangCode: true,
       child: ProviderScope(
         child: const MyApp(),

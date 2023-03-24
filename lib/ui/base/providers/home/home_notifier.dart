@@ -38,7 +38,7 @@ class HomeNotifier extends StateNotifier<HomeState> {
     await state.controller.scrollTo(
       index: index,
       duration: KDuration.d300,
-      curve: KCurves.kFastOutSlowIn,
+      curve: KCurves.defaultCurves,
     );
     state = state.copyWith(isScrolling: false);
   }

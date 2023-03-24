@@ -47,7 +47,7 @@ class AboutMeView extends StatelessWidget {
         ),
         const Gap.v(8),
         GridViewView<String>(
-          list: KText.listOfSkill1,
+          list: KText.listOfSkill,
           crossAxisCount: 2,
           renderItem: (e) {
             return TextIcon(e);

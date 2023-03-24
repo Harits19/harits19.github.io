@@ -52,11 +52,11 @@ class _HeaderViewState extends ConsumerState<HeaderView> {
             const Spacer(),
             () {
               final currentLocale = EasyLocalization.of(context)?.currentLocale;
-              var localeText = KLocale.id.languageCode.toUpperCase();
-              var updateLocaleTo = KLocale.id;
-              if (currentLocale == KLocale.id) {
-                updateLocaleTo = KLocale.en;
-                localeText = KLocale.en.languageCode.toUpperCase();
+              var localeText = KLocaleEnum.id.locale.languageCode.toUpperCase();
+              var updateLocaleTo = KLocaleEnum.id.locale;
+              if (currentLocale == KLocaleEnum.id.locale) {
+                updateLocaleTo = KLocaleEnum.en.locale;
+                localeText = KLocaleEnum.en.locale.languageCode.toUpperCase();
               }
 
               return IconButton(
