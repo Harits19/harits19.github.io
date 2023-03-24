@@ -28,15 +28,11 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   cupertino_icons: ^1.0.2
-  dotted_border: ^2.0.0+2
   easy_localization: ^3.0.1
   easy_localization_loader: ^1.0.0
   flutter:
     sdk: flutter
   fluttericon: ^2.0.0
-  google_fonts: ^2.1.0
-  responsive_framework: ^0.1.5
-  scroll_to_index: ^3.0.1
   scrollable_positioned_list: ^0.2.0-nullsafety.0
   url_launcher: ^6.0.16
   flutter_riverpod: ^2.3.2

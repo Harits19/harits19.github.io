@@ -13,7 +13,6 @@ import 'package:harits_portofolio/ui/home/home_page.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
-  // deploy 1
 
   runApp(
     EasyLocalization(
@@ -33,7 +32,7 @@ void main() async {
 class MyApp extends ConsumerWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // TODO make easylocalization with flutter_bloc
+  // TODO make easylocalization with riverpod
   // TODO update translation file
   // TODO fix issue traslation
 
