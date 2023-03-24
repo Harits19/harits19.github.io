@@ -11,9 +11,9 @@ class BottomView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Gap.v(KSize.s32),
-        LeftView.poweredBy,
-        Gap.v(KSize.s8),
+        const Gap.v(KSize.s32),
+        const PoweredBy(),
+        const Gap.v(KSize.s8),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: LeftView.items(context),
@@ -22,7 +22,7 @@ class BottomView extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: RightView.items(context),
         ),
-        Gap.v(KSize.s32),
+        const Gap.v(KSize.s32),
       ],
     );
   }

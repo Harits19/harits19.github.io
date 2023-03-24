@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:easy_localization/easy_localization.dart';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:harits_portofolio/ui/base/constans/k_duration.dart';
 import 'package:harits_portofolio/ui/base/constans/k_size.dart';
 import 'package:harits_portofolio/ui/base/constans/k_text.dart';
 import 'package:harits_portofolio/ui/base/providers/app/app_notifier.dart';
 import 'package:harits_portofolio/ui/base/providers/home/home_notifier.dart';
+import 'package:harits_portofolio/ui/base/providers/language/language_notifier.dart';
 import 'package:harits_portofolio/ui/home/home_page.dart';
 import 'package:harits_portofolio/ui/utils/url_util.dart';
 import 'package:harits_portofolio/ui/utils/responsive_util.dart';
@@ -72,7 +73,7 @@ class MenuView extends ConsumerWidget {
           );
         }(),
         OutlinedButton(
-          child: Text(tr('resume')),
+          child: Text(tr('resume', ref)),
           onPressed: () {
             UrlUtil.launchUrl(context, KText.resume);
             UrlUtil.launchUrl(context, KText.resumeDownload);

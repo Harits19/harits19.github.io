@@ -1,37 +1,37 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:harits_portofolio/extensions/string_extension.dart';
 import 'package:harits_portofolio/models/experience_model.dart';
 import 'package:harits_portofolio/models/project_model.dart';
 import 'package:harits_portofolio/ui/base/constans/k_asset.dart';
-import 'package:easy_localization/easy_localization.dart';
 
 class KObject {
-  const KObject._();
 
-  static List<String> _jobDesc(String prefix, int length) {
+  static List<String> _jobDesc(String prefix, int length, WidgetRef ref) {
     return List.generate(length,
-        (index) => (prefix + "_job_desc_" + (index + 1).toString()).tr());
+        (index) => (prefix + "_job_desc_" + (index + 1).toString()).tr(ref));
   }
 
-  static final listExperience = [
+  static List<ExperienceModel> listExperience(WidgetRef ref) => [
         ExperienceModel(
           company: "PT. Skyshi Digital Indonesia",
-          position: "mobile_developer".tr(),
-          time: "skyshi_time".tr(),
+          position: "mobile_developer".tr(ref),
+          time: "skyshi_time".tr(ref),
           image: KAsset.skyshi,
-          jobDesc: _jobDesc('skyshi', 5),
+          jobDesc: _jobDesc('skyshi', 5, ref),
         ),
         ExperienceModel(
           company: "PT. Imani Prima",
-          position: "fullstack_developer".tr(),
-          time: "imani_time".tr(),
+          position: "fullstack_developer".tr(ref),
+          time: "imani_time".tr(ref),
           image: KAsset.imaniPrima,
-          jobDesc: _jobDesc('imani', 9),
+          jobDesc: _jobDesc('imani', 9, ref),
         ),
         ExperienceModel(
           company: "PT. Smartfren Telecom Tbk",
-          position: "mobile_ui_engineer".tr(),
-          time: "smartfren_time".tr(),
+          position: "mobile_ui_engineer".tr(ref),
+          time: "smartfren_time".tr(ref),
           image: KAsset.smarfren,
-          jobDesc: _jobDesc('smartfren', 6),
+          jobDesc: _jobDesc('smartfren', 6, ref),
         ),
         // ExperienceModel(
         //   company: "Tuntun Les Privat",
@@ -47,19 +47,20 @@ class KObject {
         //     "Management database MongoDB",
         //   ],
         // ),
-      ].reversed.toList(),
-      listProject = [
+      ].reversed.toList();
+      static List<ProjectModel>
+      listProject(WidgetRef ref) => [
         ProjectModel(
           image: KAsset.ayoLunas,
           name: "AyoLunas",
           link: "",
-          description: "ayolunas_desc".tr(),
+          description: "ayolunas_desc".tr(ref),
           highlight: ["Flutter"],
         ),
         ProjectModel(
           image: KAsset.soundfren,
           name: "Soundfren",
-          description: "soundfren_desc".tr(),
+          description: "soundfren_desc".tr(ref),
           link:
               "https://play.google.com/store/apps/details?id=com.amoeba.soundfren",
           highlight: ["React Native"],
@@ -68,20 +69,20 @@ class KObject {
           image: KAsset.pejuang,
           name: "Pejuang",
           link: "https://play.google.com/store/apps/details?id=com.bdn.pejuang",
-          description: "pejuang_desc".tr(),
+          description: "pejuang_desc".tr(ref),
           highlight: ["React Native"],
         ),
         ProjectModel(
           image: KAsset.batumbu,
           name: "Batumbu",
-          description: "batumbu_desc".tr(),
+          description: "batumbu_desc".tr(ref),
           link: "",
           highlight: ["Flutter"],
         ),
         ProjectModel(
           image: KAsset.protect,
           name: "Protect",
-          description: "protect_desc".tr(),
+          description: "protect_desc".tr(ref),
           link:
               "https://play.google.com/store/apps/details?id=com.my_password_app",
           highlight: ["Flutter"],
@@ -97,7 +98,7 @@ class KObject {
         ProjectModel(
           image: KAsset.primasaver,
           name: "Primasaver",
-          description: "primasaver_desc".tr(),
+          description: "primasaver_desc".tr(ref),
           link: "https://primasaver.com/home",
           highlight: ["Flutter", "Go", "MongoDB"],
         ),

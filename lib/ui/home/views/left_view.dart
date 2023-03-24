@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:harits_portofolio/ui/base/constans/k_text.dart';
+import 'package:harits_portofolio/ui/base/providers/language/language_notifier.dart';
 import 'package:harits_portofolio/ui/utils/url_util.dart';
 import 'package:harits_portofolio/ui/widgets/side_container.dart';
-import 'package:easy_localization/easy_localization.dart';
 
 class IconModel {
   final IconData iconData;
@@ -12,7 +13,7 @@ class IconModel {
   IconModel({required this.iconData, required this.url});
 }
 
-class LeftView extends StatelessWidget {
+class LeftView extends ConsumerWidget {
   const LeftView({Key? key}) : super(key: key);
 
   static List<Widget> items(BuildContext context) => [
@@ -33,15 +34,25 @@ class LeftView extends StatelessWidget {
         ),
       ];
 
-  static final poweredBy = Text(
-    tr("powered_flutter"),
-    style: const TextStyle(fontSize: 8),
-  );
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ref) {
     return SideContainer(
       reverse: true,
-      children: [...items(context)],
+      children: [...items(context), const PoweredBy()],
+    );
+  }
+}
+
+class PoweredBy extends ConsumerWidget {
+  const PoweredBy({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context, ref) {
+    return Text(
+      tr("powered_flutter", ref),
+      style: const TextStyle(fontSize: 8),
     );
   }
 }

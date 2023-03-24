@@ -1,10 +1,10 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:harits_portofolio/ui/base/constans/k_size.dart';
 import 'package:harits_portofolio/ui/base/constans/k_text.dart';
 import 'package:harits_portofolio/ui/base/constans/k_textstyle.dart';
 import 'package:harits_portofolio/ui/base/providers/home/home_notifier.dart';
+import 'package:harits_portofolio/ui/base/providers/language/language_notifier.dart';
 import 'package:harits_portofolio/ui/home/home_page.dart';
 import 'package:harits_portofolio/ui/home/views/section_container.dart';
 import 'package:harits_portofolio/ui/widgets/gap.dart';
@@ -18,7 +18,7 @@ class OnboardingView extends ConsumerWidget {
       children: [
         const Gap.v(KSize.s48),
         Text(
-          tr('my_name_is'),
+          tr('my_name_is', ref),
           style: KTextStyle.subtitle,
         ),
         const Text(
@@ -29,7 +29,7 @@ class OnboardingView extends ConsumerWidget {
           ),
         ),
         Text(
-          tr('i_full_stack_dev'),
+          tr('i_full_stack_dev', ref),
           style: const TextStyle(
             fontSize: 48,
             fontWeight: FontWeight.bold,
@@ -37,7 +37,7 @@ class OnboardingView extends ConsumerWidget {
         ),
         const Gap.v(8),
         Text(
-          tr('onboarding_desc'),
+          tr('onboarding_desc', ref),
           style: KTextStyle.subtitle,
         ),
         const Gap.v(24),
@@ -45,7 +45,7 @@ class OnboardingView extends ConsumerWidget {
           onPressed: () async {
             ref.read(homeProvider.notifier).scroll(Menus.aboutMe.index);
           },
-          child: Text(tr("get_started")),
+          child: Text(tr("get_started", ref)),
         ),
       ],
     );

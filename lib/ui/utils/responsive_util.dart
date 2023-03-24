@@ -11,7 +11,6 @@ class ResponsiveUtil {
   }
 
   static bool isMobile(BuildContext context) {
-    debugPrint('width $width');
     return width(context) <= KSize.mobileWidth;
   }
 

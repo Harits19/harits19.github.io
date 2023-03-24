@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
+import 'package:harits_portofolio/extensions/string_extension.dart';
 import 'package:harits_portofolio/models/project_model.dart';
 import 'package:harits_portofolio/ui/base/constans/k_size.dart';
 import 'package:harits_portofolio/ui/base/providers/app/app_notifier.dart';
@@ -10,7 +11,6 @@ import 'package:harits_portofolio/ui/base/constans/k_object.dart';
 import 'package:harits_portofolio/ui/base/constans/k_textstyle.dart';
 import 'package:harits_portofolio/ui/home/views/section_container.dart';
 import 'package:harits_portofolio/ui/widgets/gap.dart';
-import 'package:easy_localization/easy_localization.dart';
 
 class WorkView extends ConsumerWidget {
   const WorkView({Key? key}) : super(key: key);
@@ -18,13 +18,13 @@ class WorkView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ref) {
     return SectionContainer(
-      titleText: "work".tr(),
+      titleText: "work".tr(ref),
       children: [
         ...List.generate(
-          KObject.listProject.length,
+          KObject.listProject(ref).length,
           (index) {
             final isReverse = (index % 2) != 0;
-            final project = KObject.listProject[index];
+            final project = KObject.listProject(ref)[index];
 
             final projectName = Text(
               project.name,
@@ -48,7 +48,7 @@ class WorkView extends ConsumerWidget {
             final seeDetail = InkWell(
               onTap: () => _showDetailWork(context, project),
               child: Text(
-                "see_detail".tr(),
+                "see_detail".tr(ref),
                 style: KTextStyle.subtitle.copyWith(color: Colors.blue),
               ),
             );

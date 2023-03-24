@@ -11,5 +11,8 @@ class KAsset {
       primasaver = "$_path/primasaver.png",
       imaniPrima = '$_path/imani_prima.png',
       skyshi = '$_path/skyshi.png',
-      smarfren = '$_path/smartfren.png';
+      smarfren = '$_path/smartfren.png',
+      en = '$_path/translations/en.yaml',
+      id = '$_path/translations/id.yaml';
+      
 }

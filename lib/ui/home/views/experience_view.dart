@@ -1,4 +1,3 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:harits_portofolio/models/experience_model.dart';
@@ -6,25 +5,26 @@ import 'package:harits_portofolio/ui/base/constans/k_object.dart';
 import 'package:harits_portofolio/ui/base/constans/k_size.dart';
 import 'package:harits_portofolio/ui/base/constans/k_textstyle.dart';
 import 'package:harits_portofolio/ui/base/providers/app/app_notifier.dart';
+import 'package:harits_portofolio/ui/base/providers/language/language_notifier.dart';
 import 'package:harits_portofolio/ui/home/views/section_container.dart';
 import 'package:harits_portofolio/ui/widgets/gap.dart';
 import 'package:harits_portofolio/ui/widgets/text_icon.dart';
 
-class ExperienceView extends StatefulWidget {
+class ExperienceView extends ConsumerStatefulWidget {
   const ExperienceView({Key? key}) : super(key: key);
 
   @override
-  State<ExperienceView> createState() => _ExperienceViewState();
+  ConsumerState<ExperienceView> createState() => _ExperienceViewState();
 }
 
-class _ExperienceViewState extends State<ExperienceView> {
+class _ExperienceViewState extends ConsumerState<ExperienceView> {
   int activeTab = 0;
   @override
   Widget build(BuildContext context) {
     return SectionContainer(
-      titleText: tr('experience'),
+      titleText: tr('experience', ref),
       children: [
-        ...KObject.listExperience.map(
+        ...KObject.listExperience(ref).map(
           (e) => _WorkExperience(item: e),
         ),
       ],

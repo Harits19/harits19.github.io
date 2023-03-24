@@ -1,21 +1,22 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:harits_portofolio/ui/base/providers/language/language_notifier.dart';
 import 'package:harits_portofolio/ui/utils/url_util.dart';
 import 'package:harits_portofolio/ui/base/constans/k_textstyle.dart';
 import 'package:harits_portofolio/ui/home/views/section_container.dart';
 
-class ContactView extends StatelessWidget {
+class ContactView extends ConsumerWidget {
   const ContactView({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ref) {
     return SectionContainer(
-      titleText: tr('contact'),
+      titleText: tr('contact', ref),
       children: [
         ElevatedButton(
           onPressed: () => UrlUtil.launchUrlEmail(context),
           child: Text(
-            tr('contact_me'),
+            tr('contact_me', ref),
             style: KTextStyle.subtitle,
           ),
         )

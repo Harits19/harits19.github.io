@@ -1,10 +1,9 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:harits_portofolio/ui/base/constans/k_asset.dart';
-import 'package:harits_portofolio/ui/base/constans/k_locale.dart';
 import 'package:harits_portofolio/ui/base/constans/k_size.dart';
 import 'package:harits_portofolio/ui/base/providers/app/app_notifier.dart';
 import 'package:harits_portofolio/ui/base/providers/home/home_notifier.dart';
+import 'package:harits_portofolio/ui/base/providers/language/language_notifier.dart';
 import 'package:harits_portofolio/ui/home/home_page.dart';
 import 'package:harits_portofolio/ui/home/views/menu_view.dart';
 import 'package:harits_portofolio/ui/widgets/animated_slide_widget.dart';
@@ -51,24 +50,18 @@ class _HeaderViewState extends ConsumerState<HeaderView> {
               ),
             const Spacer(),
             () {
-              final currentLocale = EasyLocalization.of(context)?.currentLocale;
-              var localeText = KLocaleEnum.id.locale.languageCode.toUpperCase();
-              var updateLocaleTo = KLocaleEnum.id.locale;
-              if (currentLocale == KLocaleEnum.id.locale) {
-                updateLocaleTo = KLocaleEnum.en.locale;
-                localeText = KLocaleEnum.en.locale.languageCode.toUpperCase();
-              }
+              final currentLocale = ref.watch(languageProvider);
 
               return IconButton(
                 icon: Text(
-                  localeText,
+                  currentLocale.languageEnum.name.toUpperCase(),
                   style: const TextStyle(
                     color: Colors.blue,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 onPressed: () {
-                  EasyLocalization.of(context)?.setLocale(updateLocaleTo);
+                  ref.read(languageProvider.notifier).toggleLanguage();
                 },
               );
             }(),

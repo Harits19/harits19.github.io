@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:harits_portofolio/extensions/string_extension.dart';
 import 'package:harits_portofolio/ui/base/constans/k_textstyle.dart';
-import 'package:easy_localization/easy_localization.dart';
 
-class DialogWidget extends StatelessWidget {
+class DialogWidget extends ConsumerWidget {
   const DialogWidget({Key? key, required this.text}) : super(key: key);
 
   final String text;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ref) {
     return Dialog(
       backgroundColor: Colors.transparent,
       child: Container(
@@ -30,7 +31,7 @@ class DialogWidget extends StatelessWidget {
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  child: Text('close'.tr()))
+                  child: Text('close'.tr(ref)))
             ],
           ),
         ),
