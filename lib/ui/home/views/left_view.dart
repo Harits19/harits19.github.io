@@ -33,7 +33,7 @@ class LeftView extends ConsumerWidget {
   Widget build(BuildContext context, ref) {
     return SideContainerWidget(
       reverse: true,
-      children: [...items(context), const PoweredBy()],
+      children: [const PoweredBy(), ...items(context)],
     );
   }
 }
