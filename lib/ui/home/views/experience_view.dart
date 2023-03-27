@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:harits_portofolio/models/experience_model.dart';
-import 'package:harits_portofolio/ui/base/constans/k_object.dart';
+import 'package:harits_portofolio/ui/base/constans/k_profile.dart';
 import 'package:harits_portofolio/ui/base/constans/k_size.dart';
 import 'package:harits_portofolio/ui/base/constans/k_textstyle.dart';
 import 'package:harits_portofolio/ui/base/providers/app/app_notifier.dart';
@@ -24,7 +24,7 @@ class _ExperienceViewState extends ConsumerState<ExperienceView> {
     return SectionContainer(
       titleText: tr('experience', ref),
       children: [
-        ...KObject.listExperience(ref).map(
+        ...KProfile.listExperience(ref).map(
           (e) => _WorkExperience(item: e),
         ),
       ],

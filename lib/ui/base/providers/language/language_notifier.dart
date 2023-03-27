@@ -19,7 +19,7 @@ class LanguageNotifier extends StateNotifier<LanguageState> {
   }
 }
 
-String tr(String key, WidgetRef ref) {
+dynamic tr(String key, WidgetRef ref) {
   var selectedLang = LanguageService.id;
   final langWatch = ref.watch(languageProvider);
   if (langWatch.isEn) {
@@ -28,9 +28,19 @@ String tr(String key, WidgetRef ref) {
   if (langWatch.isId) {
     selectedLang = LanguageService.id;
   }
+  if (selectedLang == null) throw 'Uninitialized language service';
   final mapData = loadYaml(selectedLang) as Map;
+  final value = mapData[key];
 
-  return mapData[key];
+  if (value is String) {
+    return value;
+  }
+
+  if (value is YamlList) {
+    return value.map((element) => element.toString()).toList();
+  }
+
+  throw 'Unable to get value';
 }
 
 const defaultTr = tr;

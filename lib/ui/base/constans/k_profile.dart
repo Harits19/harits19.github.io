@@ -4,52 +4,32 @@ import 'package:harits_portofolio/models/experience_model.dart';
 import 'package:harits_portofolio/models/project_model.dart';
 import 'package:harits_portofolio/ui/base/constans/k_asset.dart';
 
-class KObject {
-
-  static List<String> _jobDesc(String prefix, int length, WidgetRef ref) {
-    return List.generate(length,
-        (index) => (prefix + "_job_desc_" + (index + 1).toString()).tr(ref));
-  }
-
+class KProfile {
   static List<ExperienceModel> listExperience(WidgetRef ref) => [
         ExperienceModel(
           company: "PT. Skyshi Digital Indonesia",
           position: "mobile_developer".tr(ref),
           time: "skyshi_time".tr(ref),
           image: KAsset.skyshi,
-          jobDesc: _jobDesc('skyshi', 5, ref),
+          jobDesc: 'skyshi_job_desc'.tr(ref),
         ),
         ExperienceModel(
           company: "PT. Imani Prima",
           position: "fullstack_developer".tr(ref),
           time: "imani_time".tr(ref),
           image: KAsset.imaniPrima,
-          jobDesc: _jobDesc('imani', 9, ref),
+          jobDesc: 'imani_job_desc'.tr(ref),
         ),
         ExperienceModel(
           company: "PT. Smartfren Telecom Tbk",
           position: "mobile_ui_engineer".tr(ref),
           time: "smartfren_time".tr(ref),
           image: KAsset.smarfren,
-          jobDesc: _jobDesc('smartfren', 6, ref),
+          jobDesc: 'smartfren_job_desc'.tr(ref),
         ),
-        // ExperienceModel(
-        //   company: "Tuntun Les Privat",
-        //   position: "Fullstack Developer",
-        //   time: "January 2022 - present",
-        //   jobDesc: [
-        //     "Creating mobile applications using Flutter",
-        //     "Implementing mobile applications based on Business Process Documentation",
-        //     "Fixed bugs found from UAT documentation",
-        //     "Integrating mobile application with API and Firebase",
-        //     "Creating mobile application according to design",
-        //     "Creating API using Go Language",
-        //     "Management database MongoDB",
-        //   ],
-        // ),
       ].reversed.toList();
-      static List<ProjectModel>
-      listProject(WidgetRef ref) => [
+
+  static List<ProjectModel> listProject(WidgetRef ref) => [
         ProjectModel(
           image: KAsset.ayoLunas,
           name: "AyoLunas",
@@ -87,14 +67,6 @@ class KObject {
               "https://play.google.com/store/apps/details?id=com.my_password_app",
           highlight: ["Flutter"],
         ),
-        // ProjectModel(
-        //   image: KImage.tuntun,
-        //   name: "Tuntun Les Privat",
-        //   description:
-        //       "Ini adalah projek bersama teman saya. Tujuannya untuk mengisi waktu dan membantu kebutuhan les privat yang ada di Yogyakarta",
-        //   link: "",
-        //   highlight: ["Flutter", "Go", "MongoDB"],
-        // ),
         ProjectModel(
           image: KAsset.primasaver,
           name: "Primasaver",
@@ -103,4 +75,28 @@ class KObject {
           highlight: ["Flutter", "Go", "MongoDB"],
         ),
       ].reversed.toList();
+
+  static const email = "harits.abdullah19@gmail.com",
+      resume =
+          "https://docs.google.com/document/d/1sG-A9ulHr12cY02n_0s_DS6hUrgpGsopaEGPfsZP0uo/edit?usp=sharing",
+      resumeDownload =
+          'https://docs.google.com/document/d/1sG-A9ulHr12cY02n_0s_DS6hUrgpGsopaEGPfsZP0uo/export?format=pdf',
+      linkedIn = "https://linkedin.com/in/abd-harits",
+      instagram = "https://instagram.com/abd.harits19",
+      github = "https://github.com/Harits19",
+      medium = "https://harits-abdullah19.medium.com",
+      googlePlay =
+          'https://play.google.com/store/apps/developer?id=Abdullah+Harits',
+      abdullahHarits = 'Abdullah Harits',
+      listOfSkill = [
+        "Flutter",
+        "React Native",
+        "Object Oriented Programming",
+        "MongoDB",
+        "MySQL",
+        "CI/CD",
+        "GIT",
+        "Functional Programming",
+        "Go",
+      ];
 }

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:harits_portofolio/ui/base/constans/k_profile.dart';
 import 'package:harits_portofolio/ui/utils/responsive_util.dart';
 import 'package:harits_portofolio/ui/utils/url_util.dart';
-import 'package:harits_portofolio/ui/base/constans/k_text.dart';
+
 import 'package:harits_portofolio/ui/widgets/side_container_widget.dart';
 
 class RightView extends StatelessWidget {
@@ -12,7 +13,7 @@ class RightView extends StatelessWidget {
           onTap: () => UrlUtil.launchUrlEmail(context),
           child: RotatedBox(
             quarterTurns: Rspnsv.isDesktop(context) ? 1 : 0,
-            child: const Text(KText.email),
+            child: const Text(KProfile.email),
           ),
         ),
       ];

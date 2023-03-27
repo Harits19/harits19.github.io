@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:harits_portofolio/ui/base/constans/k_profile.dart';
 import 'package:harits_portofolio/ui/base/constans/k_size.dart';
-import 'package:harits_portofolio/ui/base/constans/k_text.dart';
+
 import 'package:harits_portofolio/ui/base/constans/k_textstyle.dart';
 import 'package:harits_portofolio/ui/base/providers/home/home_notifier.dart';
 import 'package:harits_portofolio/ui/base/providers/language/language_notifier.dart';
@@ -22,7 +23,7 @@ class OnboardingView extends ConsumerWidget {
           style: KTextStyle.subtitle,
         ),
         const Text(
-          KText.abdullahHarits,
+          KProfile.abdullahHarits,
           style: TextStyle(
             fontSize: 56,
             fontWeight: FontWeight.w900,

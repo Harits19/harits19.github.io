@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:harits_portofolio/ui/base/constans/k_duration.dart';
+import 'package:harits_portofolio/ui/base/constans/k_profile.dart';
 import 'package:harits_portofolio/ui/base/constans/k_size.dart';
-import 'package:harits_portofolio/ui/base/constans/k_text.dart';
 import 'package:harits_portofolio/ui/base/providers/app/app_notifier.dart';
 import 'package:harits_portofolio/ui/base/providers/home/home_notifier.dart';
 import 'package:harits_portofolio/ui/base/providers/language/language_notifier.dart';
@@ -75,8 +75,8 @@ class MenuView extends ConsumerWidget {
         OutlinedButton(
           child: Text(tr('resume', ref)),
           onPressed: () {
-            UrlUtil.launchUrl(context, KText.resume);
-            UrlUtil.launchUrl(context, KText.resumeDownload);
+            UrlUtil.launchUrl(context, KProfile.resume);
+            UrlUtil.launchUrl(context, KProfile.resumeDownload);
           },
         ),
       ],

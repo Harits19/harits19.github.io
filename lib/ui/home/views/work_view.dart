@@ -7,7 +7,7 @@ import 'package:harits_portofolio/ui/base/constans/k_size.dart';
 import 'package:harits_portofolio/ui/base/providers/app/app_notifier.dart';
 import 'package:harits_portofolio/ui/utils/responsive_util.dart';
 import 'package:harits_portofolio/ui/utils/url_util.dart';
-import 'package:harits_portofolio/ui/base/constans/k_object.dart';
+import 'package:harits_portofolio/ui/base/constans/k_profile.dart';
 import 'package:harits_portofolio/ui/base/constans/k_textstyle.dart';
 import 'package:harits_portofolio/ui/home/views/section_container.dart';
 import 'package:harits_portofolio/ui/widgets/gap_widget.dart';
@@ -21,10 +21,10 @@ class WorkView extends ConsumerWidget {
       titleText: "work".tr(ref),
       children: [
         ...List.generate(
-          KObject.listProject(ref).length,
+          KProfile.listProject(ref).length,
           (index) {
             final isReverse = (index % 2) != 0;
-            final project = KObject.listProject(ref)[index];
+            final project = KProfile.listProject(ref)[index];
 
             final projectName = Text(
               project.name,
