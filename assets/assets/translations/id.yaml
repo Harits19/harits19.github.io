@@ -22,30 +22,33 @@ mobile_ui_engineer: Mobile & UI Engineer
 home: Beranda
 
 skyshi_time: February 2021 - March 2022
-skyshi_job_desc_1: Creating mobile applications using Flutter framework or React Native
-skyshi_job_desc_2: Implementing mobile applications based on Business Process Documentation
-skyshi_job_desc_3: Fixing bugs base on UAT documentation
-skyshi_job_desc_4: Integrating mobile application with API and Firebase
-skyshi_job_desc_5: Creating mobile application according to design
+skyshi_job_desc:
+ - Creating mobile applications using Flutter framework or React Native
+ - Implementing mobile applications based on Business Process Documentation
+ - Fixing bugs base on UAT documentation
+ - Integrating mobile application with API and Firebase
+ - Creating mobile application according to design
 
 imani_time: March 2022 - May 2022
-imani_job_desc_1: Creating mobile and web applications using Flutter
-imani_job_desc_2: Implementing applications based on action plan
-imani_job_desc_3: Fixed bugs found based action plan
-imani_job_desc_4: Integrating application with API
-imani_job_desc_5: Creating application according to design
-imani_job_desc_6: Creating API using Go Language
-imani_job_desc_7: Integrating MQTT using Go Language
-imani_job_desc_8: Creating Websocket using Go Language
-imani_job_desc_9: Management database MongoDB and MySQL
+imani_job_desc: 
+ - Creating mobile and web applications using Flutter
+ - Implementing applications based on action plan
+ - Fixed bugs found based action plan
+ - Integrating application with API
+ - Creating application according to design
+ - Creating API using Go Language
+ - Integrating MQTT using Go Language
+ - Creating Websocket using Go Language
+ - Management database MongoDB and MySQL
 
 smartfren_time: Jun 2022 - Present
-smartfren_job_desc_1: Creating mobile applications using Flutter
-smartfren_job_desc_2: Implementing mobile applications based on Jira Ticket
-smartfren_job_desc_3: Fixing bugs
-smartfren_job_desc_4: Integrating mobile application with API
-smartfren_job_desc_5: Integrating mobile application with API
-smartfren_job_desc_6: Creating mobile application according to design
+smartfren_job_desc: 
+ - Creating mobile applications using Flutter
+ - Implementing mobile applications based on Jira Ticket
+ - Fixing bugs
+ - Integrating mobile application with API
+ - Integrating mobile application with API
+ - Creating mobile application according to design
 
 ayolunas_desc: Mengerjakan projek ini setelah mempelajari tentang Flutter. Sebagian besar ditugaskan untuk menyelesaikan bug-bug yang ada. Tetapi juga ditugaskan untuk mengerjakan beberapa implementasi design dan integrasi API.
 soundfren_desc: Mengerjakan projek ini sekaligus mempelajari React Native. Ditugaskan untuk membantu mengembangkan dan mengimplementasikan program 1000 startup pada aplikasi Soundfren. Didalamnya saya mengimplementasikan desain, mengintegrasikan API, dan menyelesaikan bug-bug yang ada.
