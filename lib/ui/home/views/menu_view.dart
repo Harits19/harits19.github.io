@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:harits_portofolio/extensions/string_extension.dart';
 import 'package:harits_portofolio/ui/base/constans/k_duration.dart';
 import 'package:harits_portofolio/ui/base/constans/k_profile.dart';
 import 'package:harits_portofolio/ui/base/constans/k_size.dart';
@@ -59,7 +60,7 @@ class MenuView extends ConsumerWidget {
                   ),
                   duration: KDuration.d100,
                   child: Text(
-                    headerText,
+                    headerText.tr(ref),
                   ),
                 ),
               );

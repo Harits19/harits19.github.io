@@ -1,54 +1,55 @@
 language: Indonesia
 about_me: Tentang Saya
-about_me_desc: I am Abdullah Harits, graduated from Information Technology Universitas Brawijaya in 2021. I have experience as a fullstack developer. I have an interest in a career as a Flutter, Go and the latest technologies or frameworks. Known as a fast learner and likes to work on projects on time.
-skill_competencies: Skills & Competencies
+about_me_desc: Saya memiliki pengalama sebagai full stack developer namun saya hanya nyaman di dalam pengembangan aplikasi mobile. Saya memiliki ketertarikan di dalam sebuah karir sebagai Flutter, Go, dan React Native developer. Dikeal sebagai pembelajar cepat dan suka mengerjakan proyek dengan tepat waktu.
+skill_competencies: Skill & Kompetensi
 contact: Kontak
 contact_me: Kontak Saya
 experience: Pengalaman
 resume: Resume
-powered_flutter: Powered by Flutter Web
+powered_flutter: Dijalanka dengan Flutter Web
 my_name_is: Halo nama saya adalah
-i_full_stack_dev: I fullstack developer
-onboarding_desc: I’m a mobile developer specializing building with Flutter and React Native framework. Currently, I’m working on PT Smartfren Telecom Tbk
+i_full_stack_dev: Saya fullstack developer
+onboarding_desc: Saya adalah mobile developer khususnya membangung menggunakan Flutter dan React Native framework. Sekarang saya bekerja di PT Smartfren Telecom Tbk
 get_started: Mulai
 work: Pekerjaan
-not_found: Not Found
+not_found: Tidak Ditemukan
 see_detail: Lihat Selengkapnya
-under_development: Under development
+under_development: Dalam Perbaikan
 close: Tutup
 mobile_developer: Mobile Developer
 fullstack_developer: Fullstack Developer
 mobile_ui_engineer: Mobile & UI Engineer
 home: Beranda
 
-skyshi_time: February 2021 - March 2022
+skyshi_time: Februari 2021 - Maret 2022
 skyshi_job_desc:
- - Creating mobile applications using Flutter framework or React Native
- - Implementing mobile applications based on Business Process Documentation
- - Fixing bugs base on UAT documentation
- - Integrating mobile application with API and Firebase
- - Creating mobile application according to design
+ - Membuat aplikasi mobile menggunakan Flutter atau React Native framework
+ - Mengimplementasikan aplikasi mobile berdasarkan Business Process Documentation
+ - Memperbaiki bug berdasarkan dokumentasi UAT
+ - Mengintegrasikan aplikasi mobile dengan API dan Firebase
+ - Membuat aplikasi berdasarkan desain
 
-imani_time: March 2022 - May 2022
+imani_time: Maret 2022 - Mei 2022
 imani_job_desc: 
- - Creating mobile and web applications using Flutter
- - Implementing applications based on action plan
- - Fixed bugs found based action plan
- - Integrating application with API
- - Creating application according to design
- - Creating API using Go Language
- - Integrating MQTT using Go Language
- - Creating Websocket using Go Language
- - Management database MongoDB and MySQL
+ - Membuat aplikasi mobile dan web menggunakan Flutter
+ - Menerapkan aplikasi berdasarkan action plan
+ - Memperbaiki bug yang ditemukan berdasarkan action plan
+ - Mengintegrasikan aplikasi dengan API
+ - Membuat aplikasi sesuai desain
+ - Membuat API menggunakan Bahasa Go
+ - Mengintegrasikan MQTT menggunakan Bahasa Go
+ - Membuat Websocket menggunakan Bahasa Go
+ - Manajemen database MongoDB dan MySQL
 
-smartfren_time: Jun 2022 - Present
+smartfren_time: Juni 2022 - Sekarang
 smartfren_job_desc: 
- - Creating mobile applications using Flutter
- - Implementing mobile applications based on Jira Ticket
- - Fixing bugs
- - Integrating mobile application with API
- - Integrating mobile application with API
- - Creating mobile application according to design
+ - Membuat aplikasi mobile menggunakan Flutter atau React Native
+ - Menerapkan aplikasi seluler berdasarkan tiket Jira
+ - Memperbaiki bug yang ditemukan dari dokumentasi UAT
+ - Mengintegrasikan aplikasi seluler dengan API dan Firebase
+ - Membuat aplikasi mobile sesuai desain
+ - Buat API menggunakan bahasa Go
+ - Buat pengujian otomasi web menggunakan Katalon
 
 ayolunas_desc: Mengerjakan projek ini setelah mempelajari tentang Flutter. Sebagian besar ditugaskan untuk menyelesaikan bug-bug yang ada. Tetapi juga ditugaskan untuk mengerjakan beberapa implementasi design dan integrasi API.
 soundfren_desc: Mengerjakan projek ini sekaligus mempelajari React Native. Ditugaskan untuk membantu mengembangkan dan mengimplementasikan program 1000 startup pada aplikasi Soundfren. Didalamnya saya mengimplementasikan desain, mengintegrasikan API, dan menyelesaikan bug-bug yang ada.

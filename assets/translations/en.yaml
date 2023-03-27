@@ -1,6 +1,6 @@
 language: Indonesia
 about_me: About Me
-about_me_desc: I am Abdullah Harits, graduated from Information Technology Universitas Brawijaya in 2021. I have experience as a fullstack developer. I have an interest in a career as a Flutter, Go and the latest technologies or frameworks. Known as a fast learner and likes to work on projects on time.
+about_me_desc: I have experience as a full stack developer but I'm only confident in mobile app development. I have an interest in a career as a Flutter, Go, React Native, and the latest technologies or frameworks. Known as a fast learner and likes to work on projects on time. 
 skill_competencies: Skills & Competencies
 contact: Contact
 contact_me: Contact Me
@@ -13,7 +13,7 @@ onboarding_desc: I’m a mobile developer specializing building with Flutter and
 get_started: Get Started
 work: Work
 not_found: Not Found
-see_detail: Lihat Selengkapnya
+see_detail: See Details
 under_development: Under development
 close: Close
 mobile_developer: Mobile Developer
@@ -43,12 +43,13 @@ imani_job_desc:
 
 smartfren_time: Jun 2022 - Present
 smartfren_job_desc: 
- - Creating mobile applications using Flutter
- - Implementing mobile applications based on Jira Ticket
- - Fixing bugs
- - Integrating mobile application with API
- - Integrating mobile application with API
+ - Creating mobile applications using Flutter or React Native
+ - Implementing mobile applications based on Jira ticket
+ - Fixed bugs found from UAT documentation
+ - Integrating mobile application with API and Firebase
  - Creating mobile application according to design
+ - Create API using Go language
+ - Create web automation testing using Katalon
 
 ayolunas_desc: Mengerjakan projek ini setelah mempelajari tentang Flutter. Sebagian besar ditugaskan untuk menyelesaikan bug-bug yang ada. Tetapi juga ditugaskan untuk mengerjakan beberapa implementasi design dan integrasi API.
 soundfren_desc: Mengerjakan projek ini sekaligus mempelajari React Native. Ditugaskan untuk membantu mengembangkan dan mengimplementasikan program 1000 startup pada aplikasi Soundfren. Didalamnya saya mengimplementasikan desain, mengintegrasikan API, dan menyelesaikan bug-bug yang ada.

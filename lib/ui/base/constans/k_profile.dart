@@ -98,5 +98,6 @@ class KProfile {
         "GIT",
         "Functional Programming",
         "Go",
+        "Mobile Application Developer"
       ];
 }

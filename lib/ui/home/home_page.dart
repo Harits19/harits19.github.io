@@ -17,11 +17,11 @@ import 'package:harits_portofolio/ui/utils/responsive_util.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 enum Menus {
-  home(text: "Home", view: OnboardingView()),
-  aboutMe(text: "About Me", view: AboutMeView()),
-  experience(text: "Experience", view: ExperienceView()),
-  work(text: "Work", view: WorkView()),
-  contact(text: "Contact", view: ContactView()),
+  home(text: "home", view: OnboardingView()),
+  aboutMe(text: "about_me", view: AboutMeView()),
+  experience(text: "experience", view: ExperienceView()),
+  work(text: "work", view: WorkView()),
+  contact(text: "contact", view: ContactView()),
   socialMedia(text: "", view: BottomView()),
   space(
     text: "",
