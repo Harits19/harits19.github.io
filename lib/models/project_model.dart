@@ -4,6 +4,7 @@ class ProjectModel {
   final String description;
   final String link;
   final List<String> highlight;
+  final String github;
 
   const ProjectModel({
     required this.image,
@@ -11,5 +12,6 @@ class ProjectModel {
     required this.description,
     required this.link,
     required this.highlight,
+    this.github = ''
   });
 }

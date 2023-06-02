@@ -80,6 +80,7 @@ class KProfile {
           link: "https://play.google.com/store/apps/details?id=com.prayer_time",
           description: "prayer_time_desc".tr(ref),
           highlight: ["Flutter"],
+          github: 'https://github.com/Harits19/prayer_time_app'
         ),
       ].reversed.toList();
 

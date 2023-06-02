@@ -92,13 +92,16 @@ class WorkView extends ConsumerWidget {
                                   size: KSize.s16,
                                 ),
                               ),
-                              IconButton(
-                                onPressed: () {},
-                                icon: const Icon(
-                                  FontAwesome5.github,
-                                  size: KSize.s16,
+                              if (project.github.isNotEmpty)
+                                IconButton(
+                                  onPressed: () {
+                                    UrlUtil.launchUrl(context, project.github);
+                                  },
+                                  icon: const Icon(
+                                    FontAwesome5.github,
+                                    size: KSize.s16,
+                                  ),
                                 ),
-                              ),
                             ],
                           )
                         ],
