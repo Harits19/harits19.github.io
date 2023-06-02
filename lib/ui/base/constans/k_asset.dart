@@ -13,6 +13,7 @@ class KAsset {
       skyshi = '$_path/skyshi.png',
       smarfren = '$_path/smartfren.png',
       en = '$_path/translations/en.yaml',
-      id = '$_path/translations/id.yaml';
+      id = '$_path/translations/id.yaml',
+      prayerTime = '$_path/prayer_time.webp';
       
 }

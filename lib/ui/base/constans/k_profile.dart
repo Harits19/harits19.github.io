@@ -74,6 +74,13 @@ class KProfile {
           link: "https://primasaver.com/home",
           highlight: ["Flutter", "Go", "MongoDB"],
         ),
+        ProjectModel(
+          image: KAsset.prayerTime,
+          name: "Prayer Time",
+          link: "https://play.google.com/store/apps/details?id=com.prayer_time",
+          description: "prayer_time_desc".tr(ref),
+          highlight: ["Flutter"],
+        ),
       ].reversed.toList();
 
   static const email = "harits.abdullah19@gmail.com",

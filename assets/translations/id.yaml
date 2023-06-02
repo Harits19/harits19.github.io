@@ -57,3 +57,4 @@ pejuang_desc: Membuat aplikasi untuk membantu pembayaran berbagai kebutuhan di m
 batumbu_desc: Membuat aplikasi untuk mewadahi pemberi dana dan peminjam dana pada lingkungan UMKM. Didalamnya saya mengimplementasikan desain, mengintegrasikan API, dan menyelesaikan bug-bug yang ada.
 protect_desc: Ini adalah projek pribadi saya. Tujuannya untuk mengisi waktu dan memenuhi kebutuhan mengenai penyimpanan dan pembuat password yang disimpan secara lokal
 primasaver_desc: Ini adalah projek mengenai pembuatan aplikasi flutter dan backend golang untuk melakukan manajemen data pemakaian daya listrik dari pengguna
+prayer_time_desc: Projek tentang aplikasi jadwal sholat dan arah kiblat. Membuat projek ini untuk mengisi waktu kosong dan memahami cara menggunakan notifikasi lokal, background service, dan membuat widget di halaman utama smartphone
