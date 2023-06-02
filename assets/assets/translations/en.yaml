@@ -57,3 +57,4 @@ pejuang_desc: Create an application to help pay for various needs in the communi
 batumbu_desc: Make an application to accommodate funders and borrowers of funds in the MSME environment. In it I implement designs, integrate APIs, and resolve existing bugs.
 protect_desc: This is my personal project. The goal is to create an application about storing and generating locally stored passwords
 primasaver_desc: This is a project regarding the creation of the flutter application and the golang backend to manage user power consumption data
+prayer_time_desc: Project about the application of the prayer schedule and Qibla direction. Created this project to fill free time and understand how to use local notifications, background services, and create widgets on the main smartphone page
