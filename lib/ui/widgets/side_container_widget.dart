@@ -8,11 +8,11 @@ class SideContainerWidget extends StatelessWidget {
   const SideContainerWidget({
     Key? key,
     this.children = const [],
-    this.reverse = false,
+    this.direction = VerticalDirection.down,
   }) : super(key: key);
 
   final List<Widget> children;
-  final bool reverse;
+  final VerticalDirection direction;
 
   @override
   Widget build(BuildContext context) {
@@ -25,50 +25,17 @@ class SideContainerWidget extends StatelessWidget {
       flex: 1,
       child: AnimatedInitialWidget(
         child: Column(
-          verticalDirection:
-              reverse ? VerticalDirection.up : VerticalDirection.down,
+          verticalDirection: direction,
           children: [
             const GapWidget.v(KSize.s40),
             ...children.map((e) => e),
             const GapWidget.v(KSize.s16),
             () {
-              const circle = Icon(
-                Icons.circle,
-                size: KSize.s8,
-                color: Colors.grey,
-              );
-
-              final line = Stack(
-                children: [
-                  Positioned.fill(
-                    child: Column(
-                      children: const [
-                        circle,
-                        Spacer(),
-                        circle,
-                      ],
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.center,
-                    child: Container(
-                      margin: const EdgeInsets.symmetric(vertical: KSize.s4),
-                      decoration: BoxDecoration(
-                        color: Colors.grey.shade300,
-                        borderRadius: BorderRadius.circular(KSize.s4),
-                      ),
-                      height: KSize.s24,
-                      width: KSize.s4,
-                    ),
-                  ),
-                ],
-              );
-
               return Expanded(
                 child: LayoutBuilder(
                   builder: (context, constraint) {
                     return RotatedBox(
-                      quarterTurns: reverse ? 2 : 0,
+                      quarterTurns: direction == VerticalDirection.up ? 2 : 0,
                       child: ClipRect(
                         clipper: RectCustomClipper(constraint.maxHeight),
                         child: Column(
@@ -76,7 +43,7 @@ class SideContainerWidget extends StatelessWidget {
                             ...List.generate(
                               constraint.maxHeight ~/ KSize.s24 ~/ 2,
                               (index) => index % 2 == 0
-                                  ? line
+                                  ? const _Line()
                                   : const GapWidget.v(KSize.s24),
                             ),
                           ],
@@ -90,6 +57,44 @@ class SideContainerWidget extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class _Line extends StatelessWidget {
+  const _Line();
+
+  @override
+  Widget build(BuildContext context) {
+    const circle = Icon(
+      Icons.circle,
+      size: KSize.s8,
+      color: Colors.grey,
+    );
+    return Stack(
+      children: [
+        const Positioned.fill(
+          child: Column(
+            children: [
+              circle,
+              Spacer(),
+              circle,
+            ],
+          ),
+        ),
+        Align(
+          alignment: Alignment.center,
+          child: Container(
+            margin: const EdgeInsets.symmetric(vertical: KSize.s4),
+            decoration: BoxDecoration(
+              color: Colors.grey.shade300,
+              borderRadius: BorderRadius.circular(KSize.s4),
+            ),
+            height: KSize.s24,
+            width: KSize.s4,
+          ),
+        ),
+      ],
     );
   }
 }

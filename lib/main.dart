@@ -4,7 +4,6 @@ import 'package:harits_portofolio/ui/base/constans/k_profile.dart';
 
 import 'package:harits_portofolio/ui/base/constans/k_theme.dart';
 import 'package:harits_portofolio/ui/base/providers/app/app_notifier.dart';
-import 'package:harits_portofolio/ui/base/providers/language/language_notifier.dart';
 import 'package:harits_portofolio/ui/base/providers/language/language_service.dart';
 import 'package:harits_portofolio/ui/home/home_page.dart';
 

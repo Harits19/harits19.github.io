@@ -16,7 +16,7 @@ class AnimatedSlideWidget extends StatefulWidget {
 }
 
 class _AnimatedSlideWidgetState extends State<AnimatedSlideWidget> {
-  Offset _offset = const Offset(0, -2);
+  var _offset = const Offset(0, -2);
 
   @override
   void initState() {

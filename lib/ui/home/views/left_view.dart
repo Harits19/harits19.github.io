@@ -32,7 +32,7 @@ class LeftView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ref) {
     return SideContainerWidget(
-      reverse: true,
+      direction: VerticalDirection.up,
       children: [const PoweredBy(), ...items(context)],
     );
   }
