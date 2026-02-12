@@ -10,5 +10,28 @@ body {
 
 @theme {
   --text-16pt: 21.3px;
+  --text-12pt: 16px;
   --text-11pt: 14.7px;
+}
+@media print {
+  @page {
+    size: A4;
+    margin: 0mm;
+  }
+
+  body * {
+    visibility: hidden;
+  }
+
+  #print-area,
+  #print-area * {
+    visibility: visible;
+  }
+
+  #print-area {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
 }

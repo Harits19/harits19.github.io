@@ -1,11 +1,17 @@
+import useLocale from "./useLocale";
+
 const en = {
   aboutMe: "About Me",
 } as const;
 
-const id = {
+type Keys = keyof typeof en;
+
+const id: Record<Keys, string> = {
   ...en,
+  aboutMe: "Tentang Saya",
 } as const;
 
 export default function useDict() {
-  return en;
+  const locale = useLocale();
+  return locale === "en" ? en : id;
 }

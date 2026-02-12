@@ -15,7 +15,7 @@ export default async function RootLayout({
   const pathname = (await headers()).get("x-pathname") ?? "";
   const locale = pathname.split("/")[1] || "en";
   return (
-    <html className="h-screen w-screen bg-gray-400" lang={locale}>
+    <html id="hidden" className="h-screen w-screen bg-gray-400" lang={locale}>
       <body className="w-full h-full">{children}</body>
     </html>
   );
