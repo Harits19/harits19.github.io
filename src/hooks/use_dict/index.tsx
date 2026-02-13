@@ -1,4 +1,4 @@
-import useLocale from "../useLocale";
+import useLocale from "../use_locale";
 import dict from "./constant";
 
 export default function useDict() {

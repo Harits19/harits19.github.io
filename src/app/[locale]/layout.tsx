@@ -1,6 +1,6 @@
 "use client";
 
-import { LocaleProvider } from "@/hooks/useLocale";
+import { LocaleProvider } from "@/hooks/use_locale";
 import { Locale, locales } from "@/lib/i18n";
 import { notFound, useParams } from "next/navigation";
 
@@ -18,10 +18,8 @@ export default function LocaleLayout({
 
   return (
     <LocaleProvider value={locale}>
-      <div className="flex justify-center bg-gray-200 p-10">
-        <div id="print-area" className="w-[210mm] h-[297mm] bg-white">
-          {children}
-        </div>
+      <div className="flex justify-center bg-gray-200">
+        <div>{children}</div>
       </div>
     </LocaleProvider>
   );

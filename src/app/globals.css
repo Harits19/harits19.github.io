@@ -16,7 +16,12 @@ body {
 @media print {
   @page {
     size: A4;
-    margin: 0mm;
+    padding: 0;
+    margin: 0;
+  }
+
+  .a4 {
+    margin: 0;
   }
 
   body * {
