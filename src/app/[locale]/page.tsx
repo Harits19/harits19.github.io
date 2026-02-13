@@ -26,9 +26,7 @@ export default function Home() {
       </div>
       <br />
       <div className=" w-full flex flex-col text-justify">
-        <span className="font-semibold text-12pt uppercase">
-          {dict.aboutMe}
-        </span>
+        <span className="font-semibold text-12pt uppercase">{dict.about}</span>
         <div className="w-full border-b-[0.5px]"></div>
         <span>{profile.about_me}</span>
       </div>
