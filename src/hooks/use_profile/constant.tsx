@@ -122,7 +122,7 @@ const en = {
   ],
   auxiliary_work: [
     {
-      company: "Wisata Niaga Hotel – ChicodeFive",
+      company: "ChicodeFive",
       location: undefined,
       employment_type: "Side Project",
       position: "Flutter Developer",
@@ -144,68 +144,76 @@ const en = {
       end_date: "Jan 2021",
     },
   ],
-  skills: {
-    frontend: ["React.js", "Next.js", "Tailwind", "Ant Design", "Radix UI"],
-    backend: ["Go", "Express.js"],
-    mobile: ["Flutter", "React Native", "Jetpack Compose"],
-    database: ["MongoDB", "MySQL"],
-    architecture: ["Microservices", "Event-Driven Architecture", "REST APIs"],
-    message_broker: ["Google Pub/Sub"],
-    state_management: [
-      "Redux Toolkit",
-      "TanStack",
-      "Riverpod",
-      "Bloc",
-      "Provider",
-      "React SWR",
-    ],
-    testing: ["Sinon", "Chai"],
-    dev_tools: [
-      "GitHub",
-      "GitLab",
-      "Figma",
-      "JIRA",
-      "Trello",
-      "Slack",
-      "Microsoft Teams",
-    ],
-    cloud_and_protocols: ["Google Cloud Platform", "MQTT", "WebSocket"],
-  },
-  languages: {
-    "Bahasa Indonesia": "Native",
-    English: "Intermediate (working proficiency)",
-  },
-} as const;
+  skills: [
+    {
+      title: "Frontend",
+      tools: ["React.js", "Next.js", "Tailwind", "Ant Design"],
+    },
+    {
+      title: "Backend",
+      tools: ["Go", "Express.js"],
+    },
+    {
+      title: "Mobile",
+      tools: ["Flutter", "React Native"],
+    },
+    {
+      title: "Database",
+      tools: ["MongoDB", "Postgres"],
+    },
+    {
+      title: "Architecture",
+      tools: ["Microservices", "Event-Driven Architecture", "REST APIs"],
+    },
+    {
+      title: "Message Broker",
+      tools: ["Google Pub/Sub", "RabbitMQ"],
+    },
+    {
+      title: "State Management",
+      tools: [
+        "Redux Toolkit",
+        "TanStack",
+        "Riverpod",
+        "Bloc",
+        "Provider",
+        "React SWR",
+      ],
+    },
+    {
+      title: "Testing",
+      tools: ["Sinon", "Chai"],
+    },
+    {
+      title: "Dev Tools",
+      tools: [
+        "GitHub",
+        "GitLab",
+        "Figma",
+        "JIRA",
+        "Trello",
+        "Slack",
+        "Microsoft Teams",
+      ],
+    },
+    {
+      title: "Cloud",
+      tools: ["Google Cloud Platform", "Byteplus"],
+    },
+  ],
+  languages: [
+    {
+      name: "Bahasa Indonesia",
+      level: "Native",
+    },
+    { name: "English", level: "Intermediate" },
+  ],
+} ;
 
 const id = {
   ...en,
   name: "ABDULLAH HARITS",
-  details: [
-    {
-      text: "Jakarta, Indonesia",
-      link: undefined,
-    },
-    {
-      text: email,
-      link: `mailto:${email}`,
-    },
-    {
-      text: phoneNumber,
-      link: `https://wa.me/${phoneNumber}`,
-    },
-    {
-      text: linkedIn,
-      link: generateLink(linkedIn),
-    },
-    {
-      text: portfolio,
-      link: generateLink(portfolio),
-    },
-    {
-      text: github,
-      link: generateLink(github),
-    },
-  ],
+
   about_me:
     "Software Engineer Full-stack dengan pengalaman lebih dari tiga tahun dalam mengembangkan aplikasi web dan mobile menggunakan teknologi seperti Next.js, Express.js, Flutter, dan Go. Terlibat dalam pengembangan sistem real-time, integrasi dengan API pihak ketiga (termasuk Meta Cloud dan WhatsApp), serta implementasi arsitektur berbasis microservices menggunakan Pub/Sub. Terbiasa bekerja dalam lingkungan kolaboratif, menerapkan praktik maintainability kode, serta mendukung peningkatan performa dan usability aplikasi.",
   experience: [
@@ -227,7 +235,7 @@ const id = {
     {
       company: "PT Admin Pintar Kita",
       location: "Jakarta, Indonesia",
-      employment_type: "Masa Percobaan",
+      employment_type: "Probation",
       position: "Frontend Developer",
       start_date: "Feb 2025",
       end_date: "Feb 2025",
@@ -241,8 +249,8 @@ const id = {
       location: "Jakarta, Indonesia",
       employment_type: "Karyawan Tetap",
       position: "Software Development Specialist – Full-stack Developer",
-      start_date: "Aug 2023",
-      end_date: "Dec 2024",
+      start_date: "Agu 2023",
+      end_date: "Des 2024",
       responsibilities: [
         "Membangun aplikasi web menggunakan Next.js dan layanan backend dengan Express.js.",
         "Merancang dan mengimplementasikan layanan berbasis event menggunakan Google Pub/Sub.",
@@ -257,7 +265,7 @@ const id = {
       employment_type: "Karyawan Tetap",
       position: "Software Engineer – Mobile, Frontend & Backend Developer",
       start_date: "Jun 2022",
-      end_date: "Aug 2023",
+      end_date: "Agu 2023",
       responsibilities: [
         "Mengembangkan aplikasi penjualan mobile menggunakan Flutter.",
         "Mengembangkan aplikasi mobile 1ENGAGE menggunakan React Native.",
@@ -271,7 +279,7 @@ const id = {
       employment_type: "Kontrak",
       position: "Mobile, Frontend & Backend Developer",
       start_date: "Mar 2022",
-      end_date: "May 2022",
+      end_date: "Mei 2022",
       responsibilities: [
         "Mengembangkan aplikasi mobile dan web menggunakan Flutter.",
         "Mengelola database menggunakan MongoDB dan MySQL.",
@@ -294,12 +302,12 @@ const id = {
   ],
   auxiliary_work: [
     {
-      company: "Wisata Niaga Hotel – ChicodeFive",
+      company: "ChicodeFive",
       employment_type: "Proyek Sampingan",
       location: undefined,
       position: "Flutter Developer",
-      start_date: "May 2023",
-      end_date: "Aug 2023",
+      start_date: "Mei 2023",
+      end_date: "Agu 2023",
       responsibilities: [
         "Mengembangkan aplikasi manajemen hotel menggunakan Flutter.",
         "Membuat komponen reusable untuk menjaga konsistensi antar halaman aplikasi.",
@@ -316,38 +324,7 @@ const id = {
       end_date: "Jan 2021",
     },
   ],
-  skills: {
-    frontend: ["React.js", "Next.js", "Tailwind", "Ant Design", "Radix UI"],
-    backend: ["Go", "Express.js"],
-    mobile: ["Flutter", "React Native", "Jetpack Compose"],
-    database: ["MongoDB", "MySQL"],
-    architecture: ["Microservices", "Event-Driven Architecture", "REST API"],
-    message_broker: ["Google Pub/Sub"],
-    state_management: [
-      "Redux Toolkit",
-      "TanStack",
-      "Riverpod",
-      "Bloc",
-      "Provider",
-      "React SWR",
-    ],
-    testing: ["Sinon", "Chai"],
-    dev_tools: [
-      "GitHub",
-      "GitLab",
-      "Figma",
-      "JIRA",
-      "Trello",
-      "Slack",
-      "Microsoft Teams",
-    ],
-    cloud_and_protocols: ["Google Cloud Platform", "MQTT", "WebSocket"],
-  },
-  languages: {
-    "Bahasa Indonesia": "Bahasa Ibu",
-    English: "Menengah (kemampuan kerja)",
-  },
-} as const;
+} ;
 
 const profile = {
   en,

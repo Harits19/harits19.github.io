@@ -1,3 +1,6 @@
+import DetailView from "./detail_view";
+import ListView from "./list_view";
+
 export default function ProjectView({
   item,
 }: {
@@ -13,18 +16,14 @@ export default function ProjectView({
 }) {
   return (
     <div key={item.company} className="flex flex-col w-full">
-      <span className="font-semibold">
-        {item.company} - {item.location} - {item.employment_type}
-      </span>
-      <span className="italic">{item.position}</span>
-      <span className="italic text-black/70">
-        {item.start_date} - {item.end_date}
-      </span>
-      <ul className="list-disc ml-4">
-        {item.responsibilities.map((item) => (
-          <li key={item}>{item}</li>
-        ))}
-      </ul>
+      <DetailView
+        title={[item.company, item.location, item.employment_type]}
+        endDate={item.end_date}
+        startDate={item.start_date}
+        position={item.position}
+      />
+
+      <ListView items={item.responsibilities} />
     </div>
   );
 }
