@@ -12,7 +12,7 @@ export default function SectionView({
       <span className="font-semibold text-12pt uppercase border-b-[0.5px]">
         {title}
       </span>
-      <div className="h-3" />
+      <div className="h-1" />
       {children}
       <div className="h-6" />
     </div>

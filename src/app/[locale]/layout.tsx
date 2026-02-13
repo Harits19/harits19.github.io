@@ -1,8 +1,9 @@
 "use client";
 
-import { LocaleProvider } from "@/hooks/use_locale";
+import useLocale, { LocaleProvider } from "@/hooks/use_locale";
 import { Locale, locales } from "@/lib/i18n";
 import { notFound, useParams } from "next/navigation";
+import SidebarView from "../components/sidebar_view";
 
 export default function LocaleLayout({
   children,
@@ -18,8 +19,10 @@ export default function LocaleLayout({
 
   return (
     <LocaleProvider value={locale}>
-      <div className="flex justify-center bg-gray-200">
-        <div>{children}</div>
+      <div className="flex bg-gray-200">
+        <div className="flex flex-1" />
+        <div className="">{children}</div>
+        <SidebarView />
       </div>
     </LocaleProvider>
   );

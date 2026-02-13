@@ -41,3 +41,7 @@ body {
     width: 100%;
   }
 }
+
+button {
+  @apply cursor-grab;
+}

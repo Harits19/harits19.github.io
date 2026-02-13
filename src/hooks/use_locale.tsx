@@ -1,7 +1,7 @@
 "use client";
 
 import { Locale } from "@/lib/i18n";
-import { createContext, ReactNode, useContext } from "react";
+import { createContext, ReactNode, useContext, useState } from "react";
 
 const LocaleContext = createContext<Locale>("en");
 
@@ -18,5 +18,7 @@ export function LocaleProvider({
 }
 
 export default function useLocale() {
-  return useContext(LocaleContext);
+  const locale = useContext(LocaleContext);
+
+  return { locale };
 }
