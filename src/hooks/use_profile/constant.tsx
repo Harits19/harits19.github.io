@@ -122,8 +122,9 @@ const en = {
   ],
   auxiliary_work: [
     {
-      project: "Wisata Niaga Hotel – ChicodeFive",
-      type: "Side Project",
+      company: "Wisata Niaga Hotel – ChicodeFive",
+      location: undefined,
+      employment_type: "Side Project",
       position: "Flutter Developer",
       start_date: "May 2023",
       end_date: "Aug 2023",
@@ -293,8 +294,9 @@ const id = {
   ],
   auxiliary_work: [
     {
-      project: "Wisata Niaga Hotel – ChicodeFive",
-      type: "Proyek Sampingan",
+      company: "Wisata Niaga Hotel – ChicodeFive",
+      employment_type: "Proyek Sampingan",
+      location: undefined,
       position: "Flutter Developer",
       start_date: "May 2023",
       end_date: "Aug 2023",

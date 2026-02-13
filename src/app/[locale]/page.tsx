@@ -2,7 +2,8 @@
 
 import useDict from "@/hooks/use_dict";
 import useProfile from "@/hooks/use_profile";
-import SectionView from "@/components/section_view";
+import SectionView from "@/app/components/section_view";
+import ProjectView from "../components/project_view";
 
 export default function Home() {
   const { name, details, ...profile } = useProfile();
@@ -34,22 +35,14 @@ export default function Home() {
       <SectionView title={dict.experience}>
         <div className="flex flex-col w-full gap-3">
           {profile.experience.map((item) => (
-            <div key={item.company} className="flex flex-col w-full">
-              <span className="font-semibold">
-                {item.company} - {item.location} - {item.employment_type}
-              </span>
-              <span className="italic">{item.position}</span>
-              <span className="italic text-black/70">
-                {item.start_date} - {item.end_date}
-              </span>
-              <ul className="list-disc ml-4">
-                {item.responsibilities.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div>
+            <ProjectView key={item.company} item={item} />
           ))}
         </div>
+      </SectionView>
+      <SectionView title={dict.auxiliary_work}>
+        {profile.auxiliary_work.map((item) => (
+          <ProjectView key={item.company} item={item} />
+        ))}
       </SectionView>
     </div>
   );
