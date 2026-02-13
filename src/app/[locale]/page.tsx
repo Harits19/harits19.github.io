@@ -30,7 +30,7 @@ export default function Home() {
           {dict.aboutMe}
         </span>
         <div className="w-full border-b-[0.5px]"></div>
-        <span>{profile.aboutMe}</span>
+        <span>{profile.about_me}</span>
       </div>
     </div>
   );
