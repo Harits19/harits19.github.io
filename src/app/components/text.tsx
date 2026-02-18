@@ -1,12 +1,12 @@
+import { defaultAnimationPerChar } from "@/constants/animation";
 import { motion } from "motion/react";
-import { ReactNode } from "react";
 
 export default function Text({
   text,
-  index: indexParent = 1,
+  charBefore = 1,
 }: {
   text: string;
-  index?: number;
+  charBefore?: number;
 }) {
   return (
     <div className="whitespace-pre-wrap">
@@ -15,7 +15,7 @@ export default function Text({
           key={index}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: (index + indexParent) * 0.005 }}
+          transition={{ delay: (index + charBefore) * defaultAnimationPerChar }}
         >
           {char}
         </motion.span>

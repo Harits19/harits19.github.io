@@ -208,7 +208,7 @@ const en = {
     },
     { name: "English", level: "Intermediate" },
   ],
-} ;
+};
 
 const id = {
   ...en,
@@ -324,7 +324,7 @@ const id = {
       end_date: "Jan 2021",
     },
   ],
-} ;
+};
 
 const profile = {
   en,
