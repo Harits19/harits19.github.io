@@ -4,12 +4,15 @@ import useDict from "@/hooks/use_dict";
 import useProfile from "@/hooks/use_profile";
 import SectionView from "@/app/components/section_view";
 import ProjectView from "../components/project_view";
-import React from "react";
 import DetailView from "../components/detail_view";
 import ListView from "../components/list_view";
 import ListItemView from "../components/list_item_view";
 import Text from "../components/text";
-import { DetailItem, ExperienceItem } from "@/hooks/use_profile/type";
+import {
+  DetailItem,
+  ExperienceItem,
+  SkillCategory,
+} from "@/hooks/use_profile/type";
 import { defaultLineChar } from "@/constants/animation";
 
 export default function Home() {
@@ -42,10 +45,19 @@ export default function Home() {
       profile.additional_experiences,
     ),
     education: dict.education.length,
+    gpa: education.gpa.length,
+    skills: getSkillLength(profile.skills),
   };
   const normalizedEducation = [education.institution, education.location].join(
     " - ",
   );
+
+  function getSkillLength(skills: SkillCategory[]) {
+    return skills.reduce(
+      (prev, curr) => prev + `${curr.title} : ${curr.tools.join(", ")}`.length,
+      0,
+    );
+  }
 
   const section1 = name.length;
   const section2 = section1 + char.details;
@@ -62,6 +74,8 @@ export default function Home() {
     education.start_date.length +
     education.end_date.length +
     education.degree.length;
+  const section11 = section10 + char.gpa;
+  const section12 = section11 + char.skills;
   return (
     <div className="h-screen w-[210mm] overflow-y-scroll">
       <div
@@ -123,42 +137,39 @@ export default function Home() {
           />
           <Text text={education.gpa} charBefore={section10} />
         </SectionView>
-        <SectionView title={dict.additional}>
+        <SectionView title={dict.additional} charBefore={section11}>
           <ListView
             items={profile.skills.map((item, index) => {
-              const charBefore = profile.skills.reduce(
-                (prev, curr, currIndex) =>
-                  index < currIndex
-                    ? prev +
-                      `${curr.title} ${curr.tools.join(",")}`.length +
-                      prev
-                    : prev,
-                0,
-              );
+              const charBefore =
+                getSkillLength(profile.skills.splice(0, index)) + section11;
               return {
                 view: (
                   <div key={item.title} className="flex flex-row ">
-                    <span className="w-1/3">{item.title}</span>
-                    <span className="w-full"> : {item.tools.join(", ")}</span>
+                    <span className="w-1/3">
+                      <Text text={item.title} charBefore={charBefore} />
+                    </span>
+                    <span className="w-full">
+                      <Text
+                        text={` : ${item.tools.join(", ")}`}
+                        charBefore={charBefore + item.title.length}
+                      />
+                    </span>
                   </div>
                 ),
                 charBefore,
               };
             })}
           />
-          <ListItemView
-            items={profile.skills.map((item) => ({
-              title: item.title,
-              value: item.tools,
-            }))}
-          />
         </SectionView>
-        <SectionView title={dict.languages}>
+        <SectionView title={dict.languages} charBefore={section12}>
           <ListItemView
-            items={profile.languages.map((item) => ({
-              title: item.name,
-              value: [item.level],
-            }))}
+            charBefore={section12}
+            items={profile.languages.map((item) => {
+              return {
+                title: item.name,
+                value: [item.level],
+              };
+            })}
           />
         </SectionView>
       </div>

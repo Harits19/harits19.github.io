@@ -5,7 +5,7 @@ import { ReactNode } from "react";
 export default function ListView({
   items,
 }: {
-  items: { view: ReactNode; charBefore: number }[];
+  items: { view: ReactNode; charBefore: number,  }[];
 }) {
   return (
     <ul className="list-disc ml-4">
