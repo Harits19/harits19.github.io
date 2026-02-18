@@ -1,3 +1,5 @@
+import { CV } from "./type";
+
 const email = "harits.abdullah19@gmail.com";
 const phoneNumber = "6283840493135";
 const linkedIn = "linkedin.com/in/abd-harits";
@@ -6,7 +8,7 @@ const github = "github.com/Harits19";
 function generateLink(link: string) {
   return `https://${link}`;
 }
-const en = {
+const en: CV = {
   name: "ABDULLAH HARITS",
   details: [
     {
@@ -120,7 +122,7 @@ const en = {
       ],
     },
   ],
-  auxiliary_work: [
+  additional_experiences: [
     {
       company: "ChicodeFive",
       location: undefined,
@@ -134,16 +136,14 @@ const en = {
       ],
     },
   ],
-  education: [
-    {
-      institution: "Universitas Brawijaya",
-      location: "Malang, Indonesia",
-      degree: "Bachelor of Computer Science",
-      gpa: "3.66/4.00",
-      start_date: "Aug 2017",
-      end_date: "Jan 2021",
-    },
-  ],
+  education: {
+    institution: "Universitas Brawijaya",
+    location: "Malang, Indonesia",
+    degree: "Bachelor of Computer Science",
+    gpa: "Cumulative GPA: 3.66/4.00",
+    start_date: "Aug 2017",
+    end_date: "Jan 2021",
+  },
   skills: [
     {
       title: "Frontend",
@@ -210,7 +210,7 @@ const en = {
   ],
 };
 
-const id = {
+const id: CV = {
   ...en,
   name: "ABDULLAH HARITS",
 
@@ -300,7 +300,7 @@ const id = {
       ],
     },
   ],
-  auxiliary_work: [
+  additional_experiences: [
     {
       company: "ChicodeFive",
       employment_type: "Proyek Sampingan",
@@ -314,16 +314,14 @@ const id = {
       ],
     },
   ],
-  education: [
-    {
-      institution: "Universitas Brawijaya",
-      location: "Malang, Indonesia",
-      degree: "Sarjana Ilmu Komputer",
-      gpa: "3.66/4.00",
-      start_date: "Aug 2017",
-      end_date: "Jan 2021",
-    },
-  ],
+  education: {
+    institution: "Universitas Brawijaya",
+    location: "Malang, Indonesia",
+    degree: "Sarjana Ilmu Komputer",
+    gpa: "Cumulative GPA: 3.66/4.00",
+    start_date: "Aug 2017",
+    end_date: "Jan 2021",
+  },
 };
 
 const profile = {

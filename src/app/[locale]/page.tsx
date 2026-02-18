@@ -13,7 +13,7 @@ import { DetailItem, ExperienceItem } from "@/hooks/use_profile/type";
 import { defaultLineChar } from "@/constants/animation";
 
 export default function Home() {
-  const { name, details, ...profile } = useProfile();
+  const { name, details, education, ...profile } = useProfile();
 
   const dict = useDict();
   function getExperiencesLength(items: ExperienceItem[]) {
@@ -37,13 +37,31 @@ export default function Home() {
     experience: dict.experience.length,
     line: defaultLineChar + 10,
     experiences: getExperiencesLength(profile.experience),
+    additional_experience: dict.additional_experience.length,
+    additional_experiences: getExperiencesLength(
+      profile.additional_experiences,
+    ),
+    education: dict.education.length,
   };
+  const normalizedEducation = [education.institution, education.location].join(
+    " - ",
+  );
+
   const section1 = name.length;
   const section2 = section1 + char.details;
   const section3 = section2 + char.about + char.line;
   const section4 = section3 + char.about_me;
   const section5 = section4 + char.experience + char.line;
   const section6 = section5 + char.experiences;
+  const section7 = section6 + char.additional_experience + char.line;
+  const section8 = section7 + char.additional_experiences;
+  const section9 = section8 + char.education + char.line;
+  const section10 =
+    section9 +
+    normalizedEducation.length +
+    education.start_date.length +
+    education.end_date.length +
+    education.degree.length;
   return (
     <div className="h-screen w-[210mm] overflow-y-scroll">
       <div
@@ -90,32 +108,43 @@ export default function Home() {
             })}
           </div>
         </SectionView>
-        <SectionView title={dict.auxiliary_work}>
-          {profile.auxiliary_work.map((item) => (
-            <ProjectView key={item.company} item={item} charBefore={section6} />
+        <SectionView title={dict.additional_experience} charBefore={section6}>
+          {profile.additional_experiences.map((item) => (
+            <ProjectView key={item.company} item={item} charBefore={section7} />
           ))}
         </SectionView>
-        <SectionView title={dict.education}>
-          {profile.education.map((item) => (
-            <React.Fragment key={item.institution}>
-              <DetailView
-                title={[item.institution, item.location].join(" - ")}
-                endDate={item.end_date}
-                startDate={item.start_date}
-                position={item.degree}
-              />
-              <span>Cumulative GPA: {item.gpa}</span>
-            </React.Fragment>
-          ))}
+        <SectionView title={dict.education} charBefore={section8}>
+          <DetailView
+            title={normalizedEducation}
+            endDate={education.end_date}
+            startDate={education.start_date}
+            position={education.degree}
+            charBefore={section9}
+          />
+          <Text text={education.gpa} charBefore={section10} />
         </SectionView>
         <SectionView title={dict.additional}>
           <ListView
-            items={profile.skills.map((item) => (
-              <div key={item.title} className="flex flex-row ">
-                <span className="w-1/3">{item.title}</span>
-                <span className="w-full"> : {item.tools.join(", ")}</span>
-              </div>
-            ))}
+            items={profile.skills.map((item, index) => {
+              const charBefore = profile.skills.reduce(
+                (prev, curr, currIndex) =>
+                  index < currIndex
+                    ? prev +
+                      `${curr.title} ${curr.tools.join(",")}`.length +
+                      prev
+                    : prev,
+                0,
+              );
+              return {
+                view: (
+                  <div key={item.title} className="flex flex-row ">
+                    <span className="w-1/3">{item.title}</span>
+                    <span className="w-full"> : {item.tools.join(", ")}</span>
+                  </div>
+                ),
+                charBefore,
+              };
+            })}
           />
           <ListItemView
             items={profile.skills.map((item) => ({

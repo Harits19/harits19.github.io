@@ -3,8 +3,8 @@ export interface CV {
   details: DetailItem[];
   about_me: string;
   experience: ExperienceItem[];
-  auxiliary_work: ExperienceItem[];
-  education: EducationItem[];
+  additional_experiences: ExperienceItem[];
+  education: EducationItem;
   skills: SkillCategory[];
   languages: LanguageItem[];
 }

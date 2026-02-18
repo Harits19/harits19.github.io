@@ -36,13 +36,16 @@ export default function ProjectView({
             item.responsibilities
               .slice(0, index)
               .reduce((prev, curr) => prev + curr.length, 0) + section1;
-          return (
-            <Text
-              text={responsibility}
-              key={responsibility}
-              charBefore={charBefore}
-            />
-          );
+          return {
+            view: (
+              <Text
+                text={responsibility}
+                key={responsibility}
+                charBefore={charBefore}
+              />
+            ),
+            charBefore,
+          };
         })}
       />
     </div>

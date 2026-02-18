@@ -1,7 +1,7 @@
 const en = {
   about: "About Me",
   experience: "Work Experience",
-  auxiliary_work: "Additional Experience", // atau: "Side Projects"
+  additional_experience: "Additional Experience", // atau: "Side Projects"
   education: "Education",
   additional: "Additional Information", // atau: "Skills & Competencies"
   tools: "Tools & Tech Stack",
@@ -12,7 +12,7 @@ const id = {
   ...en,
   about: "Tentang Saya",
   experience: "Pengalaman Kerja",
-  auxiliary_work: "Pengalaman Tambahan", // atau: "Proyek Sampingan"
+  additional_experience: "Pengalaman Tambahan", // atau: "Proyek Sampingan"
   education: "Pendidikan",
   additional: "Informasi Tambahan", // atau: "Keahlian & Kompetensi"
   tools: "Perangkat & Teknologi",
