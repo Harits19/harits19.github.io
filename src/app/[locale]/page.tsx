@@ -8,26 +8,38 @@ import React from "react";
 import DetailView from "../components/detail_view";
 import ListView from "../components/list_view";
 import ListItemView from "../components/list_item_view";
+import Text from "../components/text";
 
 export default function Home() {
   const { name, details, ...profile } = useProfile();
   const dict = useDict();
+  const char = {
+    name: name.length,
+    details: details.map((item) => item.text).join("").length,
+    about: dict.about.length,
+    about_me: profile.about_me.length,
+  };
   return (
     <div className="h-screen w-[210mm] overflow-y-scroll">
       <div
         id="print-area"
         className="flex a4 flex-col p-10  text-11pt w-full   bg-white"
       >
-        <span className="font-semibold text-left text-16pt">{name}</span>
+        <span className="font-semibold text-left text-16pt">
+          <Text text={name} />
+        </span>
         <div className="flex flex-wrap text-left ">
-          {details.map(({ text, link }) => {
+          {details.map(({ text, link }, index) => {
+            const textBefore = details.slice(0, index);
+            const totalChar =
+              textBefore.map((item) => item.text).join("").length + char.name;
             return (
               <div
                 key={text}
                 className="flex flex-row items-center whitespace-pre"
               >
                 <a target="_blank" href={link}>
-                  {text}
+                  <Text text={text} index={totalChar} />
                 </a>
                 {" | "}
               </div>
@@ -36,7 +48,14 @@ export default function Home() {
         </div>
         <br />
 
-        <SectionView title={dict.about}>{profile.about_me}</SectionView>
+        <SectionView
+          title={<Text text={dict.about} index={char.name + char.details} />}
+        >
+          <Text
+            text={profile.about_me}
+            index={char.name + char.details + char.about}
+          />
+        </SectionView>
         <SectionView title={dict.experience}>
           <div className="flex flex-col w-full gap-3">
             {profile.experience.map((item) => (
