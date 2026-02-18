@@ -141,7 +141,7 @@ export default function Home() {
           <ListView
             items={profile.skills.map((item, index) => {
               const charBefore =
-                getSkillLength(profile.skills.splice(0, index)) + section11;
+                getSkillLength(profile.skills.slice(0, index)) + section11;
               return {
                 view: (
                   <div key={item.title} className="flex flex-row ">
