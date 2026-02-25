@@ -1,27 +1,30 @@
-"use client";
-
-import useLocale, { LocaleProvider } from "@/hooks/use_locale";
 import { Locale, locales } from "@/lib/i18n";
-import { notFound, useParams } from "next/navigation";
+import { LocaleProvider } from "@/hooks/use_locale";
 import SidebarView from "../components/sidebar_view";
+import RedirectView from "../components/redirect_view";
 
-export default function LocaleLayout({
+export function generateStaticParams() {
+  return [{ locale: "en" }, { locale: "id" }];
+}
+
+export default async function LocaleLayout({
   children,
+  params,
 }: {
   children: React.ReactNode;
+  params: Promise<{ locale: string }>;
 }) {
-  const params = useParams();
-  const locale = params.locale as Locale;
+  const { locale } = await params;
 
-  if (!locales.includes(locale)) {
-    notFound();
+  if (!locales.includes(locale as Locale)) {
+    return <RedirectView />;
   }
 
   return (
-    <LocaleProvider value={locale}>
+    <LocaleProvider value={locale as Locale}>
       <div className="flex bg-gray-200">
         <div className="flex flex-1" />
-        <div className="">{children}</div>
+        <div>{children}</div>
         <SidebarView />
       </div>
     </LocaleProvider>

@@ -1,3 +1,5 @@
+"use client";
+
 import useLocale from "@/hooks/use_locale";
 import { useRouter } from "next/navigation";
 import RoundButton from "./round_button";
