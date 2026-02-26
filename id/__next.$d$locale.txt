@@ -1,0 +1,6 @@
+1:"$Sreact.fragment"
+2:I[1227,["/_next/static/chunks/15855a91dea56da1.js"],"LocaleProvider"]
+3:I[39756,["/_next/static/chunks/2f236954d6a65e12.js"],"default"]
+4:I[37457,["/_next/static/chunks/2f236954d6a65e12.js"],"default"]
+5:I[67162,["/_next/static/chunks/15855a91dea56da1.js"],"default"]
+0:{"buildId":"bZPhL7fDrgEqJI9Sbpfg5","rsc":["$","$1","c",{"children":[[["$","script","script-0",{"src":"/_next/static/chunks/15855a91dea56da1.js","async":true}]],["$","$L2",null,{"value":"id","children":["$","div",null,{"className":"flex bg-gray-200","children":[["$","div",null,{"className":"flex flex-1"}],["$","div",null,{"children":["$","$L3",null,{"parallelRouterKey":"children","template":["$","$L4",null,{}]}]}],["$","$L5",null,{}]]}]}]]}],"loading":null,"isPartial":false}
