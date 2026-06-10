@@ -1,4 +1,5 @@
 "use client";
+import { useMemo } from "react";
 
 import useDict from "@/hooks/use_dict";
 import useProfile from "@/hooks/use_profile";
@@ -15,67 +16,89 @@ import {
 } from "@/hooks/use_profile/type";
 import { defaultLineChar } from "@/constants/animation";
 
-export default function ClientComponentPage() {
-  const { name, details, education, ...profile } = useProfile();
-
-  const dict = useDict();
-  function getExperiencesLength(items: ExperienceItem[]) {
-    return items.reduce<number>(
-      (prev, current) =>
-        `${current.company} ${current.location} ${current.employment_type} ${current.position} ${current.start_date} ${current.end_date ?? ""} ${current.responsibilities.map((item) => item)}`
-          .length + prev,
-      0,
-    );
-  }
-
-  function getProfileDetail(details: DetailItem[]) {
-    return details.reduce((prev, current) => current.text.length + prev, 0);
-  }
-
-  const char = {
-    name: name.length,
-    details: getProfileDetail(details),
-    about: dict.about.length,
-    about_me: profile.about_me.length,
-    experience: dict.experience.length,
-    line: defaultLineChar + 10,
-    experiences: getExperiencesLength(profile.experience),
-    additional_experience: dict.additional_experience.length,
-    additional_experiences: getExperiencesLength(
-      profile.additional_experiences,
-    ),
-    education: dict.education.length,
-    gpa: education.gpa.length,
-    skills: getSkillLength(profile.skills),
-  };
-  const normalizedEducation = [education.institution, education.location].join(
-    " - ",
+/** Helper functions moved outside to prevent re-declaration on every render */
+const getExperiencesLength = (items: ExperienceItem[]) =>
+  items.reduce<number>(
+    (prev, current) =>
+      prev +
+      `${current.company} ${current.location} ${current.employment_type} ${current.position} ${current.start_date} ${current.end_date ?? ""} ${current.responsibilities.join(",")}`
+        .length,
+    0,
   );
 
-  function getSkillLength(skills: SkillCategory[]) {
-    return skills.reduce(
-      (prev, curr) => prev + `${curr.title} : ${curr.tools.join(", ")}`.length,
-      0,
-    );
-  }
+const getProfileDetailLength = (details: DetailItem[]) =>
+  details.reduce((prev, current) => prev + current.text.length, 0);
 
-  const section1 = name.length;
-  const section2 = section1 + char.details;
-  const section3 = section2 + char.about + char.line;
-  const section4 = section3 + char.about_me;
-  const section5 = section4 + char.experience + char.line;
-  const section6 = section5 + char.experiences;
-  const section7 = section6 + char.additional_experience + char.line;
-  const section8 = section7 + char.additional_experiences;
-  const section9 = section8 + char.education + char.line;
-  const section10 =
-    section9 +
-    normalizedEducation.length +
-    education.start_date.length +
-    education.end_date.length +
-    education.degree.length;
-  const section11 = section10 + char.gpa;
-  const section12 = section11 + char.skills;
+const getSkillLength = (skills: SkillCategory[]) =>
+  skills.reduce(
+    (prev, curr) => prev + `${curr.title} : ${curr.tools.join(", ")}`.length,
+    0,
+  );
+
+export default function ClientComponentPage() {
+  const { name, details, education, ...profile } = useProfile();
+  const dict = useDict();
+
+  const normalizedEducation = `${education.institution} - ${education.location}`;
+
+  // Memoize all character calculations to optimize performance
+  const { char, offsets } = useMemo(() => {
+    const charCounts = {
+      name: name.length,
+      details: getProfileDetailLength(details),
+      about: dict.about.length,
+      about_me: profile.about_me.length,
+      experience: dict.experience.length,
+      line: defaultLineChar + 10,
+      experiences: getExperiencesLength(profile.experience),
+      additional_experience: dict.additional_experience.length,
+      additional_experiences: getExperiencesLength(
+        profile.additional_experiences,
+      ),
+      education: dict.education.length,
+      gpa: education.gpa.length,
+      skills: getSkillLength(profile.skills),
+    };
+
+    const o = {
+      name: 0,
+      details: name.length,
+      aboutSection: name.length + charCounts.details,
+      aboutMe: 0,
+      experienceSection: 0,
+      experienceList: 0,
+      additionalExpSection: 0,
+      educationSection: 0,
+      educationDetail: 0,
+      educationGpa: 0,
+      skillsSection: 0,
+      languagesSection: 0,
+    };
+
+    o.aboutMe = o.aboutSection + charCounts.about + charCounts.line;
+    o.experienceSection = o.aboutMe + charCounts.about_me;
+    o.experienceList =
+      o.experienceSection + charCounts.experience + charCounts.line;
+    o.additionalExpSection = o.experienceList + charCounts.experiences;
+    o.educationSection =
+      o.additionalExpSection +
+      charCounts.additional_experience +
+      charCounts.line +
+      charCounts.additional_experiences;
+    o.educationDetail =
+      o.educationSection + charCounts.education + charCounts.line;
+    o.educationGpa =
+      o.educationDetail +
+      normalizedEducation.length +
+      education.start_date.length +
+      education.end_date.length +
+      education.degree.length;
+    o.skillsSection = o.educationGpa + charCounts.gpa;
+    o.languagesSection = o.skillsSection + charCounts.skills;
+
+    return { char: charCounts, offsets: o };
+  }, [name, details, education, profile, dict, normalizedEducation]);
+
   return (
     <div className="h-screen w-[210mm] overflow-y-scroll">
       <div
@@ -88,7 +111,8 @@ export default function ClientComponentPage() {
         <div className="flex flex-wrap text-left whitespace-pre-wrap">
           {details.map(({ text, link }, index) => {
             const detailsBefore = details.slice(0, index);
-            const totalChar = getProfileDetail(detailsBefore) + section1;
+            const totalChar =
+              getProfileDetailLength(detailsBefore) + offsets.details;
             return (
               <div
                 key={text}
@@ -103,15 +127,18 @@ export default function ClientComponentPage() {
         </div>
         <br />
 
-        <SectionView title={dict.about} charBefore={section2}>
-          <Text text={profile.about_me} charBefore={section3} />
+        <SectionView title={dict.about} charBefore={offsets.aboutSection}>
+          <Text text={profile.about_me} charBefore={offsets.aboutMe} />
         </SectionView>
-        <SectionView title={dict.experience} charBefore={section4}>
+        <SectionView
+          title={dict.experience}
+          charBefore={offsets.experienceSection}
+        >
           <div className="flex flex-col w-full gap-3">
             {profile.experience.map((item, index) => {
               const charBefore =
                 getExperiencesLength(profile.experience.slice(0, index)) +
-                section5;
+                offsets.experienceList;
               return (
                 <ProjectView
                   key={item.company}
@@ -122,29 +149,44 @@ export default function ClientComponentPage() {
             })}
           </div>
         </SectionView>
-        <SectionView title={dict.additional_experience} charBefore={section6}>
+        <SectionView
+          title={dict.additional_experience}
+          charBefore={offsets.additionalExpSection}
+        >
           {profile.additional_experiences.map((item) => (
-            <ProjectView key={item.company} item={item} charBefore={section7} />
+            <ProjectView
+              key={item.company}
+              item={item}
+              charBefore={
+                offsets.additionalExpSection +
+                char.additional_experience +
+                char.line
+              }
+            />
           ))}
         </SectionView>
-        <SectionView title={dict.education} charBefore={section8}>
+        <SectionView
+          title={dict.education}
+          charBefore={offsets.educationSection}
+        >
           <DetailView
             title={normalizedEducation}
             endDate={education.end_date}
             startDate={education.start_date}
             position={education.degree}
-            charBefore={section9}
+            charBefore={offsets.educationDetail}
           />
-          <Text text={education.gpa} charBefore={section10} />
+          <Text text={education.gpa} charBefore={offsets.educationGpa} />
         </SectionView>
-        <SectionView title={dict.additional} charBefore={section11}>
+        <SectionView title={dict.additional} charBefore={offsets.skillsSection}>
           <ListView
             items={profile.skills.map((item, index) => {
               const charBefore =
-                getSkillLength(profile.skills.slice(0, index)) + section11;
+                getSkillLength(profile.skills.slice(0, index)) +
+                offsets.skillsSection;
               return {
                 view: (
-                  <div key={item.title} className="flex flex-row ">
+                  <div key={item.title} className="flex flex-row">
                     <span className="w-1/3">
                       <Text text={item.title} charBefore={charBefore} />
                     </span>
@@ -161,9 +203,12 @@ export default function ClientComponentPage() {
             })}
           />
         </SectionView>
-        <SectionView title={dict.languages} charBefore={section12}>
+        <SectionView
+          title={dict.languages}
+          charBefore={offsets.languagesSection}
+        >
           <ListItemView
-            charBefore={section12}
+            charBefore={offsets.languagesSection}
             items={profile.languages.map((item) => {
               return {
                 title: item.name,
@@ -175,8 +220,4 @@ export default function ClientComponentPage() {
       </div>
     </div>
   );
-}
-
-export function generateStaticParams() {
-  return [{ locale: "en" }, { locale: "id" }];
 }
