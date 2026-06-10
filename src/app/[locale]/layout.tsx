@@ -22,9 +22,8 @@ export default async function LocaleLayout({
 
   return (
     <LocaleProvider value={locale as Locale}>
-      <div className="flex bg-gray-200">
-        <div className="flex flex-1" />
-        <div>{children}</div>
+      <div className="flex justify-center bg-gray-200 min-h-screen relative">
+        <main>{children}</main>
         <SidebarView />
       </div>
     </LocaleProvider>

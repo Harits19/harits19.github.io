@@ -10,14 +10,16 @@ export default function SectionView({
   children,
   title,
   charBefore = 0,
+  id,
 }: {
   title: string;
   children: ReactNode;
   charBefore?: number;
+  id?: string;
 }) {
   const section1 = title.length + charBefore;
   return (
-    <div className=" w-full flex flex-col text-justify">
+    <div id={id} className="w-full flex flex-col text-justify scroll-mt-10">
       <span className="font-semibold text-12pt uppercase ">
         <Text text={title} charBefore={charBefore} />
       </span>

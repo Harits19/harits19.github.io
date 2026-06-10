@@ -127,10 +127,15 @@ export default function ClientComponentPage() {
         </div>
         <br />
 
-        <SectionView title={dict.about} charBefore={offsets.aboutSection}>
+        <SectionView
+          id="about"
+          title={dict.about}
+          charBefore={offsets.aboutSection}
+        >
           <Text text={profile.about_me} charBefore={offsets.aboutMe} />
         </SectionView>
         <SectionView
+          id="experience"
           title={dict.experience}
           charBefore={offsets.experienceSection}
         >
@@ -178,7 +183,11 @@ export default function ClientComponentPage() {
           />
           <Text text={education.gpa} charBefore={offsets.educationGpa} />
         </SectionView>
-        <SectionView title={dict.additional} charBefore={offsets.skillsSection}>
+        <SectionView
+          id="skills"
+          title={dict.additional}
+          charBefore={offsets.skillsSection}
+        >
           <ListView
             items={profile.skills.map((item, index) => {
               const charBefore =
