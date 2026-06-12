@@ -11,10 +11,11 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
   return (
-    <html id="hidden" className="h-screen w-screen bg-gray-400" lang={"en"}>
-      <body className="w-full h-full">{children}</body>
+    <html id="hidden" className="h-screen w-screen" lang={"en"}>
+      <body className="w-full h-full bg-gray-100 dark:bg-neutral-950 transition-colors duration-500">
+        {children}
+      </body>
     </html>
   );
 }

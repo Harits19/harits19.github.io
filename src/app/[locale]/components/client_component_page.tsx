@@ -103,7 +103,7 @@ export default function ClientComponentPage() {
     <div className="h-screen w-[210mm] overflow-y-scroll">
       <div
         id="print-area"
-        className="flex a4 flex-col p-10  text-11pt w-full   bg-white"
+        className="flex a4 flex-col p-10 text-11pt w-full bg-white text-slate-950 shadow-2xl print:shadow-none"
       >
         <span className="font-semibold text-left text-16pt">
           <Text text={name} />
