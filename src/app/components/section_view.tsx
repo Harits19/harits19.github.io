@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from "motion/react";
 import { ReactNode } from "react";
 import Text from "./text";
