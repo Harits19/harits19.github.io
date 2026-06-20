@@ -1,7 +1,7 @@
-import MainPageComponent from "./components/main_page_component";
+import PageView from "./components/page_view";
 
 export default function Page() {
-  return <MainPageComponent />;
+  return <PageView />;
 }
 
 export function generateStaticParams() {
