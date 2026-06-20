@@ -35,7 +35,7 @@ const getSkillLength = (skills: SkillCategory[]) =>
     0,
   );
 
-export default function ClientComponentPage() {
+export default function MainPageComponent() {
   const { name, details, education, ...profile } = useProfile();
   const dict = useDict();
 
@@ -225,6 +225,10 @@ export default function ClientComponentPage() {
               };
             })}
           />
+        </SectionView>
+
+        <SectionView title="Portfolio">
+          <div></div>
         </SectionView>
       </div>
     </div>

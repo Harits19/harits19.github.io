@@ -1,7 +1,7 @@
-import ClientComponentPage from "./components/client_component_page";
+import MainPageComponent from "./components/main_page_component";
 
 export default function Page() {
-  return <ClientComponentPage />;
+  return <MainPageComponent />;
 }
 
 export function generateStaticParams() {
