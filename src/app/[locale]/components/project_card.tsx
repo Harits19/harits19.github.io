@@ -1,18 +1,24 @@
 import { JSX } from "react";
 
-export function ProjectCard({
-  title,
-  subtitle,
-  tags,
-  bgClass,
-  videoSrc,
-}: {
+export interface ProjectCardProps {
   title: string;
   subtitle: string;
   tags: string[];
   bgClass: string;
   videoSrc: string;
-}) {
+  link?: string;
+  github?: string;
+}
+
+export function ProjectCard({
+  title,
+  subtitle,
+  tags,
+  bgClass,
+  link,
+  videoSrc,
+  github,
+}: ProjectCardProps) {
   return (
     <div
       className={`overflow-hidden  -[28px] border border-slate-200 bg-gradient-to-br ${bgClass} shadow-sm`}
@@ -52,12 +58,22 @@ export function ProjectCard({
           ))}
         </div>
         <div className="mt-5 flex flex-wrap gap-3">
-          <button className=" -full border border-slate-200 bg-slate-950 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-800">
+          <a
+            href={link}
+            target="_blank"
+            className=" -full border border-slate-200 bg-slate-950 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-800"
+          >
             Live Demo
-          </button>
-          <button className=" -full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-950 transition hover:bg-slate-50">
-            GitHub
-          </button>
+          </a>
+          {github && (
+            <a
+              href={github}
+              target="_blank"
+              className=" -full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-950 transition hover:bg-slate-50"
+            >
+              GitHub
+            </a>
+          )}
         </div>
       </div>
     </div>

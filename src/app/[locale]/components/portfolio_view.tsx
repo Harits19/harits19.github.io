@@ -1,59 +1,18 @@
 import { StatCard } from "./stat_card";
-import { ProjectCard } from "./project_card";
+import { ProjectCard, ProjectCardProps } from "./project_card";
 
 export default function PortfolioView() {
-  const stats = [
-    {
-      label: "Projects Completed",
-      value: "5+",
-    },
-    {
-      label: "Deployed Apps",
-      value: "3+",
-    },
-  ];
-
   const sampleVideo =
     "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4";
 
-  const projects = [
+  const projects: ProjectCardProps[] = [
     {
-      title: "E-Commerce Dashboard",
-      subtitle:
-        "Admin dashboard for managing products, orders, customers, and analytics.",
-      tags: ["Next.js", "TypeScript", "Tailwind CSS", "Chart.js", "Node.js"],
+      title: "1ENGAGE Website",
+      subtitle: "Official website for 1ENGAGE",
+      tags: ["Next.js", "TypeScript", "Tailwind CSS"],
       bgClass: "from-slate-950/5 via-slate-50 to-cyan-50",
       videoSrc: sampleVideo,
-    },
-    {
-      title: "Task Management App",
-      subtitle:
-        "Productivity app to manage tasks, collaborate with teams, and track progress.",
-      tags: [
-        "React",
-        "TypeScript",
-        "Redux Toolkit",
-        "Firebase",
-        "Tailwind CSS",
-      ],
-      bgClass: "from-slate-950/5 via-slate-50 to-rose-50",
-      videoSrc: sampleVideo,
-    },
-    {
-      title: "Real-time Chat Application",
-      subtitle:
-        "Real-time chat app with authentication and WebSocket-based messaging.",
-      tags: ["Next.js", "Socket.io", "MongoDB", "Tailwind CSS", "JWT"],
-      bgClass: "from-slate-950/5 via-slate-50 to-emerald-50",
-      videoSrc: sampleVideo,
-    },
-    {
-      title: "Blog CMS",
-      subtitle:
-        "A headless CMS blog with markdown support and SEO optimization.",
-      tags: ["Next.js", "MDX", "MongoDB", "NextAuth.js", "Tailwind CSS"],
-      bgClass: "from-slate-950/5 via-slate-50 to-violet-50",
-      videoSrc: sampleVideo,
+      link: "https://1engage.ai",
     },
   ];
   return (
@@ -72,12 +31,6 @@ export default function PortfolioView() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
-          {stats.map((stat) => (
-            <StatCard key={stat.label} label={stat.label} value={stat.value} />
-          ))}
-        </div>
-
         <div className="grid grid-cols-1 gap-4">
           {projects.map((project) => (
             <ProjectCard key={project.title} {...project} />
@@ -91,7 +44,7 @@ export default function PortfolioView() {
                 See more projects
               </div>
               <div className="mt-2 text-base font-semibold">
-                github.com/yourusername
+                github.com/harits19
               </div>
             </div>
             <div className="flex flex-wrap items-center gap-3 text-slate-200">
