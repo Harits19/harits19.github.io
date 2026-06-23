@@ -1,15 +1,17 @@
-import { CV } from "./type";
-
 const email = "harits.abdullah19@gmail.com";
 const phoneNumber = "6283840493135";
 const linkedIn = "linkedin.com/in/abd-harits";
 const portfolio = "harits19.github.io";
 const github = "github.com/Harits19";
-function generateLink(link: string) {
+const mailto = `mailto:${email}`;
+export function generateLink(link: string) {
   return `https://${link}`;
 }
-const en: CV = {
+const en = {
   name: "ABDULLAH HARITS",
+  linkedIn,
+  github,
+  mailto,
   details: [
     {
       text: "Jakarta, Indonesia",
@@ -17,7 +19,7 @@ const en: CV = {
     },
     {
       text: email,
-      link: `mailto:${email}`,
+      link: mailto,
     },
     {
       text: phoneNumber,
@@ -52,6 +54,7 @@ const en: CV = {
         "Enabled chatbot to handle Catalog Messages and receive conversion events via Meta Cloud API.",
         "Investigated and resolved production issues, improving system stability and reliability.",
         "Developed a Flutter-based mini-game for the Tzu Chi Donate app to enhance user engagement and integrate with the chatbot flow.",
+        "Developed 1ENGAGE Official Website using Next.js, Tailwind, dan Motion",
       ],
     },
     {
@@ -210,7 +213,7 @@ const en: CV = {
   ],
 };
 
-const id: CV = {
+const id = {
   ...en,
   name: "ABDULLAH HARITS",
 
@@ -230,6 +233,7 @@ const id: CV = {
         "Mengaktifkan chatbot untuk menangani Catalog Messages dan menerima event konversi melalui Meta Cloud API.",
         "Menginvestigasi dan menyelesaikan permasalahan produksi untuk meningkatkan stabilitas dan keandalan sistem.",
         "Mengembangkan mini-game berbasis Flutter untuk aplikasi Tzu Chi Donate guna meningkatkan engagement pengguna dan integrasi dengan alur chatbot.",
+        "Membuat 1ENGAGE Official Website dengan Next.js, Tailwind, dan Motion",
       ],
     },
     {
