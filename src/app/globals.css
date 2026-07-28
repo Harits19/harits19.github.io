@@ -4,6 +4,10 @@ body {
   font-family: "Times New Roman", Times, serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .pt-11 {
   font-size: 14.7px;
 }
@@ -16,13 +20,14 @@ body {
 @media print {
   @page {
     size: A4;
-    padding: 60px;
-    margin: 0;
+    margin: 12mm;
   }
 
-  .a4 {
-    padding: 0;
-    margin: 0;
+  html,
+  body {
+    width: 210mm;
+    height: auto;
+    background: white !important;
   }
 
   body * {
@@ -35,15 +40,32 @@ body {
   }
 
   #print-area {
-    position: absolute;
-    left: 0;
-    top: 0;
+    position: static;
     width: 100%;
+    padding: 0 !important;
+    margin: 0;
+    box-shadow: none;
+  }
+
+  #print-area a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  #print-area section,
+  #print-area > div,
+  #print-area li {
+    break-inside: avoid;
+  }
+
+  .resume-document {
+    font-size: 10.5pt;
+    line-height: 1.25;
   }
 }
 
 button {
-  @apply cursor-grab;
+  @apply cursor-pointer;
 }
 
 .no-scrollbar {

@@ -4,27 +4,33 @@ import useLocale from "@/hooks/use_locale";
 import { useRouter } from "next/navigation";
 import useDict from "@/hooks/use_dict";
 import { useEffect, useState } from "react";
+import { skipAnimationEvent } from "@/constants/animation";
 
 export default function SidebarView() {
   const { locale } = useLocale();
   const router = useRouter();
   const dict = useDict();
-  const [theme, setTheme] = useState<"light" | "dark" | null>(null);
+  const [theme, setTheme] = useState<"light" | "dark">("light");
+  const [animationsSkipped, setAnimationsSkipped] = useState(false);
 
   const isEN = locale === "en";
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
-    if (
+    const resolvedTheme =
       savedTheme === "dark" ||
       (!savedTheme && window.matchMedia("(prefers-color-scheme: dark)").matches)
-    ) {
+        ? "dark"
+        : "light";
+
+    if (resolvedTheme === "dark") {
       document.documentElement.classList.add("dark");
-      setTheme("dark");
     } else {
       document.documentElement.classList.remove("dark");
-      setTheme("light");
     }
+
+    const timer = window.setTimeout(() => setTheme(resolvedTheme), 0);
+    return () => window.clearTimeout(timer);
   }, []);
 
   const toggleTheme = () => {
@@ -32,6 +38,12 @@ export default function SidebarView() {
     const newTheme = isDark ? "dark" : "light";
     setTheme(newTheme);
     localStorage.setItem("theme", newTheme);
+  };
+
+  const skipAnimations = () => {
+    document.documentElement.classList.add("skip-animations");
+    window.dispatchEvent(new Event(skipAnimationEvent));
+    setAnimationsSkipped(true);
   };
 
   const toc = [
@@ -42,10 +54,9 @@ export default function SidebarView() {
   ];
 
   return (
-    <div className="fixed top-1/2 -translate-y-1/2 right-6 z-50 flex flex-col items-center gap-6 p-3 bg-white/40 dark:bg-black/40 backdrop-blur-lg border border-white/20 dark:border-white/10 rounded-full shadow-2xl transition-all duration-300 hover:bg-white/60 dark:hover:bg-black/60 print:hidden">
+    <div className="fixed bottom-4 left-1/2 z-50 flex w-max -translate-x-1/2 flex-row items-center gap-3 rounded-full border border-white/20 bg-white/75 p-2 shadow-2xl backdrop-blur-lg transition-all duration-300 hover:bg-white/90 dark:border-white/10 dark:bg-black/60 dark:hover:bg-black/75 sm:bottom-auto sm:left-auto sm:right-6 sm:top-1/2 sm:-translate-y-1/2 sm:translate-x-0 sm:flex-col sm:gap-6 sm:p-3 print:hidden">
       {/* Controls */}
-      <div className="flex flex-col gap-3">
-        {/* Dark Mode Toggle Placeholder */}
+      <div className="flex flex-row gap-2 sm:flex-col sm:gap-3">
         <button
           onClick={toggleTheme}
           className="w-10 h-10 flex items-center justify-center rounded-full bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 shadow-sm hover:scale-110 transition-transform active:scale-95"
@@ -92,10 +103,11 @@ export default function SidebarView() {
           )}
         </button>
 
-        {/* Skip Animation Placeholder */}
         <button
-          className="w-10 h-10 flex items-center justify-center rounded-full bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 shadow-sm hover:scale-110 transition-transform active:scale-95"
-          title="Skip Animation"
+          onClick={skipAnimations}
+          disabled={animationsSkipped}
+          className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-gray-800 shadow-sm transition-transform hover:scale-110 active:scale-95 disabled:cursor-default disabled:opacity-50 dark:bg-gray-800 dark:text-gray-200"
+          title={animationsSkipped ? "Animations skipped" : "Skip animation"}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -123,8 +135,7 @@ export default function SidebarView() {
         </button>
       </div>
 
-      {/* Table of Content Links */}
-      <div className="flex flex-col gap-1 py-2 border-y border-gray-200 dark:border-gray-700">
+      <div className="hidden flex-col gap-1 border-y border-gray-200 py-2 dark:border-gray-700 sm:flex">
         {toc.map((item) => (
           <a
             key={item.id}
@@ -137,7 +148,6 @@ export default function SidebarView() {
         ))}
       </div>
 
-      {/* Print Action */}
       <button
         onClick={() => window.print()}
         className="w-10 h-10 flex items-center justify-center rounded-full bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 shadow-sm hover:scale-110 transition-transform active:scale-95"

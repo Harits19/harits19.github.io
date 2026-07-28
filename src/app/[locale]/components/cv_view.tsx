@@ -15,7 +15,6 @@ import {
   SkillCategory,
 } from "@/hooks/use_profile/type";
 import { defaultLineChar } from "@/constants/animation";
-import PortfolioView from "./portfolio_view";
 
 /** Helper functions moved outside to prevent re-declaration on every render */
 const getExperiencesLength = (items: ExperienceItem[]) =>
@@ -103,7 +102,7 @@ export default function CvView() {
   return (
     <div
       id="print-area"
-      className="flex a4 flex-col p-10 text-11pt w-full bg-white text-slate-950 shadow-2xl print:shadow-none"
+      className="resume-document flex a4 flex-col p-6 sm:p-10 text-11pt w-full bg-white text-slate-950 shadow-2xl print:shadow-none"
     >
       <span className="font-semibold text-left text-16pt">
         <Text text={name} />

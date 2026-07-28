@@ -2,6 +2,7 @@
 
 import { motion } from "motion/react";
 import { ReactNode } from "react";
+import useSkipAnimation from "@/hooks/use_skip_animation";
 import Text from "./text";
 import {
   defaultAnimationPerChar,
@@ -19,6 +20,7 @@ export default function SectionView({
   charBefore?: number;
   id?: string;
 }) {
+  const skipAnimation = useSkipAnimation();
   const section1 = title.length + charBefore;
   return (
     <div id={id} className="w-full flex flex-col text-justify scroll-mt-10">
@@ -29,7 +31,10 @@ export default function SectionView({
         initial={{ width: 0, opacity: 0 }}
         animate={{ width: "100%", opacity: 1 }}
         transition={{
-          delay: (section1 + defaultLineChar) * defaultAnimationPerChar,
+          delay: skipAnimation
+            ? 0
+            : (section1 + defaultLineChar) * defaultAnimationPerChar,
+          duration: skipAnimation ? 0 : undefined,
         }}
         className="border-b-[0.5px]"
       />

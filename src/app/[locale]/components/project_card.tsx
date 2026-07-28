@@ -1,12 +1,10 @@
-import { JSX } from "react";
-
 export interface ProjectCardProps {
   title: string;
   subtitle: string;
   tags: string[];
   bgClass: string;
   videoSrc: string;
-  link?: string;
+  link: string;
   github?: string;
 }
 
@@ -21,7 +19,7 @@ export function ProjectCard({
 }: ProjectCardProps) {
   return (
     <div
-      className={`overflow-hidden  -[28px] border border-slate-200 bg-gradient-to-br ${bgClass} shadow-sm`}
+      className={`overflow-hidden rounded-[28px] border border-slate-200 bg-gradient-to-br ${bgClass} shadow-sm`}
     >
       <div className="relative aspect-[16/9] overflow-hidden bg-slate-900">
         <video
@@ -35,7 +33,7 @@ export function ProjectCard({
           Your browser does not support the video tag.
         </video>
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-950/10 to-transparent" />
-        <div className="absolute left-4 top-4 flex items-center gap-2  -full border border-white/20 bg-white/90 px-3 py-2 shadow-sm backdrop-blur-sm text-xs font-semibold text-slate-950">
+        <div className="absolute left-4 top-4 flex items-center gap-2 rounded-full border border-white/20 bg-white/90 px-3 py-2 text-xs font-semibold text-slate-950 shadow-sm backdrop-blur-sm">
           <span>{title.split(" ").slice(0, 2).join(" ")}</span>
         </div>
       </div>
@@ -51,7 +49,7 @@ export function ProjectCard({
           {tags.map((tag) => (
             <span
               key={tag}
-              className=" -full border border-slate-200 bg-white/80 px-3 py-1 text-[11px] font-medium text-slate-700 shadow-sm"
+              className="rounded-full border border-slate-200 bg-white/80 px-3 py-1 text-[11px] font-medium text-slate-700 shadow-sm"
             >
               {tag}
             </span>
@@ -61,7 +59,8 @@ export function ProjectCard({
           <a
             href={link}
             target="_blank"
-            className=" -full border border-slate-200 bg-slate-950 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-800"
+            rel="noreferrer"
+            className="rounded-full border border-slate-950 bg-slate-950 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2"
           >
             Live Demo
           </a>
@@ -69,7 +68,8 @@ export function ProjectCard({
             <a
               href={github}
               target="_blank"
-              className=" -full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-950 transition hover:bg-slate-50"
+              rel="noreferrer"
+              className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-950 transition hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2"
             >
               GitHub
             </a>
