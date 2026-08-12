@@ -22,7 +22,7 @@ export default async function LocaleLayout({
 
   return (
     <LocaleProvider value={locale as Locale}>
-      <div className="flex justify-center bg-slate-100 px-0 sm:px-6 py-0 sm:py-6 dark:bg-neutral-900 min-h-screen relative">
+      <div className="flex justify-center bg-slate-100 px-2 sm:px-6 py-2 sm:py-6 dark:bg-neutral-900 min-h-screen relative">
         <main>{children}</main>
         <SidebarView />
       </div>

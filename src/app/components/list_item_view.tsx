@@ -25,11 +25,11 @@ export default function ListItemView({
         return {
           charBefore,
           view: (
-            <div key={item.title} className="flex flex-row ">
-              <span className="w-1/3">
+            <div key={item.title} className="flex flex-col sm:flex-row">
+              <span className="sm:w-1/3">
                 <Text text={item.title} charBefore={charBefore} />
               </span>
-              <span className="w-full">
+              <span className="w-full sm:flex-1">
                 <Text
                   text={` : ${item.value.join(", ")}`}
                   charBefore={charBefore + item.title.length}

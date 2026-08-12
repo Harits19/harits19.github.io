@@ -102,7 +102,7 @@ export default function CvView() {
   return (
     <div
       id="print-area"
-      className="resume-document flex a4 flex-col p-6 sm:p-10 text-11pt w-full bg-white text-slate-950 shadow-2xl print:shadow-none"
+      className="resume-document flex a4 flex-col p-4 sm:p-10 text-[15px] sm:text-11pt w-full bg-white text-slate-950 shadow-2xl print:shadow-none"
     >
       <span className="font-semibold text-left text-16pt">
         <Text text={name} />
@@ -191,11 +191,11 @@ export default function CvView() {
               offsets.skillsSection;
             return {
               view: (
-                <div key={item.title} className="flex flex-row">
-                  <span className="w-1/3">
+                <div key={item.title} className="flex flex-col sm:flex-row">
+                  <span className="font-semibold sm:w-1/3 sm:font-normal">
                     <Text text={item.title} charBefore={charBefore} />
                   </span>
-                  <span className="w-full">
+                  <span className="w-full sm:flex-1">
                     <Text
                       text={` : ${item.tools.join(", ")}`}
                       charBefore={charBefore + item.title.length}

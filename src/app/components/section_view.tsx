@@ -23,7 +23,7 @@ export default function SectionView({
   const skipAnimation = useSkipAnimation();
   const section1 = title.length + charBefore;
   return (
-    <div id={id} className="w-full flex flex-col text-justify scroll-mt-10">
+    <div id={id} className="w-full flex flex-col text-left sm:text-justify scroll-mt-10">
       <span className="font-semibold text-12pt uppercase ">
         <Text text={title} charBefore={charBefore} />
       </span>

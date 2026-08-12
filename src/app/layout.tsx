@@ -12,8 +12,8 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html id="hidden" className="h-screen w-screen" lang={"en"}>
-      <body className="w-full h-full bg-gray-100 dark:bg-neutral-950 transition-colors duration-500">
+    <html id="hidden" className="min-h-screen w-full" lang={"en"}>
+      <body className="w-full min-h-screen bg-gray-100 dark:bg-neutral-950 transition-colors duration-500">
         {children}
       </body>
     </html>
