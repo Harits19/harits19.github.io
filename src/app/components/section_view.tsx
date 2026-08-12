@@ -28,6 +28,7 @@ export default function SectionView({
         <Text text={title} charBefore={charBefore} />
       </span>
       <motion.span
+        key={skipAnimation ? "divider-skip" : "divider"}
         initial={{ width: 0, opacity: 0 }}
         animate={{ width: "100%", opacity: 1 }}
         transition={{

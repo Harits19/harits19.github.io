@@ -15,7 +15,7 @@ export default function Text({
     <div className="whitespace-pre-wrap">
       {text.split("").map((char, index) => (
         <motion.span
-          key={index}
+          key={skipAnimation ? `skip-${index}` : index}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{

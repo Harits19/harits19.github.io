@@ -22,7 +22,7 @@ export default function ListView({
               : (index + item.charBefore) * defaultAnimationPerChar,
             duration: skipAnimation ? 0 : undefined,
           }}
-          key={index}
+          key={skipAnimation ? `skip-${index}` : index}
         >
           {item.view}
         </motion.li>
