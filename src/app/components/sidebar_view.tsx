@@ -3,42 +3,16 @@
 import useLocale from "@/hooks/use_locale";
 import { useRouter } from "next/navigation";
 import useDict from "@/hooks/use_dict";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { skipAnimationEvent } from "@/constants/animation";
 
 export default function SidebarView() {
   const { locale } = useLocale();
   const router = useRouter();
   const dict = useDict();
-  const [theme, setTheme] = useState<"light" | "dark">("light");
   const [animationsSkipped, setAnimationsSkipped] = useState(false);
 
   const isEN = locale === "en";
-
-  useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
-    const resolvedTheme =
-      savedTheme === "dark" ||
-      (!savedTheme && window.matchMedia("(prefers-color-scheme: dark)").matches)
-        ? "dark"
-        : "light";
-
-    if (resolvedTheme === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-
-    const timer = window.setTimeout(() => setTheme(resolvedTheme), 0);
-    return () => window.clearTimeout(timer);
-  }, []);
-
-  const toggleTheme = () => {
-    const isDark = document.documentElement.classList.toggle("dark");
-    const newTheme = isDark ? "dark" : "light";
-    setTheme(newTheme);
-    localStorage.setItem("theme", newTheme);
-  };
 
   const skipAnimations = () => {
     document.documentElement.classList.add("skip-animations");
@@ -57,52 +31,6 @@ export default function SidebarView() {
     <div className="fixed bottom-4 left-1/2 z-50 flex w-max -translate-x-1/2 flex-row items-center gap-3 rounded-full border border-white/20 bg-white/75 p-2 shadow-2xl backdrop-blur-lg transition-all duration-300 hover:bg-white/90 dark:border-white/10 dark:bg-black/60 dark:hover:bg-black/75 sm:bottom-auto sm:left-auto sm:right-6 sm:top-1/2 sm:-translate-y-1/2 sm:translate-x-0 sm:flex-col sm:gap-6 sm:p-3 print:hidden">
       {/* Controls */}
       <div className="flex flex-row gap-2 sm:flex-col sm:gap-3">
-        <button
-          onClick={toggleTheme}
-          className="w-10 h-10 flex items-center justify-center rounded-full bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 shadow-sm hover:scale-110 transition-transform active:scale-95"
-          title="Toggle Dark Mode"
-        >
-          {theme === "dark" ? (
-            /* Sun Icon */
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <circle cx="12" cy="12" r="5" />
-              <line x1="12" y1="1" x2="12" y2="3" />
-              <line x1="12" y1="21" x2="12" y2="23" />
-              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-              <line x1="1" y1="12" x2="3" y2="12" />
-              <line x1="21" y1="12" x2="23" y2="12" />
-              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-            </svg>
-          ) : (
-            /* Moon Icon */
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-            </svg>
-          )}
-        </button>
-
         <button
           onClick={skipAnimations}
           disabled={animationsSkipped}

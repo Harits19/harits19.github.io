@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+/* Class-based dark mode (Tailwind v4 default is prefers-color-scheme media query).
+   The `.dark` class is never applied anymore (dark/light toggle removed), so
+   all `dark:` variants stay permanently off — the site is always light. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 body {
   font-family: "Times New Roman", Times, serif;
 }
