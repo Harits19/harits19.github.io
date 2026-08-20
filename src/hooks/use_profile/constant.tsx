@@ -54,7 +54,7 @@ const en = {
         "Enabled chatbot to handle Catalog Messages and receive conversion events via Meta Cloud API.",
         "Investigated and resolved production issues, improving system stability and reliability.",
         "Developed a Flutter-based mini-game for the Tzu Chi Donate app to enhance user engagement and integrate with the chatbot flow.",
-        "Developed 1ENGAGE Official Website using Next.js, Tailwind, dan Motion",
+        "Developed 1ENGAGE Official Website using Next.js, Tailwind, and Motion",
       ],
     },
     {
