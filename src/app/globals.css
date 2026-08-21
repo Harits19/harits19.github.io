@@ -34,7 +34,23 @@ html {
   body {
     width: 210mm;
     height: auto;
+    min-height: 0 !important;
+    margin: 0 !important;
     background: white !important;
+  }
+
+  /* Keluarkan seluruh konten di luar CV dari layout (bukan hanya
+     visibility:hidden) agar tidak ada halaman kosong di awal print. */
+  body *:not(#print-area):not(#print-area *):not(:has(#print-area)) {
+    display: none !important;
+  }
+
+  /* Rapatkan jarak pada rantai elemen pembungkus CV. */
+  body *:has(#print-area) {
+    padding: 0 !important;
+    margin: 0 !important;
+    gap: 0 !important;
+    min-height: 0 !important;
   }
 
   body * {
