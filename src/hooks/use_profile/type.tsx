@@ -3,6 +3,7 @@ export interface CV {
   linkedIn: string;
   github: string;
   mailto: string;
+  whatsapp: string;
   details: DetailItem[];
   about_me: string;
   experience: ExperienceItem[];

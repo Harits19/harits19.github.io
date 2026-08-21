@@ -1,5 +1,3 @@
-import { defaultAnimationPerChar } from "@/constants/animation";
-import useSkipAnimation from "@/hooks/use_skip_animation";
 import { motion } from "motion/react";
 
 export default function Text({
@@ -9,23 +7,14 @@ export default function Text({
   text: string;
   charBefore?: number;
 }) {
-  const skipAnimation = useSkipAnimation();
-
   return (
-    <div className="whitespace-pre-wrap">
-      {text.split("").map((char, index) => (
-        <motion.span
-          key={skipAnimation ? `skip-${index}` : index}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{
-            delay: skipAnimation ? 0 : (index + charBefore) * defaultAnimationPerChar,
-            duration: skipAnimation ? 0 : undefined,
-          }}
-        >
-          {char}
-        </motion.span>
-      ))}
-    </div>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5, delay: Math.min(charBefore * 0.0005, 0.3) }}
+      className="whitespace-pre-wrap"
+    >
+      {text}
+    </motion.div>
   );
 }

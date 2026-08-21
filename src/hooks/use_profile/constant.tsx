@@ -12,6 +12,7 @@ const en = {
   linkedIn,
   github,
   mailto,
+  whatsapp: `https://wa.me/${phoneNumber}`,
   details: [
     {
       text: "Jakarta, Indonesia",
@@ -39,7 +40,7 @@ const en = {
     },
   ],
   about_me:
-    "Full-stack Software Engineer with over three years of experience in developing web and mobile applications using technologies such as Next.js, Express.js, Flutter, and Go. Involved in the development of real-time systems, integration with third-party APIs (including Meta Cloud and WhatsApp), and implementation of microservice-based architectures using Pub/Sub. Familiar with collaborative development environments, code maintainability practices, and supporting improvements in application performance and usability.",
+    "Full-stack Software Engineer with over five years of experience in developing web and mobile applications using technologies such as Next.js, Express.js, Flutter, and Go. Involved in the development of real-time systems, integration with third-party APIs (including Meta Cloud and WhatsApp), and implementation of microservice-based architectures using Pub/Sub. Familiar with collaborative development environments, code maintainability practices, and supporting improvements in application performance and usability.",
   experience: [
     {
       company: "PT Integra Putra Mandiri",
@@ -218,7 +219,7 @@ const id = {
   name: "ABDULLAH HARITS",
 
   about_me:
-    "Software Engineer Full-stack dengan pengalaman lebih dari tiga tahun dalam mengembangkan aplikasi web dan mobile menggunakan teknologi seperti Next.js, Express.js, Flutter, dan Go. Terlibat dalam pengembangan sistem real-time, integrasi dengan API pihak ketiga (termasuk Meta Cloud dan WhatsApp), serta implementasi arsitektur berbasis microservices menggunakan Pub/Sub. Terbiasa bekerja dalam lingkungan kolaboratif, menerapkan praktik maintainability kode, serta mendukung peningkatan performa dan usability aplikasi.",
+    "Software Engineer Full-stack dengan pengalaman lebih dari lima tahun dalam mengembangkan aplikasi web dan mobile menggunakan teknologi seperti Next.js, Express.js, Flutter, dan Go. Terlibat dalam pengembangan sistem real-time, integrasi dengan API pihak ketiga (termasuk Meta Cloud dan WhatsApp), serta implementasi arsitektur berbasis microservices menggunakan Pub/Sub. Terbiasa bekerja dalam lingkungan kolaboratif, menerapkan praktik maintainability kode, serta mendukung peningkatan performa dan usability aplikasi.",
   experience: [
     {
       company: "PT Integra Putra Mandiri",
@@ -239,7 +240,7 @@ const id = {
     {
       company: "PT Admin Pintar Kita",
       location: "Jakarta, Indonesia",
-      employment_type: "Probation",
+      employment_type: "Masa Percobaan",
       position: "Frontend Developer",
       start_date: "Feb 2025",
       end_date: "Feb 2025",

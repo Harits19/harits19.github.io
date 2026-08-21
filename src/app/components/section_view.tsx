@@ -4,10 +4,6 @@ import { motion } from "motion/react";
 import { ReactNode } from "react";
 import useSkipAnimation from "@/hooks/use_skip_animation";
 import Text from "./text";
-import {
-  defaultAnimationPerChar,
-  defaultLineChar,
-} from "@/constants/animation";
 
 export default function SectionView({
   children,
@@ -21,22 +17,19 @@ export default function SectionView({
   id?: string;
 }) {
   const skipAnimation = useSkipAnimation();
-  const section1 = title.length + charBefore;
   return (
-    <div id={id} className="w-full flex flex-col text-left sm:text-justify scroll-mt-10">
+    <div
+      id={id}
+      data-char-before={charBefore}
+      className="w-full flex flex-col text-left sm:text-justify scroll-mt-10"
+    >
       <span className="font-semibold text-12pt uppercase ">
         <Text text={title} charBefore={charBefore} />
       </span>
       <motion.span
-        key={skipAnimation ? "divider-skip" : "divider"}
         initial={{ width: 0, opacity: 0 }}
         animate={{ width: "100%", opacity: 1 }}
-        transition={{
-          delay: skipAnimation
-            ? 0
-            : (section1 + defaultLineChar) * defaultAnimationPerChar,
-          duration: skipAnimation ? 0 : undefined,
-        }}
+        transition={{ delay: skipAnimation ? 0 : 0.35, duration: 0.4 }}
         className="border-b-[0.5px]"
       />
       <div className="h-1" />

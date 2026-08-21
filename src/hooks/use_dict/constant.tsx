@@ -7,6 +7,16 @@ const en = {
   tools: "Tools & Tech Stack",
   languages: "Languages",
   print: "Print",
+  portfolio: "Portfolio",
+  projects: "Projects",
+  projectOverview: "Project Overview",
+  liveDemo: "Live Demo",
+  internalProject: "Internal Project",
+  github: "GitHub",
+  cv: "Resume",
+  cvTitle: "Curriculum Vitae",
+  downloadCv: "Download / Print CV",
+  contact: "Contact me",
 } as const;
 const id = {
   ...en,
@@ -18,6 +28,16 @@ const id = {
   tools: "Perangkat & Teknologi",
   languages: "Bahasa",
   print: "Cetak",
+  portfolio: "Portofolio",
+  projects: "Proyek",
+  projectOverview: "Ringkasan Proyek",
+  liveDemo: "Demo Langsung",
+  internalProject: "Proyek Internal",
+  github: "GitHub",
+  cv: "CV",
+  cvTitle: "Daftar Riwayat Hidup",
+  downloadCv: "Unduh / Cetak CV",
+  contact: "Hubungi Saya",
 } as const;
 
 const dict = { en, id };

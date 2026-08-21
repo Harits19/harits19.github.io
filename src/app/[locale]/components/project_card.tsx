@@ -4,12 +4,14 @@ export interface ProjectCardProps {
   tags: string[];
   bgClass: string;
   videoSrc?: string;
+  poster?: string;
   link?: string;
   github?: string;
   labels?: {
     liveDemo: string;
     internal: string;
     github: string;
+    overview: string;
   };
 }
 
@@ -17,6 +19,7 @@ const defaultLabels = {
   liveDemo: "Live Demo",
   internal: "Internal Project",
   github: "GitHub",
+  overview: "Project Overview",
 };
 
 export function ProjectCard({
@@ -26,6 +29,7 @@ export function ProjectCard({
   bgClass,
   link,
   videoSrc,
+  poster,
   github,
   labels = defaultLabels,
 }: ProjectCardProps) {
@@ -41,6 +45,7 @@ export function ProjectCard({
             muted
             loop
             playsInline
+            poster={poster}
             src={videoSrc}
           >
             Your browser does not support the video tag.
@@ -53,13 +58,10 @@ export function ProjectCard({
           </div>
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-950/10 to-transparent" />
-        <div className="absolute left-4 top-4 flex items-center gap-2 rounded-full border border-white/20 bg-white/90 px-3 py-2 text-xs font-semibold text-slate-950 shadow-sm backdrop-blur-sm">
-          <span>{title.split(" ").slice(0, 2).join(" ")}</span>
-        </div>
       </div>
       <div className="p-5">
         <div className="text-sm font-semibold uppercase tracking-[0.25em] text-slate-500">
-          Project overview
+          {labels.overview}
         </div>
         <div className="mt-3 text-2xl font-semibold text-slate-950">
           {title}

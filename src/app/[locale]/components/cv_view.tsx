@@ -112,14 +112,19 @@ export default function CvView() {
           const detailsBefore = details.slice(0, index);
           const totalChar =
             getProfileDetailLength(detailsBefore) + offsets.details;
+          const content = <Text text={`${text} | `} charBefore={totalChar} />;
           return (
             <div
               key={text}
               className="flex flex-row items-center whitespace-pre"
             >
-              <a target="_blank" href={link}>
-                <Text text={`${text} | `} charBefore={totalChar} />
-              </a>
+              {link ? (
+                <a target="_blank" rel="noreferrer" href={link}>
+                  {content}
+                </a>
+              ) : (
+                content
+              )}
             </div>
           );
         })}
