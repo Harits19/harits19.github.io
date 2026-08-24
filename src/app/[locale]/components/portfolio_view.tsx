@@ -26,11 +26,23 @@ const projectsByLocale: Record<
         link: "https://1engage.ai",
       },
       {
+        title: "1ENGAGE Platform",
+        subtitle:
+          "The 1ENGAGE chatbot platform — omnichannel conversations, Meta Catalog integration, and conversion events via the Meta Cloud API.",
+        tags: ["Chatbot", "Meta Cloud API", "Express.js"],
+        bgClass: "from-slate-950/5 via-slate-50 to-cyan-50",
+        videoSrc: "/1engage_platform.mp4",
+        poster: "/1engage_platform-poster.jpg",
+      },
+      {
         title: "WhatsApp Chatbot Engine",
         subtitle:
-          "Reusable chatbot engine on the Meta Cloud API — catalog messages, conversion events, and flexible multi-use-case flows.",
+          "Reusable chatbot engine on the Meta Cloud API — catalog messages, conversion events, and flexible multi-use-case flows, powering the Tzu Chi Donate chatbot.",
         tags: ["Node.js", "Express.js", "Meta Cloud API", "WhatsApp"],
         bgClass: "from-slate-950/5 via-slate-50 to-cyan-50",
+        videoSrc: "/tzuchi_chatbot.mp4",
+        poster: "/tzuchi_chatbot-poster.jpg",
+        vertical: true,
       },
       {
         title: "Broadcast Engine",
@@ -45,6 +57,9 @@ const projectsByLocale: Record<
           "Flutter mini-game inside the Tzu Chi Donate app to boost user engagement and connect with the chatbot flow.",
         tags: ["Flutter", "Dart"],
         bgClass: "from-slate-950/5 via-slate-50 to-cyan-50",
+        videoSrc: "/tzuchi_game.mp4",
+        poster: "/tzuchi_game-poster.jpg",
+        vertical: true,
       },
       {
         title: "1ENGAGE Mobile App",
@@ -78,11 +93,23 @@ const projectsByLocale: Record<
         link: "https://1engage.ai",
       },
       {
+        title: "Platform 1ENGAGE",
+        subtitle:
+          "Platform chatbot 1ENGAGE — percakapan omnichannel, integrasi Meta Catalog, dan event konversi melalui Meta Cloud API.",
+        tags: ["Chatbot", "Meta Cloud API", "Express.js"],
+        bgClass: "from-slate-950/5 via-slate-50 to-cyan-50",
+        videoSrc: "/1engage_platform.mp4",
+        poster: "/1engage_platform-poster.jpg",
+      },
+      {
         title: "Engine Chatbot WhatsApp",
         subtitle:
-          "Mesin chatbot reusable di Meta Cloud API — catalog messages, event konversi, dan alur multi-use-case yang fleksibel.",
+          "Mesin chatbot reusable di Meta Cloud API — catalog messages, event konversi, dan alur multi-use-case yang fleksibel, menggerakkan chatbot Tzu Chi Donate.",
         tags: ["Node.js", "Express.js", "Meta Cloud API", "WhatsApp"],
         bgClass: "from-slate-950/5 via-slate-50 to-cyan-50",
+        videoSrc: "/tzuchi_chatbot.mp4",
+        poster: "/tzuchi_chatbot-poster.jpg",
+        vertical: true,
       },
       {
         title: "Broadcast Engine",
@@ -97,6 +124,9 @@ const projectsByLocale: Record<
           "Mini-game Flutter di aplikasi Tzu Chi Donate untuk meningkatkan engagement pengguna dan terhubung dengan alur chatbot.",
         tags: ["Flutter", "Dart"],
         bgClass: "from-slate-950/5 via-slate-50 to-cyan-50",
+        videoSrc: "/tzuchi_game.mp4",
+        poster: "/tzuchi_game-poster.jpg",
+        vertical: true,
       },
       {
         title: "Aplikasi Mobile 1ENGAGE",

@@ -5,6 +5,7 @@ export interface ProjectCardProps {
   bgClass: string;
   videoSrc?: string;
   poster?: string;
+  vertical?: boolean;
   link?: string;
   github?: string;
   labels?: {
@@ -30,6 +31,7 @@ export function ProjectCard({
   link,
   videoSrc,
   poster,
+  vertical,
   github,
   labels = defaultLabels,
 }: ProjectCardProps) {
@@ -39,17 +41,44 @@ export function ProjectCard({
     >
       <div className="relative aspect-[16/9] overflow-hidden bg-slate-900">
         {videoSrc ? (
-          <video
-            className="h-full w-full object-cover"
-            autoPlay
-            muted
-            loop
-            playsInline
-            poster={poster}
-            src={videoSrc}
-          >
-            Your browser does not support the video tag.
-          </video>
+          vertical ? (
+            <>
+              <video
+                className="absolute inset-0 h-full w-full scale-110 object-cover blur-2xl"
+                autoPlay
+                muted
+                loop
+                playsInline
+                poster={poster}
+                src={videoSrc}
+                aria-hidden="true"
+                tabIndex={-1}
+              />
+              <video
+                className="relative z-10 h-full w-full object-contain"
+                autoPlay
+                muted
+                loop
+                playsInline
+                poster={poster}
+                src={videoSrc}
+              >
+                Your browser does not support the video tag.
+              </video>
+            </>
+          ) : (
+            <video
+              className="h-full w-full object-cover"
+              autoPlay
+              muted
+              loop
+              playsInline
+              poster={poster}
+              src={videoSrc}
+            >
+              Your browser does not support the video tag.
+            </video>
+          )
         ) : (
           <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-950">
             <span className="px-6 text-center text-2xl font-bold tracking-tight text-white/95 sm:text-3xl">
