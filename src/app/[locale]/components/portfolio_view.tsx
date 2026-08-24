@@ -43,6 +43,7 @@ const projectsByLocale: Record<
         videoSrc: "/tzuchi_chatbot.mp4",
         poster: "/tzuchi_chatbot-poster.jpg",
         vertical: true,
+        link: "https://wa.me/628881818123?text=hai",
       },
       {
         title: "Broadcast Engine",
@@ -110,6 +111,7 @@ const projectsByLocale: Record<
         videoSrc: "/tzuchi_chatbot.mp4",
         poster: "/tzuchi_chatbot-poster.jpg",
         vertical: true,
+        link: "https://wa.me/628881818123?text=hai",
       },
       {
         title: "Broadcast Engine",
