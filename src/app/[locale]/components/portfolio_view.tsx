@@ -76,6 +76,16 @@ const projectsByLocale: Record<
         tags: ["Flutter", "Dart"],
         bgClass: "from-slate-950/5 via-slate-50 to-cyan-50",
       },
+      {
+        title: "Wedding Invitation",
+        subtitle: "Create wedding invitation website for my wedding.",
+        tags: ["Next.js", "TypeScript", "Tailwind CSS"],
+        videoSrc: "/wedding.mp4",
+        vertical: true,
+        link: "https://harits19.github.io/wedding-app",
+        bgClass: "from-slate-950/5 via-slate-50 to-cyan-50",
+        
+      }
     ],
   },
   id: {
