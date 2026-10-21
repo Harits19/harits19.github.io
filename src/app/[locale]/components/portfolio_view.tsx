@@ -84,8 +84,16 @@ const projectsByLocale: Record<
         vertical: true,
         link: "https://harits19.github.io/wedding-app",
         bgClass: "from-slate-950/5 via-slate-50 to-cyan-50",
-        
-      }
+      },
+      {
+        title: "Vet Management System",
+        subtitle:
+          "Cashier and clinic system built to help my brother's pet shop and vet practice — customers, pets, medical records, and unified shop plus doctor transactions. Built with the help of Hermes Agent acting as an AI coding assistant.",
+        tags: ["Next.js", "Express.js", "MongoDB", "TypeScript"],
+        bgClass: "from-slate-950/5 via-slate-50 to-cyan-50",
+        videoSrc: "/vet_management.mp4",
+        poster: "/vet_management-poster.jpg",
+      },
     ],
   },
   id: {
@@ -153,6 +161,15 @@ const projectsByLocale: Record<
           "Aplikasi manajemen hotel dengan Flutter sebagai proyek sampingan.",
         tags: ["Flutter", "Dart"],
         bgClass: "from-slate-950/5 via-slate-50 to-cyan-50",
+      },
+      {
+        title: "Sistem Manajemen Klinik Hewan",
+        subtitle:
+          "Sistem kasir dan klinik untuk membantu bisnis toko hewan serta praktek dokter hewan kakak saya — kelola customer, pasien, rekam medis, sampai transaksi toko dan dokter dalam satu sistem. Dibangun dengan bantuan Hermes Agent sebagai AI coding assistant.",
+        tags: ["Next.js", "Express.js", "MongoDB", "TypeScript"],
+        bgClass: "from-slate-950/5 via-slate-50 to-cyan-50",
+        videoSrc: "/vet_management.mp4",
+        poster: "/vet_management-poster.jpg",
       },
     ],
   },
