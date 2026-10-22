@@ -96,6 +96,62 @@ npm run build      # static export to ./out
 npm run deploy     # publish to GitHub Pages
 ```
 
+## Job Search Tooling
+
+Remote job hunting pipeline, backed by the same evidence as the CV:
+
+```bash
+# 1. fetch + score remote jobs (8 public job APIs/RSS) → .hermes/jobs/
+node scripts/jobs/scan_jobs.mjs --min-score 20 --top 20
+
+# 2. build an application package for one job (cover letter EN/ID, screening
+#    answers, checklist)
+node scripts/jobs/new_application.mjs --index 1
+
+# 3. assisted apply for platforms that forbid automation (LinkedIn, JobStreet,
+#    Glints, Glassdoor): prepares docs, copies them, opens the page — you submit
+node scripts/jobs/assist_apply.mjs --index 1 --copy --open
+node scripts/jobs/assist_apply.mjs --url "https://www.linkedin.com/jobs/view/…" --company "PT X" --title "Backend Engineer" --copy
+
+# 4. ready-to-click search URLs for those platforms (no scraping)
+node scripts/jobs/search_links.mjs      # → .hermes/jobs/search-links.md
+
+# 5. auto-fill ATS forms (Greenhouse/Lever/Ashby/Workable/Recruitee):
+#    fills fields + uploads the CV, then STOPS before the submit button
+node scripts/jobs/auto_apply.mjs --index 1
+node scripts/jobs/auto_apply.mjs --index 1 --confirm submit   # explicit per-application submit
+node scripts/jobs/auto_apply.mjs --url "https://jobs.lever.co/…" --title "…" --company "…"
+# email-based applications: writes an .eml draft + mailto, never sends mail
+node scripts/jobs/auto_apply.mjs --index 2 --email
+
+# 6. track applications (found → drafted → applied → replied → interview …)
+node scripts/jobs/track.mjs --id "<jobId>" --status applied
+node scripts/jobs/track.mjs --report
+```
+
+Guardrails in `auto_apply.mjs`: refuses LinkedIn/JobStreet/Glints/Glassdoor
+domains, never stores credentials, caps at 5 submissions per day, takes
+before/after screenshots as evidence, and logs every action to
+`.hermes/jobs/actions.log`. Regression fixture (a mock ATS form) lives in
+`scripts/jobs/__fixtures__/ats-mock.html`.
+
+Filters: remote-only, timezone compatible with WIB, engineering roles only,
+salary floor IDR 12M net/month, role priority full-stack → frontend → Node.js →
+React/Next → Flutter → React Native → Go. Sources that forbid automation
+(LinkedIn, JobStreet/SEEK, Glints, Glassdoor) are never scraped — applications
+there are prepared but submitted by hand.
+
+## CV PDF
+
+```bash
+npm run build
+node scripts/make_cv_pdf.mjs          # → public/cv-en.pdf + public/cv-id.pdf
+```
+
+Renders the printable CV section through headless Chrome (CDP): it disables
+autoplay, fires the `portfolio:skip-animation` event so the typewriter animation
+finishes instantly, then prints only `#print-area`. Two pages per locale.
+
 ## Contact
 
 - Email: harits.abdullah19@gmail.com

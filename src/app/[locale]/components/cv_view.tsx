@@ -27,13 +27,16 @@ const getExperiencesLength = (items: ExperienceItem[]) =>
     0,
   );
 
-const getProjectText = (item: ProjectItem) =>
-  `${item.stack.join(", ")}. ${item.description}${item.note ? ` (${item.note})` : ""}`;
+const getProjectStackText = (item: ProjectItem) => item.stack.join(" · ");
+const getProjectDescText = (item: ProjectItem) => item.description;
 
 const getProjectsLength = (items: ProjectItem[]) =>
   items.reduce<number>(
     (prev, current) =>
-      prev + current.name.length + getProjectText(current).length,
+      prev +
+      current.name.length +
+      getProjectStackText(current).length +
+      getProjectDescText(current).length,
     0,
   );
 
@@ -223,11 +226,26 @@ export default function CvView() {
                       name
                     )}
                   </span>
-                  <span>
+                  <span className="text-slate-600">
                     <Text
-                      text={getProjectText(item)}
+                      text={getProjectStackText(item)}
                       charBefore={charBefore + item.name.length}
                     />
+                  </span>
+                  <span>
+                    <Text
+                      text={getProjectDescText(item)}
+                      charBefore={
+                        charBefore +
+                        item.name.length +
+                        getProjectStackText(item).length
+                      }
+                    />
+                    {item.note ? (
+                      <span className="ml-1 text-slate-500">
+                        ({item.note})
+                      </span>
+                    ) : null}
                   </span>
                 </div>
               ),
