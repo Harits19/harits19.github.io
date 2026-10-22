@@ -44,7 +44,7 @@ scripts/                       GitHub evidence tooling (see below)
 ## Evidence Tooling
 
 The CV claims in `src/hooks/use_profile/constant.tsx` are mapped to repository
-evidence. Two local scripts keep that mapping honest:
+evidence. Three local scripts keep that mapping honest:
 
 ```bash
 # 1. inventory local clones + public GitHub repos → stack & commit evidence
@@ -52,11 +52,34 @@ node scripts/github_stack_scan.mjs --root ~/Documents --out .hermes/analysis
 
 # 2. turn the report into an evidence table + stack matrix for CV writing
 node scripts/github_stack_evidence.mjs --in .hermes/analysis/github_stack_report.json --out .hermes/analysis
+
+# 3. scan GitHub directly (private repos included) — needs a token
+node scripts/github_api_scan.mjs --org 1engage,1Engage-DM --out .hermes/analysis
 ```
 
-Reports land in `.hermes/analysis/` (git-ignored). Sources are local clones and
-the public GitHub API; nothing sensitive is collected, and credential files
-(`*.pem`, `*.key`, `.env`) are skipped by default.
+Reports land in `.hermes/analysis/` (git-ignored). Sources are local clones, the
+public GitHub API, and the authenticated API when a token is available.
+Credential files (`*.pem`, `*.key`, `.env`, `*secret*`) are skipped by default and
+tokens are never printed.
+
+### GitHub token (for private repos)
+
+The API scanner resolves a token in this order: `GITHUB_TOKEN` / `GH_TOKEN` env
+var → `~/.config/harits/github_token` → `gh` CLI credentials
+(`~/.config/gh/hosts.yml`). Keep the token file private:
+
+```bash
+mkdir -p ~/.config/harits
+printf '%s' '<token>' > ~/.config/harits/github_token
+chmod 600 ~/.config/harits/github_token
+```
+
+Required read-only scopes: `Contents`, `Metadata`, `Pull requests`, `Issues`
+(fine-grained) or `repo` + `read:org` (classic). Smoke test:
+
+```bash
+node scripts/github_api_scan.mjs --limit 1   # prints login, scopes, rate limit
+```
 
 ## Getting Started
 

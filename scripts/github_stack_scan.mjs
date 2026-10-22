@@ -19,6 +19,14 @@ import { execFileSync } from "node:child_process";
 import { readdirSync, readFileSync, existsSync, mkdirSync, writeFileSync, statSync } from "node:fs";
 import { join, relative, basename } from "node:path";
 import { homedir } from "node:os";
+import {
+  CONFIG_RE,
+  MANIFEST_NAMES,
+  PARSERS,
+  SECRET_RE,
+  detectInfra,
+} from "./lib/github_parsers.mjs";
+import { resolveToken } from "./lib/github_token.mjs";
 
 // ---------- args ----------
 const argv = process.argv.slice(2);
@@ -40,7 +48,8 @@ const AUTHOR_EMAILS = String(
   .filter(Boolean);
 const AUTHOR_EMAIL = AUTHOR_EMAILS[0];
 const MAX_DEPTH = Number(opt.depth || 5);
-const TOKEN = process.env.GITHUB_TOKEN || "";
+// ---------- token (dari env atau file, tidak pernah dicetak) ----------
+const TOKEN = resolveToken({ tokenFile: typeof opt["token-file"] === "string" ? opt["token-file"] : undefined });
 const SELF_OWNERS = ["harits19"];
 const ORG_OWNERS = ["1engage", "1engage-dm", "ipm"];
 
@@ -49,12 +58,6 @@ const SKIP_DIRS = new Set([
   "Pods", ".venv", "venv", "__pycache__", "bin", "pkg", "logs", "target", ".gradle",
   ".idea", ".vscode", "coverage", "site-packages",
 ]);
-const SECRET_RE = /(\.pem$|\.key$|\.p12$|\.crt$|\.p8$|id_rsa|^\.env$|^\.env\.(?!example)|credential|secret|\.xlsm$|\.p12$)/i;
-const MANIFEST_NAMES = new Set([
-  "package.json", "go.mod", "pubspec.yaml", "requirements.txt", "pyproject.toml",
-  "composer.json", "Gemfile", "Cargo.toml", "pom.xml", "build.gradle", "mix.exs",
-]);
-const CONFIG_RE = /^(Dockerfile.*|docker-compose.*\.ya?ml|.*\.tf|.*\.tfvars|Makefile|vercel\.json|firebase\.json|openapi.*\.(ya?ml|json)|swagger.*\.(ya?ml|json)|(spec|api)[^/]*\.(ya?ml|json))$/i;
 
 // ---------- helpers ----------
 function sh(cmd, args, cwd) {
@@ -121,64 +124,6 @@ function topLevel(repo, maxDepth = 2) {
   return acc;
 }
 
-// ---------- parser per ekosistem → nama dependency ----------
-function parseNpm(body) {
-  const j = JSON.parse(body);
-  return [
-    ...Object.keys(j.dependencies || {}),
-    ...Object.keys(j.devDependencies || {}),
-  ];
-}
-function parseGo(body) {
-  const deps = new Set();
-  let inBlock = false;
-  for (const raw of body.split("\n")) {
-    const line = raw.split("//")[0];
-    if (/^\s*require\s*\(/.test(line)) { inBlock = true; continue; }
-    if (inBlock && /^\s*\)/.test(line)) { inBlock = false; continue; }
-    const single = line.match(/^\s*require\s+(\S+)/);
-    if (single) deps.add(single[1]);
-    if (inBlock) {
-      const m = line.match(/^\s+([a-z0-9.\-]+\.[a-z]{2,}\/\S+)/i);
-      if (m) deps.add(m[1]);
-    }
-  }
-  return [...deps];
-}
-function parsePubspec(body) {
-  const deps = new Set();
-  let section = "";
-  for (const raw of body.split("\n")) {
-    if (/^\S/.test(raw)) { section = raw.split(":")[0]; continue; }
-    if (!/^(dependencies|dev_dependencies)/.test(section)) continue;
-    const m = raw.match(/^ {2}([a-z0-9_]+):/i);
-    if (m) deps.add(m[1]);
-  }
-  return [...deps];
-}
-function parseRequirements(body) {
-  return body.split("\n").map((l) => l.split(/[=<>!;\[]/)[0].trim()).filter((l) => l && !l.startsWith("#"));
-}
-function parseComposer(body) {
-  const j = JSON.parse(body);
-  return [...Object.keys(j.require || {}), ...Object.keys(j["require-dev"] || {})];
-}
-function parseGradle(body) {
-  return lines(body).map((l) => (l.match(/^(?:implementation|api|compileOnly|testImplementation)\s*[("']([^"')]+)/) || [])[1]).filter(Boolean);
-}
-const PARSERS = {
-  "package.json": parseNpm,
-  "go.mod": parseGo,
-  "pubspec.yaml": parsePubspec,
-  "requirements.txt": parseRequirements,
-  "pyproject.toml": (b) => lines(b).filter((l) => /^[a-z0-9_.\-]+\s*[>=~<]/.test(l)).map((l) => l.split(/[>=~<]/)[0].trim()),
-  "composer.json": parseComposer,
-  "Gemfile": (b) => lines(b).map((l) => (l.match(/^gem\s+["']([^"']+)/) || [])[1]).filter(Boolean),
-  "Cargo.toml": (b) => lines(b).filter((l) => /^[a-z0-9_-]+\s*=/.test(l) && !/^(name|version|edition|authors|description)/.test(l)).map((l) => l.split("=")[0].trim()),
-  "pom.xml": (b) => [...b.matchAll(/<artifactId>([^<]+)<\/artifactId>/g)].map((m) => m[1]).slice(1),
-  "build.gradle": parseGradle,
-};
-
 // ---------- scan satu repo ----------
 function scanRepo(repo) {
   const originRaw = git(repo, ["config", "--get", "remote.origin.url"]);
@@ -215,25 +160,7 @@ function scanRepo(repo) {
         /* manifest rusak → lewati */
       }
     }
-    if (/^Dockerfile/i.test(name)) {
-      const from = body.match(/^FROM\s+(\S+)/im);
-      infra.add(from ? `docker-base:${from[1]}` : "docker");
-      if (/multi-stage|AS\s+\w+/i.test(body)) infra.add("docker-multistage");
-    }
-    if (/^docker-compose.*\.ya?ml$/i.test(name)) {
-      infra.add("docker-compose");
-      for (const m of body.matchAll(/^\s{2}([a-z0-9_.-]+):\s*$/gim)) infra.add(`compose-service:${m[1]}`);
-    }
-    if (/\.tf$/i.test(name)) {
-      for (const m of body.matchAll(/^resource\s+"([^"]+)"/gim)) infra.add(`terraform:${m[1]}`);
-      for (const m of body.matchAll(/^provider\s+"([^"]+)"/gim)) infra.add(`tf-provider:${m[1]}`);
-    }
-    const isSpecName = /(openapi|swagger)/i.test(name);
-    const looksSpecBody = /^\s*(openapi|swagger)\s*:/im.test(body) || /^\s*paths\s*:/im.test(body);
-    if (isSpecName || looksSpecBody) {
-      const paths = (body.match(/^ {2}"?\/[^":]+"?:/gm) || []).length;
-      openapi.push({ rel, paths });
-    }
+    detectInfra(name, body, infra, openapi, rel);
   }
 
   const wfDir = join(repo, ".github", "workflows");

@@ -42,7 +42,7 @@ const en = {
     },
   ],
   about_me:
-    "Full-stack Software Engineer with over five years of experience across web, mobile, and event-driven backends (TypeScript/Node.js, Go, Dart/Flutter). Owner of production services in a multi-tenant chatbot platform: 19 repositories contributed to, containerised microservices on Docker and Docker Compose (130 services across 16 projects), RabbitMQ and Google Pub/Sub messaging, PostgreSQL/Redis/MongoDB storage, GitHub Actions CI/CD (66 workflow files), and Terraform-provisioned GCP and Byteplus infrastructure. Comfortable across the stack — React/Next.js frontends, Flutter apps, and API design with OpenAPI — used to code review, service ownership, and production incident response.",
+    "Full-stack Software Engineer with over five years of experience across web, mobile, and event-driven backends (TypeScript/Node.js, Go, Dart/Flutter). Owner of production services in a multi-tenant chatbot platform, with verifiable repository evidence: 128 repositories contributed to (94 personal, 26 in the product organisation — 92 of them private), 3,977 commits, 218 pull requests authored and 175 reviewed. Day-to-day work covers containerised microservices on Docker and Docker Compose, RabbitMQ and Google Pub/Sub messaging, PostgreSQL/Redis/MongoDB storage, GitHub Actions CI/CD, and Terraform-provisioned GCP and Byteplus infrastructure. Comfortable across the stack — React/Next.js frontends, Flutter apps, and API design with OpenAPI — and used to code review, service ownership, and production incident response.",
   experience: [
     {
       company: "PT Integra Putra Mandiri",
@@ -58,7 +58,7 @@ const en = {
         "Extended the event-driven broadcast engine (RabbitMQ, etcd service discovery, object storage) — 7 GitHub Actions workflows covering code quality, Docker builds, and releases.",
         "Authored OpenAPI interface specifications for gateway services (177 declared API paths) as the contract between frontend and backend teams.",
         "Developed a Flutter mini-game for a philanthropy donation app, connecting gameplay with the chatbot flow to lift in-app engagement.",
-        "Investigated and resolved production incidents across 19 platform repositories, improving stability and recovery time.",
+        "Contributed across 26 repositories in the product organisation (1,420 commits) and resolved production incidents, improving stability and recovery time.",
       ],
     },
     {
@@ -159,7 +159,7 @@ const en = {
     },
     {
       title: "Backend",
-      tools: ["Express.js", "Node.js", "Go", "Python", "Zod"],
+      tools: ["Express.js", "Node.js", "Go", "Python", "Elysia", "Zod"],
     },
     {
       title: "DevOps & Infra",
@@ -168,8 +168,15 @@ const en = {
         "Docker Compose",
         "GitHub Actions CI/CD",
         "Terraform",
+      ],
+    },
+    {
+      title: "Cloud & Storage",
+      tools: [
         "Google Cloud Platform",
         "Byteplus",
+        "Firebase",
+        "MinIO (S3)",
       ],
     },
     {
@@ -195,12 +202,19 @@ const en = {
       ],
     },
     {
-      title: "Mobile",
-      tools: ["Flutter", "Dart", "React Native"],
+      title: "Mobile & State",
+      tools: [
+        "Flutter",
+        "Dart",
+        "React Native",
+        "Riverpod",
+        "Bloc",
+        "Provider",
+      ],
     },
     {
-      title: "Database & Storage",
-      tools: ["PostgreSQL", "MongoDB", "Redis", "MinIO (S3)"],
+      title: "Database",
+      tools: ["PostgreSQL", "MongoDB", "Redis", "MySQL"],
     },
     {
       title: "Observability",
@@ -230,7 +244,7 @@ const en = {
     },
     {
       title: "Tools",
-      tools: ["Git/GitHub", "GitLab", "Figma", "JIRA", "Trello", "Slack"],
+      tools: ["Git/GitHub", "GitLab", "ESLint", "Prettier", "Figma", "JIRA"],
     },
     {
       title: "Languages",
@@ -268,10 +282,17 @@ const en = {
     },
     {
       name: "Mobile Suite (Flutter)",
-      stack: ["Flutter", "Dart", "FFmpeg", "Google Sign-In"],
+      stack: ["Flutter", "Dart", "Riverpod", "FFmpeg", "Google Sign-In"],
       description:
-        "Several Flutter apps: personal finance with local notifications, background media backup with FFmpeg, prayer-time and audio-recording apps (65–109 commits each).",
+        "Several Flutter apps built end to end: personal finance with local notifications, a password manager with biometric auth and encryption (121 commits), prayer times with background jobs, and background media backup using FFmpeg (65–121 commits each).",
       link: "https://github.com/Harits19/my_money",
+    },
+    {
+      name: "Invitation Backend Service (Go)",
+      stack: ["Go", "Fiber", "AWS S3", "Docker Compose", "GitHub Actions"],
+      description:
+        "Backend service for the wedding invitation platform: REST API and object storage integration in Go, containerised with Docker Compose and released through CI — 74 commits, the largest Go codebase I maintain.",
+      link: "https://github.com/Harits19/invitation-backend-service",
     },
     {
       name: "Cloud Infrastructure 4-Tier (Terraform)",
@@ -295,7 +316,7 @@ const id = {
   name: "ABDULLAH HARITS",
 
   about_me:
-    "Software Engineer Full-stack dengan pengalaman lebih dari lima tahun di aplikasi web, mobile, dan backend berbasis event (TypeScript/Node.js, Go, Dart/Flutter). Pemilik layanan produksi di platform chatbot multi-tenant: berkontribusi pada 19 repository, microservices dalam container (Docker dan Docker Compose, 130 service di 16 proyek), messaging RabbitMQ dan Google Pub/Sub, penyimpanan PostgreSQL/Redis/MongoDB, CI/CD GitHub Actions (66 file workflow), serta infrastruktur GCP dan Byteplus yang diprovisikan lewat Terraform. Nyaman bekerja lintas lapisan — frontend React/Next.js, aplikasi Flutter, dan desain API dengan OpenAPI — serta terbiasa melakukan code review, memiliki layanan, dan menangani insiden produksi.",
+    "Software Engineer Full-stack dengan pengalaman lebih dari lima tahun di aplikasi web, mobile, dan backend berbasis event (TypeScript/Node.js, Go, Dart/Flutter). Pemilik layanan produksi di platform chatbot multi-tenant dengan bukti repository yang bisa diverifikasi: 128 repository (94 pribadi, 26 di organisasi produk — 92 di antaranya privat), 3.977 commit, 218 pull request dibuat, dan 175 pull request direview. Pekerjaan harian mencakup microservices dalam container (Docker dan Docker Compose), messaging RabbitMQ dan Google Pub/Sub, penyimpanan PostgreSQL/Redis/MongoDB, CI/CD GitHub Actions, serta infrastruktur GCP dan Byteplus yang diprovisikan lewat Terraform. Nyaman bekerja lintas lapisan — frontend React/Next.js, aplikasi Flutter, dan desain API dengan OpenAPI — serta terbiasa melakukan code review, memiliki layanan, dan menangani insiden produksi.",
   experience: [
     {
       company: "PT Integra Putra Mandiri",
@@ -311,7 +332,7 @@ const id = {
         "Mengembangkan engine broadcast berbasis event (RabbitMQ, service discovery etcd, object storage) — 7 workflow GitHub Actions untuk kualitas kode, build Docker, dan rilis.",
         "Menyusun spesifikasi antarmuka OpenAPI untuk layanan gateway (177 path API terdeklarasi) sebagai kontrak antara tim frontend dan backend.",
         "Mengembangkan mini-game Flutter untuk aplikasi donasi filantropi, terhubung dengan alur chatbot untuk meningkatkan engagement di dalam aplikasi.",
-        "Menginvestigasi dan menyelesaikan insiden produksi pada 19 repository platform, meningkatkan stabilitas dan waktu pemulihan.",
+        "Berkontribusi pada 26 repository di organisasi produk (1.420 commit) serta menyelesaikan insiden produksi, meningkatkan stabilitas dan waktu pemulihan.",
       ],
     },
     {
@@ -430,10 +451,17 @@ const id = {
     },
     {
       name: "Rangkaian Aplikasi Mobile (Flutter)",
-      stack: ["Flutter", "Dart", "FFmpeg", "Google Sign-In"],
+      stack: ["Flutter", "Dart", "Riverpod", "FFmpeg", "Google Sign-In"],
       description:
-        "Beberapa aplikasi Flutter: keuangan pribadi dengan notifikasi lokal, backup media latar belakang dengan FFmpeg, aplikasi jadwal sholat dan perekam audio (65–109 commit per aplikasi).",
+        "Beberapa aplikasi Flutter yang saya bangun sendiri: keuangan pribadi dengan notifikasi lokal, manajer password dengan autentikasi biometrik dan enkripsi (121 commit), jadwal sholat dengan background job, serta backup media latar belakang memakai FFmpeg (65–121 commit per aplikasi).",
       link: "https://github.com/Harits19/my_money",
+    },
+    {
+      name: "Backend Service Undangan (Go)",
+      stack: ["Go", "Fiber", "AWS S3", "Docker Compose", "GitHub Actions"],
+      description:
+        "Layanan backend untuk platform undangan pernikahan: REST API dan integrasi object storage dengan Go, dikontainerkan memakai Docker Compose dan dirilis lewat CI — 74 commit, codebase Go terbesar yang saya rawat.",
+      link: "https://github.com/Harits19/invitation-backend-service",
     },
     {
       name: "Infrastruktur Cloud 4-Tier (Terraform)",
