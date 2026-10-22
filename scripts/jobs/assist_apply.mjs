@@ -18,6 +18,8 @@
  *   --url          URL lowongan manual (untuk hasil pencarian di LinkedIn/JobStreet)
  *   --company      nama perusahaan (manual)
  *   --title        posisi (manual)
+ *   --jd           path file berisi deskripsi lowongan (salin dari LinkedIn/JobStreet)
+ *                  → cover letter & jawaban disesuaikan dengan JD tersebut
  *   --lang         en | id (default: en; otomatis en+id bila perusahaan Indonesia)
  *   --copy         salin cover letter + jawaban ke clipboard
  *   --open         buka URL lowongan di browser
@@ -95,6 +97,7 @@ if (!packageDir && !opt["dry-run"]) {
   try {
     const genArgs = ["scripts/jobs/new_application.mjs", "--id", job.id, "--lang", lang];
     if (manual) genArgs.push("--url", job.url, "--title", job.title, "--company", job.company || "");
+    if (opt.jd && existsSync(String(opt.jd))) genArgs.push("--text", readFileSync(String(opt.jd), "utf8").slice(0, 20000));
     execFileSync("node", genArgs, { stdio: "ignore" });
     const { readdirSync } = await import("node:fs");
     packageDir = readdirSync(APPLICATIONS).map((d) => join(APPLICATIONS, d)).filter((d) => slugify(d).includes(slugify(job.title).slice(0, 18))).pop() || null;

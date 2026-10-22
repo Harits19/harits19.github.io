@@ -234,8 +234,12 @@ const FILL = {
     "Based in Indonesia (WIB/UTC+7). No visa sponsorship needed — I work remotely as a contractor or through an employer-of-record.",
   years: "5+ years",
   notice: "1 month",
-  source: "Company careers page (Ashby)",
+  source: "Company careers page (Greenhouse)",
+  country: "Indonesia",
+  openSource:
+    "Yes — 94 public repositories at github.com/Harits19, including production-shaped projects: vet-management-system (Next.js/Express/MongoDB, 239 commits), invitation-backend-service (Go/Fiber, 74 commits), anti_rokok (MCP + Playwright assistant), and my_money (Flutter).",
   why: whyUs,
+  narrative: `Full-stack engineer based in Jakarta (WIB, UTC+7) with 5+ years across TypeScript/Node.js, Go, and Flutter. I own the CMS frontend of a multi-tenant chatbot platform (${"Next.js App Router, Tailwind, Motion"}) and maintain the services behind it: Express APIs on PostgreSQL, Redis and MongoDB, a RabbitMQ broadcast engine with etcd service discovery, Docker multi-stage builds, GitHub Actions pipelines, and Terraform-provisioned infrastructure on GCP and Byteplus. Verifiable: 128 repositories contributed to, 3,977 commits, 218 pull requests authored, 175 reviewed. I also run production observability (Prometheus, Grafana, Loki, Thanos) and OpenAPI design (177 paths).`,
   cover: coverLetter,
 };
 
@@ -268,7 +272,7 @@ const fillResult = await send("Runtime.evaluate", {
     };
     const pick = (label) => {
       if (/g-recaptcha|recaptcha/.test(label)) return null;
-      if (/why|cover|motivat|additional info|anything else|message to/.test(label)) return map.why;
+      if (/why|cover|motivat|additional info|anything else|message to|tell us|little about|background|interest in|what excites/.test(label)) return map.why;
       if (/e-?mail/.test(label)) return map.email;
       if (/first name/.test(label)) return map.first;
       if (/last name|surname|family name/.test(label)) return map.last;
@@ -279,8 +283,11 @@ const fillResult = await send("Runtime.evaluate", {
       if (/portfolio|website|personal site|blog/.test(label)) return map.website;
       if (/salary|compensation|expectation|rate/.test(label)) return map.salary;
       if (/sponsor|visa|authoriz|right to work|legally eligible/.test(label)) return map.workAuth;
-      if (/where|location|based|city|country|time ?zone|reside/.test(label)) return map.location;
-      if (/years|how long|experience/.test(label)) return map.years;
+      if (/passport|country of residence|country\b|nationality/.test(label)) return map.country;
+      if (/open source|open-source/.test(label)) return map.openSource;
+      if (/where|location|based|city|time ?zone|reside/.test(label)) return map.location;
+      if (/how many years|years of (professional )?experience|year experience/.test(label)) return map.years;
+      if (/describe|tell us about|experience with|explain|summar/.test(label)) return map.narrative;
       if (/notice|start date|available|availability/.test(label)) return map.notice;
       if (/hear about|how did you find|referr|source/.test(label)) return map.source;
       return null;
@@ -297,6 +304,14 @@ const fillResult = await send("Runtime.evaluate", {
       if (!value) { skipped.push(label.slice(0, 48) || el.tagName.toLowerCase()); continue; }
       setValue(el, value);
       done.push(label.slice(0, 48) || el.tagName.toLowerCase());
+    }
+    // fallback: textarea wajib yang masih kosong diisi jawaban naratif (bukan dibiarkan kosong)
+    for (const el of document.querySelectorAll('textarea')) {
+      if (String(el.value || '').trim()) continue;
+      if ((el.name || '').includes('g-recaptcha')) continue;
+      const label = labelOf(el);
+      setValue(el, map.why);
+      done.push('fallback: ' + (label.slice(0, 40) || 'textarea'));
     }
     const unfilledRequired = [...document.querySelectorAll('[required]')]
       .filter((el) => el.type !== 'file' && !String(el.value || '').trim())

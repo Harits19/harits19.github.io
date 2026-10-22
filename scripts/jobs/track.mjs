@@ -100,8 +100,8 @@ if (opt.id) {
   const existing = db.applications.find((a) => a.id === opt.id);
   const entry = {
     id: opt.id,
-    title: job.title || existing?.title || "(tidak ada di shortlist)",
-    company: job.company || existing?.company || null,
+    title: job.title || (opt.title ? String(opt.title) : existing?.title) || "(tanpa judul)",
+    company: job.company || (opt.company ? String(opt.company) : existing?.company) || null,
     source: job.source || existing?.source || "manual",
     url: job.url || existing?.url || null,
     score: job.score ?? existing?.score ?? null,

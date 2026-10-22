@@ -14,7 +14,7 @@
  *
  * Output: .hermes/jobs/ats-jobs.json + .hermes/jobs/ats-shortlist.md
  */
-import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
+import { writeFileSync, mkdirSync } from "node:fs";
 import { join } from "node:path";
 
 const argv = process.argv.slice(2);
