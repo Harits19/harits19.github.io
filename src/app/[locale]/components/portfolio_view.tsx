@@ -13,163 +13,152 @@ const projectsByLocale: Record<
   en: {
     heading: "Projects I've Built",
     description:
-      "Selected projects that showcase my skills in building scalable, user-friendly, and efficient web and mobile applications.",
+      "Six selected projects that show how I design, ship, and operate production systems — from event-driven backends and containerised services to Flutter apps and polished frontends. Everything listed here maps to a real repository or a live URL.",
     projects: [
       {
-        title: "1ENGAGE Website",
+        title: "Vet Management System",
         subtitle:
-          "Official website for 1ENGAGE built with Next.js, Tailwind, and Motion.",
-        tags: ["Next.js", "TypeScript", "Tailwind CSS"],
+          "Clinic and cashier system for a veterinary practice — customers, pets, medical records, and unified shop plus doctor transactions, built as a TypeScript monorepo with Docker Compose.",
+        tags: [
+          "Next.js",
+          "Express.js",
+          "MongoDB",
+          "Docker Compose",
+          "TypeScript",
+        ],
         bgClass: "from-slate-950/5 via-slate-50 to-cyan-50",
-        videoSrc: "/1engage.mp4",
-        poster: "/1engage-poster.jpg",
-        link: "https://1engage.ai",
+        videoSrc: "/vet_management.mp4",
+        poster: "/vet_management-poster.jpg",
+        link: "https://vet-management-system.vercel.app",
+        github: "https://github.com/Harits19/vet-management-system",
       },
       {
-        title: "1ENGAGE Platform",
+        title: "AI Assistant (Model Context Protocol)",
         subtitle:
-          "The 1ENGAGE chatbot platform — omnichannel conversations, Meta Catalog integration, and conversion events via the Meta Cloud API.",
-        tags: ["Chatbot", "Meta Cloud API", "Express.js"],
+          "Automation assistant built on the Model Context Protocol: an Express service with Zod-validated tools and Playwright browser automation. Designed and coded end to end as the sole author.",
+        tags: ["Bun", "Express.js", "Zod", "Playwright", "MCP SDK"],
         bgClass: "from-slate-950/5 via-slate-50 to-cyan-50",
-        videoSrc: "/1engage_platform.mp4",
-        poster: "/1engage_platform-poster.jpg",
+        github: "https://github.com/Harits19/anti_rokok",
       },
       {
         title: "WhatsApp Chatbot Engine",
         subtitle:
-          "Reusable chatbot engine on the Meta Cloud API — catalog messages, conversion events, and flexible multi-use-case flows, powering the Tzu Chi Donate chatbot.",
-        tags: ["Node.js", "Express.js", "Meta Cloud API", "WhatsApp"],
+          "Reusable chatbot engine on the Meta Cloud API — catalogue messages, conversion events, and flexible multi-flow use cases shared by several products, with events replicated to Google Pub/Sub.",
+        tags: ["Node.js", "Express.js", "Meta Cloud API", "RabbitMQ"],
         bgClass: "from-slate-950/5 via-slate-50 to-cyan-50",
-        videoSrc: "/tzuchi_chatbot.mp4",
-        poster: "/tzuchi_chatbot-poster.jpg",
+        videoSrc: "/chatbot_engine.mp4",
+        poster: "/chatbot_engine-poster.jpg",
         vertical: true,
         link: "https://wa.me/628881818123?text=hai",
       },
       {
         title: "Broadcast Engine",
         subtitle:
-          "Event-driven broadcast engine built on Google Pub/Sub with a microservices architecture.",
-        tags: ["Go", "Google Pub/Sub", "Microservices", "Event-Driven"],
+          "Event-driven mass-messaging engine for the chatbot platform: RabbitMQ messaging, etcd service discovery, object storage, and seven CI/CD workflows covering quality checks, Docker builds, and releases.",
+        tags: [
+          "Node.js",
+          "RabbitMQ",
+          "etcd",
+          "Google Cloud Storage",
+          "GitHub Actions",
+        ],
         bgClass: "from-slate-950/5 via-slate-50 to-cyan-50",
       },
       {
-        title: "Tzu Chi Donate Mini-Game",
+        title: "1ENGAGE Platform Website",
         subtitle:
-          "Flutter mini-game inside the Tzu Chi Donate app to boost user engagement and connect with the chatbot flow.",
-        tags: ["Flutter", "Dart"],
+          "Official product website built with Next.js, Tailwind CSS, and Motion — including an animated hero, scroll-linked sections, and a static export deployed through GitHub Pages.",
+        tags: ["Next.js", "TypeScript", "Tailwind CSS", "Motion"],
         bgClass: "from-slate-950/5 via-slate-50 to-cyan-50",
-        videoSrc: "/tzuchi_game.mp4",
-        poster: "/tzuchi_game-poster.jpg",
-        vertical: true,
-      },
-      {
-        title: "1ENGAGE Mobile App",
-        subtitle:
-          "Mobile app for the 1ENGAGE chatbot platform built with React Native.",
-        tags: ["React Native", "TypeScript"],
-        bgClass: "from-slate-950/5 via-slate-50 to-violet-50",
-      },
-      {
-        title: "Hotel Management App",
-        subtitle:
-          "Hotel management application built with Flutter as a side project.",
-        tags: ["Flutter", "Dart"],
-        bgClass: "from-slate-950/5 via-slate-50 to-cyan-50",
+        videoSrc: "/1engage.mp4",
+        poster: "/1engage-poster.jpg",
+        link: "https://1engage.ai",
       },
       {
         title: "Wedding Invitation",
-        subtitle: "Create wedding invitation website for my wedding.",
+        subtitle:
+          "Wedding invitation website for my own wedding: digital invitation flow, guest book, and mobile-first layout, deployed as a static site.",
         tags: ["Next.js", "TypeScript", "Tailwind CSS"],
         videoSrc: "/wedding.mp4",
         vertical: true,
         link: "https://harits19.github.io/wedding-app",
         bgClass: "from-slate-950/5 via-slate-50 to-cyan-50",
       },
-      {
-        title: "Vet Management System",
-        subtitle:
-          "Cashier and clinic system built to help my brother's pet shop and vet practice — customers, pets, medical records, and unified shop plus doctor transactions. Built with the help of Hermes Agent acting as an AI coding assistant.",
-        tags: ["Next.js", "Express.js", "MongoDB", "TypeScript"],
-        bgClass: "from-slate-950/5 via-slate-50 to-cyan-50",
-        videoSrc: "/vet_management.mp4",
-        poster: "/vet_management-poster.jpg",
-      },
     ],
   },
   id: {
     heading: "Proyek yang Pernah Saya Buat",
     description:
-      "Proyek pilihan yang menunjukkan kemampuan saya membangun aplikasi web dan mobile yang skalabel, ramah pengguna, dan efisien.",
+      "Enam proyek pilihan yang menunjukkan cara saya merancang, merilis, dan mengoperasikan sistem produksi — dari backend berbasis event dan layanan dalam container sampai aplikasi Flutter dan frontend yang rapi. Semua yang ada di sini punya repository nyata atau URL yang bisa dibuka.",
     projects: [
       {
-        title: "Website 1ENGAGE",
+        title: "Sistem Manajemen Klinik Hewan",
         subtitle:
-          "Website resmi produk 1ENGAGE, dibangun dengan Next.js, Tailwind, dan Motion.",
-        tags: ["Next.js", "TypeScript", "Tailwind CSS"],
+          "Sistem klinik dan kasir untuk praktik dokter hewan — data customer, hewan, rekam medis, serta transaksi toko dan dokter dalam satu sistem, dibangun sebagai monorepo TypeScript dengan Docker Compose.",
+        tags: [
+          "Next.js",
+          "Express.js",
+          "MongoDB",
+          "Docker Compose",
+          "TypeScript",
+        ],
+        bgClass: "from-slate-950/5 via-slate-50 to-cyan-50",
+        videoSrc: "/vet_management.mp4",
+        poster: "/vet_management-poster.jpg",
+        link: "https://vet-management-system.vercel.app",
+        github: "https://github.com/Harits19/vet-management-system",
+      },
+      {
+        title: "Asisten AI (Model Context Protocol)",
+        subtitle:
+          "Asisten otomasi berbasis Model Context Protocol: layanan Express dengan tool yang divalidasi Zod dan otomasi browser Playwright. Dirancang dan dikodekan sendiri dari awal.",
+        tags: ["Bun", "Express.js", "Zod", "Playwright", "MCP SDK"],
+        bgClass: "from-slate-950/5 via-slate-50 to-cyan-50",
+        github: "https://github.com/Harits19/anti_rokok",
+      },
+      {
+        title: "Engine Chatbot WhatsApp",
+        subtitle:
+          "Engine chatbot reusable di Meta Cloud API — catalog messages, event konversi, dan alur multi-use-case yang fleksibel dan dipakai beberapa produk, dengan replikasi event ke Google Pub/Sub.",
+        tags: ["Node.js", "Express.js", "Meta Cloud API", "RabbitMQ"],
+        bgClass: "from-slate-950/5 via-slate-50 to-cyan-50",
+        videoSrc: "/chatbot_engine.mp4",
+        poster: "/chatbot_engine-poster.jpg",
+        vertical: true,
+        link: "https://wa.me/628881818123?text=hai",
+      },
+      {
+        title: "Engine Broadcast",
+        subtitle:
+          "Engine pengiriman massal berbasis event untuk platform chatbot: messaging RabbitMQ, service discovery etcd, object storage, dan tujuh workflow CI/CD untuk pemeriksaan kualitas, build Docker, serta rilis.",
+        tags: [
+          "Node.js",
+          "RabbitMQ",
+          "etcd",
+          "Google Cloud Storage",
+          "GitHub Actions",
+        ],
+        bgClass: "from-slate-950/5 via-slate-50 to-cyan-50",
+      },
+      {
+        title: "Website Platform 1ENGAGE",
+        subtitle:
+          "Website resmi produk dengan Next.js, Tailwind CSS, dan Motion — hero beranimasi, section yang mengikuti scroll, dan static export yang dideploy lewat GitHub Pages.",
+        tags: ["Next.js", "TypeScript", "Tailwind CSS", "Motion"],
         bgClass: "from-slate-950/5 via-slate-50 to-cyan-50",
         videoSrc: "/1engage.mp4",
         poster: "/1engage-poster.jpg",
         link: "https://1engage.ai",
       },
       {
-        title: "Platform 1ENGAGE",
+        title: "Undangan Pernikahan",
         subtitle:
-          "Platform chatbot 1ENGAGE — percakapan omnichannel, integrasi Meta Catalog, dan event konversi melalui Meta Cloud API.",
-        tags: ["Chatbot", "Meta Cloud API", "Express.js"],
-        bgClass: "from-slate-950/5 via-slate-50 to-cyan-50",
-        videoSrc: "/1engage_platform.mp4",
-        poster: "/1engage_platform-poster.jpg",
-      },
-      {
-        title: "Engine Chatbot WhatsApp",
-        subtitle:
-          "Mesin chatbot reusable di Meta Cloud API — catalog messages, event konversi, dan alur multi-use-case yang fleksibel, menggerakkan chatbot Tzu Chi Donate.",
-        tags: ["Node.js", "Express.js", "Meta Cloud API", "WhatsApp"],
-        bgClass: "from-slate-950/5 via-slate-50 to-cyan-50",
-        videoSrc: "/tzuchi_chatbot.mp4",
-        poster: "/tzuchi_chatbot-poster.jpg",
+          "Website undangan pernikahan saya sendiri: alur undangan digital, buku tamu, dan tata letak mobile-first yang dideploy sebagai situs statis.",
+        tags: ["Next.js", "TypeScript", "Tailwind CSS"],
+        videoSrc: "/wedding.mp4",
         vertical: true,
-        link: "https://wa.me/628881818123?text=hai",
-      },
-      {
-        title: "Broadcast Engine",
-        subtitle:
-          "Engine broadcast berbasis event di Google Pub/Sub dengan arsitektur microservices.",
-        tags: ["Go", "Google Pub/Sub", "Microservices", "Event-Driven"],
+        link: "https://harits19.github.io/wedding-app",
         bgClass: "from-slate-950/5 via-slate-50 to-cyan-50",
-      },
-      {
-        title: "Mini-Game Tzu Chi Donate",
-        subtitle:
-          "Mini-game Flutter di aplikasi Tzu Chi Donate untuk meningkatkan engagement pengguna dan terhubung dengan alur chatbot.",
-        tags: ["Flutter", "Dart"],
-        bgClass: "from-slate-950/5 via-slate-50 to-cyan-50",
-        videoSrc: "/tzuchi_game.mp4",
-        poster: "/tzuchi_game-poster.jpg",
-        vertical: true,
-      },
-      {
-        title: "Aplikasi Mobile 1ENGAGE",
-        subtitle:
-          "Aplikasi mobile untuk platform chatbot 1ENGAGE yang dibangun dengan React Native.",
-        tags: ["React Native", "TypeScript"],
-        bgClass: "from-slate-950/5 via-slate-50 to-violet-50",
-      },
-      {
-        title: "Aplikasi Manajemen Hotel",
-        subtitle:
-          "Aplikasi manajemen hotel dengan Flutter sebagai proyek sampingan.",
-        tags: ["Flutter", "Dart"],
-        bgClass: "from-slate-950/5 via-slate-50 to-cyan-50",
-      },
-      {
-        title: "Sistem Manajemen Klinik Hewan",
-        subtitle:
-          "Sistem kasir dan klinik untuk membantu bisnis toko hewan serta praktek dokter hewan kakak saya — kelola customer, pasien, rekam medis, sampai transaksi toko dan dokter dalam satu sistem. Dibangun dengan bantuan Hermes Agent sebagai AI coding assistant.",
-        tags: ["Next.js", "Express.js", "MongoDB", "TypeScript"],
-        bgClass: "from-slate-950/5 via-slate-50 to-cyan-50",
-        videoSrc: "/vet_management.mp4",
-        poster: "/vet_management-poster.jpg",
       },
     ],
   },

@@ -10,6 +10,7 @@ export interface CV {
   additional_experiences: ExperienceItem[];
   education: EducationItem;
   skills: SkillCategory[];
+  projects: ProjectItem[];
   languages: LanguageItem[];
 }
 
@@ -40,6 +41,16 @@ export interface EducationItem {
 export interface SkillCategory {
   title: string;
   tools: string[];
+}
+
+/** Proyek ringkas untuk section Projects di CV. `link` = repo/demo publik. */
+export interface ProjectItem {
+  name: string;
+  stack: string[];
+  description: string;
+  link?: string;
+  /** Label kecil di akhir baris, mis. penanda "internal — walkthrough". */
+  note?: string;
 }
 
 export interface LanguageItem {

@@ -40,5 +40,8 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# local analysis artifacts (Hermes)
+/.hermes/
+
 .vscode
 vscode-deepseek-autocomplete/

@@ -1,27 +1,62 @@
 # Abdullah Harits — Portfolio & CV
 
-Full-Stack Software Engineer with 5+ years of experience building web and
-mobile applications — WhatsApp chatbots, event-driven microservices, and
-real-time systems.
+Full-stack software engineer with 5+ years of experience across web, mobile, and
+event-driven backends (TypeScript/Node.js, Go, Dart/Flutter). I own and operate
+production services in a multi-tenant chatbot platform: containerised
+microservices, RabbitMQ/Pub-Sub messaging, relational and document storage,
+CI/CD pipelines, and Terraform-provisioned cloud infrastructure.
 
 **Live site:** https://harits19.github.io
 
 ## Tech Stack
 
-- **Frontend:** React.js, Next.js, Tailwind CSS, Ant Design
-- **Backend:** Go, Express.js (Node.js)
-- **Mobile:** Flutter, React Native
-- **Database:** MongoDB, PostgreSQL
-- **Architecture:** Microservices, Event-Driven Architecture (Google Pub/Sub), REST APIs
-- **Cloud:** Google Cloud Platform
+- **Architecture:** Microservices, Event-Driven Architecture, API Gateway (APISIX), Service Discovery (etcd), OpenAPI/REST
+- **Backend:** Express.js, Node.js, Go, Python, Zod
+- **DevOps & Infra:** Docker (multi-stage), Docker Compose, GitHub Actions CI/CD, Terraform, GCP, Byteplus
+- **Messaging & Realtime:** RabbitMQ, Google Pub/Sub, Kafka, Socket.IO/WebSocket, SIP/VoIP (Asterisk), MQTT
+- **Frontend:** React.js, Next.js, Tailwind CSS, Ant Design, Redux Toolkit, TanStack Query
+- **Mobile:** Flutter, Dart, React Native
+- **Database & Storage:** PostgreSQL, MongoDB, Redis, MinIO (S3)
+- **Observability:** Prometheus, Grafana, Loki, Thanos, Winston, GCP Cloud Logging
+- **Testing:** Jest, Sinon, Chai, Testing Library, Storybook, Playwright
+- **Data:** Apache Airflow, BigQuery
 
 ## Site Features
 
-- Portfolio-first landing page with selected projects
-- Bilingual (English / Bahasa Indonesia) with locale-based routing (`/en`, `/id`)
+- Portfolio-first landing page with six selected projects (each links to a live
+  demo or a public repository)
 - Print-perfect A4 CV — the "Resume" section prints exactly like a document
   (use the print button or `Ctrl/Cmd + P`)
-- Typewriter hero animation with reduced-motion support
+- Bilingual English / Bahasa Indonesia with locale-based routing (`/en`, `/id`)
+- Typewriter animation on the document with reduced-motion support
+- Static export, deployed to GitHub Pages
+
+## Project Layout
+
+```
+src/app/[locale]/components/   page sections (hero, portfolio, CV view)
+src/app/components/            reusable UI (section, list, project card)
+src/hooks/use_profile/         all CV data (single source of truth, EN + ID)
+src/hooks/use_dict/            UI labels per locale
+scripts/                       GitHub evidence tooling (see below)
+```
+
+## Evidence Tooling
+
+The CV claims in `src/hooks/use_profile/constant.tsx` are mapped to repository
+evidence. Two local scripts keep that mapping honest:
+
+```bash
+# 1. inventory local clones + public GitHub repos → stack & commit evidence
+node scripts/github_stack_scan.mjs --root ~/Documents --out .hermes/analysis
+
+# 2. turn the report into an evidence table + stack matrix for CV writing
+node scripts/github_stack_evidence.mjs --in .hermes/analysis/github_stack_report.json --out .hermes/analysis
+```
+
+Reports land in `.hermes/analysis/` (git-ignored). Sources are local clones and
+the public GitHub API; nothing sensitive is collected, and credential files
+(`*.pem`, `*.key`, `.env`) are skipped by default.
 
 ## Getting Started
 

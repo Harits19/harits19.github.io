@@ -116,11 +116,11 @@ export function ProjectCard({
             >
               {labels.liveDemo}
             </a>
-          ) : (
+          ) : !github ? (
             <span className="rounded-full border border-dashed border-slate-300 bg-white/80 px-4 py-2 text-sm font-semibold text-slate-500">
               {labels.internal}
             </span>
-          )}
+          ) : null}
           {github && (
             <a
               href={github}

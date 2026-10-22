@@ -12,6 +12,7 @@ import Text from "@/app/components/text";
 import {
   DetailItem,
   ExperienceItem,
+  ProjectItem,
   SkillCategory,
 } from "@/hooks/use_profile/type";
 import { defaultLineChar } from "@/constants/animation";
@@ -23,6 +24,15 @@ const getExperiencesLength = (items: ExperienceItem[]) =>
       prev +
       `${current.company} ${current.location} ${current.employment_type} ${current.position} ${current.start_date} ${current.end_date ?? ""} ${current.responsibilities.join(",")}`
         .length,
+    0,
+  );
+
+const getProjectText = (item: ProjectItem) =>
+  ` : ${item.stack.join(", ")}. ${item.description}${item.note ? ` (${item.note})` : ""}`;
+
+const getProjectsLength = (items: ProjectItem[]) =>
+  items.reduce<number>(
+    (prev, current) => prev + current.name.length + getProjectText(current).length,
     0,
   );
 
@@ -58,6 +68,8 @@ export default function CvView() {
       education: dict.education.length,
       gpa: education.gpa.length,
       skills: getSkillLength(profile.skills),
+      projects_title: dict.projects.length,
+      projects: getProjectsLength(profile.projects),
     };
 
     const o = {
@@ -68,6 +80,7 @@ export default function CvView() {
       experienceSection: 0,
       experienceList: 0,
       additionalExpSection: 0,
+      projectsSection: 0,
       educationSection: 0,
       educationDetail: 0,
       educationGpa: 0,
@@ -80,11 +93,16 @@ export default function CvView() {
     o.experienceList =
       o.experienceSection + charCounts.experience + charCounts.line;
     o.additionalExpSection = o.experienceList + charCounts.experiences;
-    o.educationSection =
+    o.projectsSection =
       o.additionalExpSection +
       charCounts.additional_experience +
       charCounts.line +
       charCounts.additional_experiences;
+    o.educationSection =
+      o.projectsSection +
+      charCounts.projects_title +
+      charCounts.line +
+      charCounts.projects;
     o.educationDetail =
       o.educationSection + charCounts.education + charCounts.line;
     o.educationGpa =
@@ -173,6 +191,49 @@ export default function CvView() {
             }
           />
         ))}
+      </SectionView>
+      <SectionView
+        id="cv-projects"
+        title={dict.projects}
+        charBefore={offsets.projectsSection}
+      >
+        <ListView
+          items={profile.projects.map((item, index) => {
+            const charBefore =
+              getProjectsLength(profile.projects.slice(0, index)) +
+              offsets.projectsSection +
+              char.projects_title +
+              char.line;
+            const name = <Text text={item.name} charBefore={charBefore} />;
+            return {
+              view: (
+                <div className="flex flex-col">
+                  <span className="font-semibold">
+                    {item.link ? (
+                      <a
+                        href={item.link}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="underline-offset-2 hover:underline"
+                      >
+                        {name}
+                      </a>
+                    ) : (
+                      name
+                    )}
+                  </span>
+                  <span>
+                    <Text
+                      text={getProjectText(item)}
+                      charBefore={charBefore + item.name.length}
+                    />
+                  </span>
+                </div>
+              ),
+              charBefore,
+            };
+          })}
+        />
       </SectionView>
       <SectionView title={dict.education} charBefore={offsets.educationSection}>
         <DetailView
