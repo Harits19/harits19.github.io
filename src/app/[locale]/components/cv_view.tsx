@@ -28,11 +28,12 @@ const getExperiencesLength = (items: ExperienceItem[]) =>
   );
 
 const getProjectText = (item: ProjectItem) =>
-  ` : ${item.stack.join(", ")}. ${item.description}${item.note ? ` (${item.note})` : ""}`;
+  `${item.stack.join(", ")}. ${item.description}${item.note ? ` (${item.note})` : ""}`;
 
 const getProjectsLength = (items: ProjectItem[]) =>
   items.reduce<number>(
-    (prev, current) => prev + current.name.length + getProjectText(current).length,
+    (prev, current) =>
+      prev + current.name.length + getProjectText(current).length,
     0,
   );
 
@@ -259,11 +260,12 @@ export default function CvView() {
               view: (
                 <div key={item.title} className="flex flex-col sm:flex-row">
                   <span className="font-semibold sm:w-1/3 sm:font-normal">
-                    <Text text={item.title} charBefore={charBefore} />
+                    <Text text={`${item.title}`} charBefore={charBefore} />
                   </span>
+                  <span className="mx-2"> : </span>
                   <span className="w-full sm:flex-1">
                     <Text
-                      text={` : ${item.tools.join(", ")}`}
+                      text={`${item.tools.join(", ")}`}
                       charBefore={charBefore + item.title.length}
                     />
                   </span>
